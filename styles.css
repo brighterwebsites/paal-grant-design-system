@@ -1,0 +1,9 @@
+/* ─────────────────────────────────────────────
+   PAAL GRANT — Design System
+   Root stylesheet — @import only
+   ───────────────────────────────────────────── */
+
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/effects.css";
