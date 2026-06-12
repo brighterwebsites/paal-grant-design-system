@@ -1,0 +1,46 @@
+<!-- @dsCard group="Brand" viewport="700x200" name="Logo Usage" subtitle="All six logo lockups — landscape and stacked, on dark and light" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+body { margin: 0; background: var(--bg-page); font-family: var(--font-primary); padding: 0; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); height: 200px; }
+.cell { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 20px; }
+.lbl { font-size: 0.48rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-align: center; }
+.cell.light-bg { background: #f0ece4; }
+.cell.dark-bg { background: #2b2b2b; }
+.cell.black-bg { background: #1a1a1a; }
+img { max-height: 52px; max-width: 80%; width: auto; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="cell dark-bg">
+    <img src="../../assets/logo-landscape-white.png" alt="Landscape White">
+    <span class="lbl">Landscape — On Dark</span>
+  </div>
+  <div class="cell dark-bg">
+    <img src="../../assets/logo-stacked-white.png" alt="Stacked White">
+    <span class="lbl">Stacked — On Dark</span>
+  </div>
+  <div class="cell dark-bg">
+    <img src="../../assets/logo-stacked-on-black.png" alt="Stacked on Black">
+    <span class="lbl">Stacked — Reversed</span>
+  </div>
+  <div class="cell light-bg">
+    <img src="../../assets/logo-landscape-black.png" alt="Landscape Black">
+    <span class="lbl" style="color:rgba(0,0,0,0.4)">Landscape — On Light</span>
+  </div>
+  <div class="cell light-bg">
+    <img src="../../assets/logo-stacked-black.png" alt="Stacked Black">
+    <span class="lbl" style="color:rgba(0,0,0,0.4)">Stacked — On Light</span>
+  </div>
+  <div class="cell black-bg">
+    <img src="../../assets/logo-landscape-on-black.png" alt="Landscape on Black">
+    <span class="lbl">Landscape — Black BG</span>
+  </div>
+</div>
+</body>
+</html>
