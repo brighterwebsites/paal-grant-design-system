@@ -1,0 +1,672 @@
+<!-- @dsCard group="Website" viewport="1280x820" subtitle="Paal Grant website — home, process, about, packages, portfolio, contact" name="Website UI Kit" -->
+<!-- @startingPoint section="Website" subtitle="Full Paal Grant website — 7 pages, interactive SPA" viewport="1280x820" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paal Grant — Designs In Landscaping</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;1,200;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Raleway",sans-serif;background:#0a0d08;color:#f0ece4;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.page{display:none;min-height:100vh}.page.active{display:block}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:100px;background:linear-gradient(to bottom,rgba(8,11,6,0.82) 0%,transparent 100%);transition:background 0.5s,height 0.3s}
+nav.solid{background:rgba(8,11,6,0.97);backdrop-filter:blur(14px);height:80px}
+.nav-logo{text-decoration:none;flex-shrink:0;cursor:pointer}
+.logo-img{height:68px;width:auto;display:block;transition:height 0.3s}
+nav.solid .logo-img{height:52px}
+.nav-right{display:flex;align-items:center;gap:44px}
+.nav-links{display:flex;align-items:center;gap:40px;list-style:none}
+.nav-links a{font-size:0.72rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.82);text-decoration:none;white-space:nowrap;transition:color 0.25s;position:relative;cursor:pointer}
+.nav-links a::after{content:"";position:absolute;bottom:-5px;left:0;right:0;height:1px;background:rgba(138,155,122,0.85);transform:scaleX(0);transform-origin:left;transition:transform 0.32s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-cta{border:1px solid rgba(138,155,122,0.6)!important;color:#fff!important;padding:10px 28px;font-size:0.7rem!important;font-weight:400!important;border-radius:6px;transition:background 0.25s,border-color 0.25s!important}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:rgba(138,155,122,0.2)!important;border-color:rgba(138,155,122,1)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.hamburger span{display:block;width:24px;height:1.5px;background:#fff;transition:transform 0.33s,opacity 0.33s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.nav-drawer{display:none;position:fixed;inset:0;z-index:490;background:rgba(6,9,5,0.98);backdrop-filter:blur(16px);flex-direction:column;align-items:center;justify-content:center;gap:44px;opacity:0;pointer-events:none;transition:opacity 0.38s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-drawer a{font-family:"Raleway",sans-serif;font-size:1.6rem;font-weight:200;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.88);text-decoration:none;cursor:pointer;transition:color 0.25s}
+.nav-drawer a:hover{color:rgba(138,155,122,1)}
+.nav-drawer .d-cta{border:1px solid rgba(138,155,122,0.6);padding:14px 52px;font-size:0.9rem!important;font-weight:300!important;letter-spacing:0.3em!important;color:#fff!important;border-radius:8px}
+
+/* SHARED */
+.section-label{font-size:0.58rem;font-weight:300;letter-spacing:0.45em;text-transform:uppercase;color:rgba(138,155,122,0.9);margin-bottom:18px;display:block}
+.section-title{font-size:clamp(2rem,4.5vw,3.8rem);font-weight:100;letter-spacing:0.08em;line-height:1.1;color:#fff}
+.v-rule{width:1px;background:linear-gradient(to bottom,transparent,rgba(138,155,122,0.75));margin:0 auto}
+.btn-sage{display:inline-block;background:rgba(138,155,122,0.15);border:1px solid rgba(138,155,122,0.7);color:#fff;padding:14px 44px;font-size:0.65rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background 0.28s,border-color 0.28s;border-radius:8px}
+.btn-sage:hover{background:rgba(138,155,122,0.3);border-color:rgba(138,155,122,1)}
+.btn-ghost{display:inline-block;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);padding:14px 44px;font-size:0.65rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:border-color 0.28s,color 0.28s;border-radius:8px}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.7);color:#fff}
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.9s,transform 0.9s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* HERO */
+.hero{position:relative;height:100vh;overflow:hidden;background:#0a0d08}
+.hslide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;will-change:transform,opacity}
+.hslide.enter{animation:kenEnter 10s cubic-bezier(0.25,0.46,0.45,0.94) forwards}
+.hslide.leave{animation:kenLeave 1.8s cubic-bezier(0.55,0,1,0.45) forwards}
+@keyframes kenEnter{0%{opacity:0;transform:scale(1.12) translateY(28px)}8%{opacity:1}100%{opacity:1;transform:scale(1.03) translateY(-18px)}}
+@keyframes kenLeave{0%{opacity:1;transform:scale(1.03) translateY(-18px)}100%{opacity:0;transform:scale(1.0) translateY(-65px)}}
+.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(to bottom,rgba(6,9,5,0.38) 0%,rgba(6,9,5,0.04) 38%,rgba(6,9,5,0.72) 100%)}
+.slide-counter{position:absolute;bottom:40px;right:52px;z-index:5;display:flex;align-items:center;gap:10px}
+.counter-n{font-size:1.6rem;font-weight:100;color:#fff;letter-spacing:0.06em}
+.counter-sep{width:22px;height:1px;background:rgba(255,255,255,0.38)}
+.counter-t{font-size:0.72rem;font-weight:200;color:rgba(255,255,255,0.38);letter-spacing:0.1em}
+.progress-bar{position:absolute;bottom:0;left:0;height:2px;background:rgba(138,155,122,0.7);z-index:5;width:0}
+
+/* HOME SECTIONS */
+.home-intro{background-color:#242422;padding:120px 52px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;overflow:hidden;border-radius:0}
+.award-badge{display:inline-flex;align-items:center;gap:14px;background:rgba(138,155,122,0.1);border:1px solid rgba(138,155,122,0.45);padding:16px 36px;margin-bottom:44px;border-radius:8px}
+.award-stars{color:rgba(138,155,122,1);font-size:0.95rem;letter-spacing:5px}
+.award-text{font-size:0.95rem;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:rgba(138,155,122,1)}
+.location-line{font-size:0.72rem;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:rgba(201,191,175,0.82);margin-bottom:40px}
+.intro-headline{font-size:clamp(2.8rem,7.5vw,6.5rem);font-weight:100;letter-spacing:0.1em;text-transform:uppercase;color:#fff;line-height:1.06;margin-bottom:52px}
+.intro-headline .sub{display:block;font-size:0.4em;font-style:italic;font-weight:200;letter-spacing:0.16em;text-transform:none;color:rgba(201,191,175,0.72);margin-bottom:12px}
+.intro-divider{display:flex;align-items:center;justify-content:center;gap:22px;margin-bottom:52px}
+.div-line{width:88px;height:1px;background:rgba(138,155,122,0.38)}
+.div-dia{width:7px;height:7px;background:rgba(138,155,122,0.85);transform:rotate(45deg)}
+.cred-strip{background:#161a14;border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);padding:28px 52px;display:flex;justify-content:center;gap:60px;flex-wrap:wrap}
+.cred-item{display:flex;align-items:center;gap:10px;font-size:0.65rem;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,191,175,0.65);white-space:nowrap}
+.cred-dot{width:4px;height:4px;border-radius:50%;background:rgba(138,155,122,0.8);flex-shrink:0}
+
+/* FEATURED */
+.featured{background:#0a0d08;padding:100px 52px}
+.featured-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px;flex-wrap:wrap;gap:24px}
+.featured-grid{display:grid;grid-template-columns:1.55fr 1fr;grid-template-rows:1fr 1fr;gap:3px;height:580px;border-radius:8px;overflow:hidden}
+.proj-card{position:relative;overflow:hidden;cursor:pointer;background:#1a1e14}
+.proj-card:first-child{grid-row:1/3;border-radius:8px 0 0 8px}
+.proj-card:last-child{border-radius:0 0 8px 0}
+.proj-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s ease}
+.proj-card:hover img{transform:scale(1.05)}
+.proj-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,9,5,0.88) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
+.proj-loc{font-size:0.6rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(138,155,122,0.9);margin-bottom:6px}
+.proj-name{font-size:1.1rem;font-weight:200;letter-spacing:0.06em;color:#fff}
+
+/* PACKAGES */
+.home-pkgs{background:#242422;padding:100px 52px;border-top:1px solid rgba(255,255,255,0.07)}
+.pkg-cards-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:1200px;margin:0 auto 72px;border-radius:8px;overflow:hidden}
+.hpk{border:1px solid rgba(255,255,255,0.07);padding:40px 36px;display:flex;flex-direction:column;transition:background 0.3s}
+.hpk:hover{background:rgba(255,255,255,0.02)}
+.hpk.mid{background:#0d1710;border:1px solid rgba(138,155,122,0.28);border-top:2px solid rgba(138,155,122,0.7);position:relative}
+.hpk.mid::before{content:"Most Popular";position:absolute;top:0;right:0;font-size:0.48rem;font-weight:400;letter-spacing:0.32em;text-transform:uppercase;color:rgba(138,155,122,0.8);padding:7px 14px;border-left:1px solid rgba(138,155,122,0.2);border-bottom:1px solid rgba(138,155,122,0.2)}
+.hpk-size{font-size:0.55rem;font-weight:400;letter-spacing:0.4em;text-transform:uppercase;color:rgba(138,155,122,0.85);margin-bottom:12px;display:block}
+.hpk-name{font-size:1.6rem;font-weight:100;letter-spacing:0.08em;text-transform:uppercase;color:#fff;margin-bottom:5px}
+.hpk-area{font-size:0.68rem;font-weight:300;letter-spacing:0.14em;color:rgba(201,191,175,0.4);margin-bottom:24px}
+.hpk-price{display:flex;align-items:baseline;gap:5px;margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.hpk.mid .hpk-price{border-bottom-color:rgba(138,155,122,0.15)}
+.hpk-amt{font-size:2.4rem;font-weight:100;color:#fff;letter-spacing:0.02em}
+.hpk-gst{font-size:0.6rem;font-weight:300;color:rgba(201,191,175,0.35);letter-spacing:0.1em}
+.hpk-cta{display:block;text-align:center;padding:13px;border:1px solid rgba(138,155,122,0.4);font-size:0.6rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.8);cursor:pointer;margin-top:auto;text-decoration:none;transition:background 0.28s,border-color 0.28s;border-radius:8px}
+.hpk-cta:hover{background:rgba(138,155,122,0.15);border-color:rgba(138,155,122,0.9)}
+.hpk.mid .hpk-cta{background:rgba(138,155,122,0.16);border-color:rgba(138,155,122,0.6)}
+.del-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid rgba(255,255,255,0.07);max-width:1200px;margin:0 auto;border-radius:8px;overflow:hidden}
+.del-item{padding:32px 28px;border-right:1px solid rgba(255,255,255,0.07)}
+.del-item:last-child{border-right:none}
+.del-num{font-size:1.8rem;font-weight:100;color:rgba(138,155,122,0.2);letter-spacing:0.06em;line-height:1;margin-bottom:14px}
+.del-name{font-size:0.78rem;font-weight:400;letter-spacing:0.06em;color:rgba(255,255,255,0.82);margin-bottom:8px}
+.del-desc{font-size:0.68rem;font-weight:300;line-height:1.75;color:rgba(201,191,175,0.44)}
+
+/* PROCESS */
+.process-hero{height:55vh;min-height:400px;position:relative;overflow:hidden;background:url("https://paalgrant.com/wp-content/uploads/2026/03/mt-buninyong-country-estate-brick-archway-entrance-paal-grant-050-1200x630.jpg") center 35%/cover;display:flex;align-items:flex-end;padding:0 52px 72px}
+.process-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,9,5,0.4) 0%,rgba(6,9,5,0.75) 100%)}
+.process-hero-text{position:relative;z-index:2}
+.process-steps-section{background-color:#242422;padding:100px 52px;position:relative}
+.process-step-block{display:grid;grid-template-columns:200px 1fr;gap:60px;padding:64px 0;border-top:1px solid rgba(255,255,255,0.08);align-items:start}
+.psb-num{font-size:5rem;font-weight:100;color:rgba(138,155,122,0.2);letter-spacing:0.06em;line-height:1}
+.psb-title{font-size:1.8rem;font-weight:200;letter-spacing:0.12em;text-transform:uppercase;color:#fff;margin-bottom:18px}
+.psb-body{font-size:0.88rem;font-weight:300;line-height:1.9;color:rgba(201,191,175,0.72);max-width:580px}
+.psb-body strong{color:rgba(255,255,255,0.9);font-weight:400}
+.psb-tag{display:inline-block;margin-top:22px;background:rgba(138,155,122,0.1);border:1px solid rgba(138,155,122,0.4);padding:8px 20px;font-size:0.62rem;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:rgba(138,155,122,0.9);border-radius:8px}
+.three-d-callout{background:#0a0d08;border-left:2px solid rgba(138,155,122,0.6);padding:32px 36px;margin-top:32px;border-radius:8px}
+.three-d-callout p{font-size:1rem;font-weight:200;font-style:italic;letter-spacing:0.04em;line-height:1.7;color:rgba(255,255,255,0.88)}
+
+/* ABOUT */
+.about-hero{height:60vh;min-height:420px;position:relative;overflow:hidden;background:url("https://paalgrant.com/wp-content/uploads/2026/02/mandala-stone-moon-gate-paal-grant-074.jpg") center/cover;display:flex;align-items:flex-end;padding:0 52px 72px}
+.about-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,9,5,0.3) 0%,rgba(6,9,5,0.8) 100%)}
+.about-body{background-color:#242422;padding:100px 52px}
+.about-grid{display:grid;grid-template-columns:340px 1fr 1fr;gap:56px;align-items:start;max-width:1300px;margin:0 auto}
+.about-text p{font-size:0.92rem;font-weight:300;line-height:1.95;color:rgba(220,215,205,0.85);margin-bottom:22px}
+.cred-row{padding:22px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:flex-start;gap:18px}
+.cred-row:first-child{border-top:1px solid rgba(255,255,255,0.08)}
+.cred-icon{width:4px;height:4px;border-radius:50%;background:rgba(138,155,122,0.8);margin-top:8px;flex-shrink:0}
+.cred-name{font-size:0.78rem;font-weight:400;letter-spacing:0.08em;color:rgba(255,255,255,0.85);margin-bottom:3px}
+.cred-sub{font-size:0.7rem;font-weight:300;letter-spacing:0.06em;color:rgba(201,191,175,0.5)}
+.about-photo{display:flex;flex-direction:column;border-radius:8px;overflow:hidden}
+.about-photo img{width:100%;display:block;object-fit:cover;aspect-ratio:3/4;filter:grayscale(8%)}
+.about-photo-caption{padding:18px 20px;background:#0d1210;border:1px solid rgba(255,255,255,0.07);border-top:2px solid rgba(138,155,122,0.6)}
+.about-photo-name{font-size:1rem;font-weight:200;letter-spacing:0.14em;text-transform:uppercase;color:#fff;display:block}
+.about-photo-title{font-size:0.62rem;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:rgba(138,155,122,0.8);display:block;margin-top:4px}
+.media-section{background:#0a0d08;padding:80px 52px;border-top:1px solid rgba(255,255,255,0.07)}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:3px;margin-top:48px}
+.media-card{background:#0d1210;padding:36px;border:1px solid rgba(255,255,255,0.07);border-radius:8px}
+.media-type{font-size:0.55rem;font-weight:400;letter-spacing:0.35em;text-transform:uppercase;color:rgba(138,155,122,0.8);margin-bottom:12px}
+.media-title{font-size:1.1rem;font-weight:200;letter-spacing:0.06em;color:#fff;margin-bottom:6px}
+.media-sub{font-size:0.75rem;font-weight:300;color:rgba(201,191,175,0.5);line-height:1.7}
+
+/* PACKAGES PAGE */
+.pkg-hero{height:52vh;min-height:360px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:0 64px 72px}
+.pkg-hero-bg{position:absolute;inset:0;background:url("https://paalgrant.com/wp-content/uploads/2026/03/mt-buninyong-country-estate-brick-archway-entrance-paal-grant-050-1200x630.jpg") center 40%/cover}
+.pkg-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,9,4,0.3) 0%,rgba(6,9,4,0.82) 100%)}
+.pkg-hero-text{position:relative;z-index:2}
+.pkg-three{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.pcard{display:flex;flex-direction:column;border-right:1px solid rgba(255,255,255,0.07);border-top:1px solid rgba(255,255,255,0.07);overflow:hidden;transition:background 0.3s}
+.pcard:last-child{border-right:none}
+.pcard:hover{background:rgba(255,255,255,0.015)}
+.pcard.star{background:#0d1710;border-top:2px solid rgba(138,155,122,0.7);border-left:1px solid rgba(138,155,122,0.2);border-right:1px solid rgba(138,155,122,0.2);position:relative}
+.pcard.star::before{content:"Most Popular";position:absolute;top:0;right:0;font-size:0.5rem;font-weight:400;letter-spacing:0.32em;text-transform:uppercase;color:rgba(138,155,122,0.8);padding:7px 14px;border-left:1px solid rgba(138,155,122,0.2);border-bottom:1px solid rgba(138,155,122,0.2)}
+.card-top{padding:44px 44px 32px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.card-size{font-size:0.56rem;font-weight:400;letter-spacing:0.4em;text-transform:uppercase;color:rgba(138,155,122,0.85);margin-bottom:12px;display:block}
+.card-name{font-size:1.9rem;font-weight:100;letter-spacing:0.08em;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:6px}
+.card-area{font-size:0.7rem;font-weight:300;letter-spacing:0.14em;color:rgba(201,191,175,0.45);margin-bottom:26px}
+.card-price{display:flex;align-items:baseline;gap:6px}
+.price-amt{font-size:2.8rem;font-weight:100;color:#fff;letter-spacing:0.02em;line-height:1}
+.price-gst{font-size:0.62rem;font-weight:300;letter-spacing:0.12em;color:rgba(201,191,175,0.38)}
+.card-body{padding:32px 44px;flex:1;display:flex;flex-direction:column}
+.inc-label{font-size:0.55rem;font-weight:400;letter-spacing:0.32em;text-transform:uppercase;color:rgba(138,155,122,0.72);margin-bottom:20px}
+.del-row{padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:grid;grid-template-columns:8px 1fr;gap:14px;align-items:start}
+.del-row:last-of-type{border-bottom:none}
+.del-dot{width:4px;height:4px;border-radius:50%;background:rgba(138,155,122,0.65);margin-top:7px}
+.del-name{font-size:0.78rem;font-weight:400;letter-spacing:0.04em;color:rgba(255,255,255,0.82);margin-bottom:3px}
+.del-text{font-size:0.7rem;font-weight:300;line-height:1.7;color:rgba(201,191,175,0.46)}
+.card-foot{padding:20px 44px 40px}
+.pc-cta{display:block;text-align:center;padding:14px;border:1px solid rgba(138,155,122,0.42);font-size:0.6rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.82);text-decoration:none;cursor:pointer;transition:background 0.28s,border-color 0.28s;border-radius:8px}
+.pc-cta:hover{background:rgba(138,155,122,0.15);border-color:rgba(138,155,122,0.9)}
+.pcard.star .pc-cta{background:rgba(138,155,122,0.16);border-color:rgba(138,155,122,0.6)}
+
+/* PORTFOLIO */
+.portfolio-page{background:#0a0d08;padding-top:100px;min-height:100vh}
+.port-header{padding:52px 64px 48px}
+.port-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;padding:0 0 3px}
+.port-card{position:relative;overflow:hidden;cursor:pointer;background:#111510;border-radius:8px}
+.port-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s ease}
+.port-card:hover img{transform:scale(1.05)}
+.port-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(6,9,4,0.88) 0%,transparent 100%);padding:36px 28px 24px}
+.po-loc{font-size:0.58rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(138,155,122,0.9);margin-bottom:6px}
+.po-name{font-size:1.05rem;font-weight:200;letter-spacing:0.06em;color:#fff;line-height:1.25}
+.pc-a{grid-column:1/8;height:520px}
+.pc-b{grid-column:8/13;height:520px}
+.pc-c{grid-column:1/5;height:360px}
+.pc-d{grid-column:5/9;height:360px}
+.pc-e{grid-column:9/13;height:360px}
+
+/* CONTACT */
+.contact-page{background:#0f1410;min-height:100vh;padding-top:108px}
+.contact-inner{max-width:900px;margin:0 auto;padding:80px 52px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px}
+.contact-info p{font-size:0.9rem;font-weight:300;line-height:1.9;color:rgba(201,191,175,0.7);margin-bottom:32px}
+.contact-detail{display:flex;flex-direction:column;gap:14px;margin-bottom:40px}
+.cd-item{display:flex;align-items:center;gap:14px}
+.cd-label{font-size:0.6rem;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:rgba(138,155,122,0.8);width:60px;flex-shrink:0}
+.cd-val{font-size:0.88rem;font-weight:300;color:rgba(255,255,255,0.78)}
+.contact-form{display:flex;flex-direction:column;gap:18px}
+.form-field{display:flex;flex-direction:column;gap:8px}
+.form-field label{font-size:0.6rem;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:rgba(201,191,175,0.55)}
+.form-field input,.form-field textarea,.form-field select{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);padding:14px 18px;color:#fff;font-family:"Raleway",sans-serif;font-size:0.85rem;font-weight:300;outline:none;transition:border-color 0.25s;width:100%;border-radius:6px}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:rgba(138,155,122,0.7)}
+.form-field textarea{resize:vertical;min-height:120px}
+.form-field select option{background:#1a1e14;color:#fff}
+
+/* FOOTER */
+footer{background:#080b06;padding:64px 52px 36px;border-top:1px solid rgba(255,255,255,0.07);border-radius:12px 12px 0 0}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:52px}
+.f-logo-text{display:flex;flex-direction:column;gap:3px;margin-bottom:16px}
+.f-logo-name{font-size:1.1rem;font-weight:200;letter-spacing:0.3em;text-transform:uppercase;color:#fff;line-height:1}
+.f-logo-sub{font-size:0.42rem;font-weight:300;letter-spacing:0.5em;text-transform:uppercase;color:rgba(138,155,122,0.8)}
+.f-tagline{font-size:0.78rem;font-weight:300;line-height:1.8;color:rgba(201,191,175,0.48)}
+.f-col h4{font-size:0.58rem;font-weight:400;letter-spacing:0.3em;text-transform:uppercase;color:rgba(138,155,122,0.75);margin-bottom:20px}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.f-col ul a{font-size:0.8rem;font-weight:300;color:rgba(201,191,175,0.48);text-decoration:none;cursor:pointer;transition:color 0.25s}
+.f-col ul a:hover{color:rgba(255,255,255,0.8)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;gap:12px}
+.footer-bottom span{font-size:0.62rem;font-weight:300;letter-spacing:0.1em;color:rgba(201,191,175,0.32)}
+
+/* VIRTUAL BANNER */
+.virtual-banner{padding:52px 64px 0}
+.virtual-box{background:#0d1410;border:1px solid rgba(138,155,122,0.25);display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;padding:32px 44px;border-radius:8px}
+.vb-label{font-size:0.55rem;font-weight:400;letter-spacing:0.38em;text-transform:uppercase;color:rgba(138,155,122,0.8);margin-bottom:8px}
+.vb-title{font-size:1.15rem;font-weight:200;letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-bottom:7px}
+.vb-desc{font-size:0.76rem;font-weight:300;line-height:1.75;color:rgba(201,191,175,0.55);max-width:520px}
+
+/* INC STRIP */
+.inc-strip{padding:72px 64px 80px;border-top:1px solid rgba(255,255,255,0.07)}
+.inc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-top:48px}
+.inc-item{background:#0d1210;padding:36px 40px;border:1px solid rgba(255,255,255,0.06);display:grid;grid-template-columns:44px 1fr;gap:18px;align-items:start;border-radius:8px}
+.inc-num{font-size:2rem;font-weight:100;letter-spacing:0.06em;color:rgba(138,155,122,0.2);line-height:1}
+.inc-title{font-size:0.82rem;font-weight:400;letter-spacing:0.06em;color:rgba(255,255,255,0.82);margin-bottom:7px}
+.inc-desc{font-size:0.72rem;font-weight:300;line-height:1.8;color:rgba(201,191,175,0.46)}
+
+/* TESTIMONIALS */
+.testimonials{background:#0a0d08;padding:100px 52px;border-top:1px solid rgba(255,255,255,0.07)}
+.testi-inner{max-width:1200px;margin:0 auto}
+.testi-header{margin-bottom:72px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.testi-item{padding:0 52px;border-right:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column}
+.testi-item:first-child{padding-left:0}
+.testi-item:last-child{border-right:none;padding-right:0}
+.testi-stars{display:flex;gap:4px;margin-bottom:32px}
+.testi-star{color:rgba(138,155,122,0.9);font-size:0.72rem;letter-spacing:2px}
+.testi-mark{font-size:5rem;font-weight:100;color:rgba(138,155,122,0.15);line-height:0.55;margin-bottom:24px;font-family:"Raleway",sans-serif}
+.testi-quote{font-size:0.95rem;font-weight:300;font-style:italic;line-height:1.9;color:rgba(255,255,255,0.82);flex:1;margin-bottom:36px;letter-spacing:0.02em}
+.testi-author{padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);display:flex;flex-direction:column;gap:6px}
+.testi-name{font-size:0.62rem;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.72)}
+.testi-source{font-size:0.5rem;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:rgba(138,155,122,0.6)}
+.testi-aggregate{text-align:center;margin-top:72px;padding-top:52px;border-top:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;align-items:center;gap:12px}
+.testi-agg-stars{display:flex;gap:4px}
+.testi-agg-text{font-size:0.62rem;font-weight:300;letter-spacing:0.28em;text-transform:uppercase;color:rgba(201,191,175,0.35)}
+@media(max-width:900px){
+  nav{padding:0 24px;height:80px}
+  .logo-img{height:48px!important}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .nav-drawer{display:flex}
+  .home-intro,.featured,.home-pkgs,.process-steps-section,.about-body,.media-section,.virtual-banner,.inc-strip,.port-header,.contact-inner,.testimonials{padding-left:24px!important;padding-right:24px!important}
+  .testi-grid{grid-template-columns:1fr}
+  .testi-item{padding:40px 0;border-right:none;border-bottom:1px solid rgba(255,255,255,0.07)}
+  .testi-item:first-child{padding-top:0}
+  .testi-item:last-child{border-bottom:none}
+  .featured-grid{grid-template-columns:1fr;grid-template-rows:auto;height:auto}
+  .featured-grid .proj-card:first-child{grid-row:auto;height:280px}
+  .proj-card{height:220px}
+  .pkg-cards-row{grid-template-columns:1fr}
+  .del-grid{grid-template-columns:1fr 1fr}
+  .port-grid{grid-template-columns:1fr 1fr}
+  .pc-a{grid-column:1/-1;height:280px}
+  .pc-b,.pc-c,.pc-d,.pc-e{grid-column:auto;height:200px}
+  .about-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .pkg-three{grid-template-columns:1fr}
+  .pcard{border-right:none;border-bottom:1px solid rgba(255,255,255,0.07)}
+  .card-top,.card-body,.card-foot{padding-left:28px;padding-right:28px}
+  .virtual-box{grid-template-columns:1fr}
+  .inc-grid{grid-template-columns:1fr}
+  .process-step-block{grid-template-columns:80px 1fr;gap:28px}
+  .psb-num{font-size:3rem}
+  .cred-strip{gap:24px;padding:16px 24px}
+  .pkg-hero{padding:0 24px 52px}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <a class="nav-logo" onclick="showPage('home')">
+    <img class="logo-img" src="../../assets/logo-landscape-white.png" alt="Paal Grant">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links" id="navLinks">
+      <li><a onclick="showPage('home')" id="nl-home">Home</a></li>
+      <li><a onclick="showPage('about')" id="nl-about">About</a></li>
+      <li><a onclick="showPage('process')" id="nl-process">Process</a></li>
+      <li><a onclick="showPage('packages')" id="nl-packages">Design Packages</a></li>
+      <li><a onclick="showPage('portfolio')" id="nl-portfolio">Projects</a></li>
+      <li><a onclick="showPage('contact')" class="nav-cta" id="nl-contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="nav-drawer" id="drawer">
+  <a onclick="showPage('home');closeDrawer()">Home</a>
+  <a onclick="showPage('about');closeDrawer()">About</a>
+  <a onclick="showPage('process');closeDrawer()">Process</a>
+  <a onclick="showPage('packages');closeDrawer()">Design Packages</a>
+  <a onclick="showPage('portfolio');closeDrawer()">Projects</a>
+  <a onclick="showPage('contact');closeDrawer()" class="d-cta">Contact</a>
+</div>
+
+<!-- HOME -->
+<div class="page active" id="page-home">
+  <div class="hero" id="hero">
+    <div class="hslide" id="hs0" style="background-image:url('https://paalgrant.com/wp-content/uploads/2026/03/mt-buninyong-country-estate-brick-archway-entrance-paal-grant-050-1200x630.jpg');background-position:center 32%"></div>
+    <div class="hslide" id="hs1" style="background-image:url('https://paalgrant.com/wp-content/uploads/2026/02/mandala-stone-moon-gate-paal-grant-074.jpg')"></div>
+    <div class="hslide" id="hs2" style="background-image:url('https://paalgrant.com/wp-content/uploads/2026/03/gisborne-country-garden-curved-aggregate-paths-paal-grant-014-1200x630.jpg')"></div>
+    <div class="hero-overlay"></div>
+    <div class="slide-counter">
+      <span class="counter-n" id="hCur">01</span>
+      <span class="counter-sep"></span>
+      <span class="counter-t">03</span>
+    </div>
+    <div class="progress-bar" id="hProgress"></div>
+  </div>
+  <div class="home-intro">
+    <div class="v-rule" style="height:60px;margin-bottom:44px"></div>
+    <div class="award-badge fade-in">
+      <span class="award-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+      <span class="award-text">Award-Winning Landscape Design &amp; Construction</span>
+    </div>
+    <p class="location-line fade-in">Victoria &nbsp;&middot;&nbsp; Ballarat &nbsp;&middot;&nbsp; Geelong &nbsp;&middot;&nbsp; Daylesford &nbsp;&middot;&nbsp; Castlemaine &nbsp;&middot;&nbsp; Torquay</p>
+    <h2 class="intro-headline fade-in"><span class="sub">Let&rsquo;s work together to create your</span>Dream<br>Garden</h2>
+    <div class="intro-divider fade-in"><div class="div-line"></div><div class="div-dia"></div><div class="div-line"></div></div>
+    <div class="fade-in" style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+      <a class="btn-sage" onclick="showPage('packages')">Design Packages</a>
+      <a class="btn-ghost" onclick="showPage('process')">Our Process</a>
+    </div>
+    <div class="v-rule" style="height:60px;margin-top:64px"></div>
+  </div>
+  <div class="cred-strip">
+    <div class="cred-item"><div class="cred-dot"></div>Gardening World Cup &mdash; People&rsquo;s Choice &amp; Best Design</div>
+    <div class="cred-item"><div class="cred-dot"></div>3&times; Gold &mdash; Melbourne International Flower &amp; Garden Show</div>
+    <div class="cred-item"><div class="cred-dot"></div>The Block &mdash; Perfect Score &amp; Best Backyard</div>
+    <div class="cred-item"><div class="cred-dot"></div>Royal Horticultural Society Recognition</div>
+  </div>
+  <div class="featured">
+    <div class="featured-header">
+      <div><span class="section-label">Selected Work</span><h2 class="section-title">Recent Projects</h2></div>
+      <a class="btn-ghost" onclick="showPage('portfolio')">View All Projects</a>
+    </div>
+    <div class="featured-grid">
+      <div class="proj-card" onclick="showPage('portfolio')"><img src="https://paalgrant.com/wp-content/uploads/2026/03/mt-buninyong-country-estate-brick-archway-entrance-paal-grant-050-1200x630.jpg" alt="Buninyong"><div class="proj-overlay"><p class="proj-loc">Buninyong</p><p class="proj-name">Country Estate &mdash; Circular Pool &amp; Native Garden</p></div></div>
+      <div class="proj-card" onclick="showPage('portfolio')"><img src="https://paalgrant.com/wp-content/uploads/2026/02/mandala-stone-moon-gate-paal-grant-074.jpg" alt="Mandala"><div class="proj-overlay"><p class="proj-loc">Gardening World Cup, Japan</p><p class="proj-name">Mandala Garden &mdash; Best Design</p></div></div>
+      <div class="proj-card" onclick="showPage('portfolio')"><img src="https://paalgrant.com/wp-content/uploads/2026/03/gisborne-country-garden-curved-aggregate-paths-paal-grant-014-1200x630.jpg" alt="Gisborne"><div class="proj-overlay"><p class="proj-loc">Gisborne</p><p class="proj-name">Country Garden &mdash; Curved Aggregate Paths</p></div></div>
+    </div>
+  </div>
+  <div class="home-pkgs">
+    <div style="text-align:center;margin-bottom:64px">
+      <h2 class="section-title fade-in" style="text-align:center;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:22px">3D Garden Design Packages</h2>
+      <p class="fade-in" style="font-size:1rem;font-weight:300;color:rgba(201,191,175,0.78);max-width:540px;margin:0 auto;line-height:1.85;letter-spacing:0.04em">Beautiful, realistic 3D colour drawings so you can imagine your new space before it&rsquo;s built.</p>
+    </div>
+    <div class="pkg-cards-row">
+      <div class="hpk fade-in" style="border-right:none"><span class="hpk-size">Small</span><div class="hpk-name">Front or Back Yard</div><div class="hpk-area">Up to 250 m&sup2;</div><div class="hpk-price"><span class="hpk-amt">$2,400</span><span class="hpk-gst">inc. GST</span></div><a class="hpk-cta" onclick="showPage('packages')">View Package</a></div>
+      <div class="hpk mid fade-in"><span class="hpk-size">Medium &nbsp;&middot;&nbsp; Most Popular</span><div class="hpk-name">Front or Back Yard</div><div class="hpk-area">250 m&sup2; &ndash; 550 m&sup2;</div><div class="hpk-price"><span class="hpk-amt">$3,200</span><span class="hpk-gst">inc. GST</span></div><a class="hpk-cta" onclick="showPage('packages')">View Package</a></div>
+      <div class="hpk fade-in" style="border-left:none"><span class="hpk-size">Large</span><div class="hpk-name">Front or Back Yard</div><div class="hpk-area">550 m&sup2; &ndash; 1,500 m&sup2;</div><div class="hpk-price"><span class="hpk-amt">$3,800</span><span class="hpk-gst">inc. GST</span></div><a class="hpk-cta" onclick="showPage('packages')">View Package</a></div>
+    </div>
+    <div class="del-grid">
+      <div class="del-item fade-in"><div class="del-num">01</div><div class="del-name">3D Garden Design</div><div class="del-desc">15+ A3 pages of scaled realistic 3D colour drawings</div></div>
+      <div class="del-item fade-in"><div class="del-num">02</div><div class="del-name">2D Set-Out Plan</div><div class="del-desc">Precise construction reference with measurements and scale</div></div>
+      <div class="del-item fade-in"><div class="del-num">03</div><div class="del-name">Planting Plan</div><div class="del-desc">Plant schedule with photos, botanical names and quantities</div></div>
+      <div class="del-item fade-in"><div class="del-num">04</div><div class="del-name">Materials &amp; Finishes</div><div class="del-desc">Curated product list for all hardscapes</div></div>
+      <div class="del-item fade-in"><div class="del-num">05</div><div class="del-name">3 Rounds of Refinements</div><div class="del-desc">We work with you until every detail is exactly right</div></div>
+    </div>
+    <div style="text-align:center;margin-top:60px"><a onclick="showPage('process')" style="font-size:0.62rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(201,191,175,0.38);text-decoration:none;cursor:pointer;border-bottom:1px solid rgba(201,191,175,0.15);padding-bottom:3px">View Our Process &rarr;</a></div>
+  </div>
+  <div class="testimonials">
+    <div class="testi-inner">
+      <div class="testi-header">
+        <span class="section-label fade-in">Client Reviews</span>
+        <h2 class="section-title fade-in" style="text-transform:uppercase;letter-spacing:0.1em">What Our Clients Say</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-item fade-in">
+          <div class="testi-stars"><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span></div>
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-quote">We get so many compliments on our garden. Paal had some great ideas to make the most of the space &mdash; thoughtful, considered, and exactly right.</p>
+          <div class="testi-author"><span class="testi-name">Maryann Grant</span><span class="testi-source">Google Review</span></div>
+        </div>
+        <div class="testi-item fade-in">
+          <div class="testi-stars"><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span></div>
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-quote">I looked at a lot of different landscape designers. Great to work with, very happy with the front and back gardens &mdash; definitely choose Paal again.</p>
+          <div class="testi-author"><span class="testi-name">Gavin Mooney</span><span class="testi-source">Google Review</span></div>
+        </div>
+        <div class="testi-item fade-in">
+          <div class="testi-stars"><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span></div>
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-quote">Paal has so much experience and energy. He transformed our space in minimal time &mdash; the garden is enthralling. We love it.</p>
+          <div class="testi-author"><span class="testi-name">Claire Duband</span><span class="testi-source">Google Review</span></div>
+        </div>
+      </div>
+      <div class="testi-aggregate fade-in">
+        <div class="testi-agg-stars"><span class="testi-star" style="font-size:0.85rem">&#9733;</span><span class="testi-star" style="font-size:0.85rem">&#9733;</span><span class="testi-star" style="font-size:0.85rem">&#9733;</span><span class="testi-star" style="font-size:0.85rem">&#9733;</span><span class="testi-star" style="font-size:0.85rem">&#9733;</span></div>
+        <span class="testi-agg-text">5.0 &nbsp;&middot;&nbsp; 24 Google Reviews</span>
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-inner"><div><div class="f-logo-text"><span class="f-logo-name">Paal Grant Designs</span><span class="f-logo-sub">In Landscaping</span></div><p class="f-tagline">Award-winning landscape design and construction across Victoria. Designed with intent, built with care.</p></div><div class="f-col"><h4>Navigate</h4><ul><li><a onclick="showPage('process')">Process</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('packages')">Design Packages</a></li><li><a onclick="showPage('portfolio')">Projects</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div><div class="f-col"><h4>Contact</h4><ul><li><a>0417 164 772</a></li><li><a>info@paalgrant.com</a></li><li><a>Ballarat, Victoria</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 Paal Grant Designs In Landscaping</span><span>ABN 123 456 123 123 &nbsp;&middot;&nbsp; All Rights Reserved</span></div></footer>
+</div>
+
+<!-- PROCESS -->
+<div class="page" id="page-process">
+  <div class="process-hero"><div class="process-hero-text"><span class="section-label">How We Work</span><h1 class="section-title" style="font-size:clamp(2.5rem,5vw,4.5rem)">Our Process</h1></div></div>
+  <div class="process-steps-section">
+    <div style="max-width:1100px;margin:0 auto">
+      <div class="process-step-block fade-in"><div class="psb-num">01</div><div><div class="psb-title">Consultation</div><p class="psb-body">Every project begins with a conversation. We meet onsite or virtually to understand your space, how you live and what you want to achieve. <strong>A paid onsite consultation is $350, fully credited toward any design package.</strong></p><span class="psb-tag">Onsite or Virtual &nbsp;&middot;&nbsp; $350 credited</span></div></div>
+      <div class="process-step-block fade-in"><div class="psb-num">02</div><div><div class="psb-title">Design</div><p class="psb-body">All designs are developed in full 3D visualisation. You will see and understand your garden completely before a single decision is made about construction.</p><div class="three-d-callout"><p>&ldquo;Our designs are presented in 3D so you can see and understand your garden before it is built &mdash; including levels and structure, materials and layout, planting zones and the overall spatial experience.&rdquo;</p></div><span class="psb-tag" style="margin-top:22px">Levels &amp; Structure &nbsp;&middot;&nbsp; Materials &amp; Layout &nbsp;&middot;&nbsp; Planting Zones</span></div></div>
+      <div class="process-step-block fade-in"><div class="psb-num">03</div><div><div class="psb-title">Construction Quote</div><p class="psb-body">Once the design is approved, a detailed construction quote is prepared. All pricing is transparent and scope-based.</p><span class="psb-tag">Transparent Pricing &nbsp;&middot;&nbsp; No Hidden Costs</span></div></div>
+      <div class="process-step-block fade-in"><div class="psb-num">04</div><div><div class="psb-title">Construction</div><p class="psb-body">Our experienced construction team manages the entire build. From groundworks and hard landscaping through to planting and final handover. <strong>Design and build capability in one studio.</strong></p><span class="psb-tag">Full Project Delivery &nbsp;&middot;&nbsp; Expert Build Team</span></div></div>
+    </div>
+    <div style="text-align:center;margin-top:80px"><a class="btn-sage" onclick="showPage('packages')">View Design Packages</a></div>
+  </div>
+  <footer><div class="footer-inner"><div><div class="f-logo-text"><span class="f-logo-name">Paal Grant Designs</span><span class="f-logo-sub">In Landscaping</span></div><p class="f-tagline">Award-winning landscape design and construction across Victoria.</p></div><div class="f-col"><h4>Navigate</h4><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('packages')">Design Packages</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div><div class="f-col"><h4>Contact</h4><ul><li><a>0417 164 772</a></li><li><a>info@paalgrant.com</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 Paal Grant Designs In Landscaping</span></div></footer>
+</div>
+
+<!-- ABOUT -->
+<div class="page" id="page-about">
+  <div class="about-hero"><div style="position:relative;z-index:2"><span class="section-label">The Studio</span><h1 class="section-title" style="font-size:clamp(2.5rem,5vw,4.5rem)">About Paal Grant</h1></div></div>
+  <div class="about-body">
+    <div class="about-grid">
+      <div class="about-photo">
+        <div style="background:#1a1e14;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center">
+          <span style="font-size:0.6rem;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:rgba(201,191,175,0.3)">Portrait Photo</span>
+        </div>
+        <div class="about-photo-caption"><span class="about-photo-name">Paal Grant</span><span class="about-photo-title">Principal Designer &amp; Founder</span></div>
+      </div>
+      <div class="about-text">
+        <p>Paal Grant Designs In Landscaping is a design-led practice with over 20 years of experience creating site-responsive residential landscapes across Victoria and beyond.</p>
+        <p>We are not a generic landscaping company. Our work begins with a genuine understanding of how people want to live &mdash; and then we design and build landscapes that reflect that vision with rigour, craft and care.</p>
+        <p>Every project is individually designed. We do not use templates. The result is a landscape that belongs to its site, its climate, and the people who live there.</p>
+        <p>Our practice encompasses both landscape design and full construction delivery. Clients can engage us at any stage &mdash; design only, or complete end-to-end project delivery.</p>
+      </div>
+      <div>
+        <div class="cred-row fade-in"><div class="cred-icon"></div><div><div class="cred-name">Gardening World Cup, Nagasaki Japan</div><div class="cred-sub">People&rsquo;s Choice Award &amp; Best Design</div></div></div>
+        <div class="cred-row fade-in"><div class="cred-icon"></div><div><div class="cred-name">Melbourne International Flower &amp; Garden Show</div><div class="cred-sub">3&times; Gold Medal Winner</div></div></div>
+        <div class="cred-row fade-in"><div class="cred-icon"></div><div><div class="cred-name">Royal Horticultural Society</div><div class="cred-sub">Recognised for plant design excellence</div></div></div>
+        <div class="cred-row fade-in"><div class="cred-icon"></div><div><div class="cred-name">The Block &mdash; Perfect Score</div><div class="cred-sub">Best Backyard, Season 14 &amp; 21</div></div></div>
+        <div class="cred-row fade-in"><div class="cred-icon"></div><div><div class="cred-name">HIA Home of the Year 2024</div><div class="cred-sub">Landscape design recognition</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="media-section">
+    <span class="section-label fade-in">Credentials</span>
+    <h2 class="section-title fade-in" style="margin-bottom:0">Media &amp; Awards</h2>
+    <div class="media-grid">
+      <div class="media-card fade-in"><div class="media-type">International Award</div><div class="media-title">Gardening World Cup</div><div class="media-sub">Nagasaki, Japan &nbsp;&middot;&nbsp; People&rsquo;s Choice &amp; Best Design</div></div>
+      <div class="media-card fade-in"><div class="media-type">National Award</div><div class="media-title">Melbourne International Flower &amp; Garden Show</div><div class="media-sub">3&times; Gold Medal Winner</div></div>
+      <div class="media-card fade-in"><div class="media-type">International Recognition</div><div class="media-title">Royal Horticultural Society</div><div class="media-sub">Recognised for plant design excellence</div></div>
+      <div class="media-card fade-in"><div class="media-type">Television</div><div class="media-title">The Block</div><div class="media-sub">Perfect Score &amp; Best Backyard &nbsp;&middot;&nbsp; Season 14 &amp; 21</div></div>
+      <div class="media-card fade-in"><div class="media-type">Industry Award</div><div class="media-title">HIA Home of the Year</div><div class="media-sub">2024 &nbsp;&middot;&nbsp; Landscape Design Recognition</div></div>
+      <div class="media-card fade-in"><div class="media-type">Editorial</div><div class="media-title">Australian Landscape Publications</div><div class="media-sub">Regular features in leading Australian landscape &amp; design titles</div></div>
+    </div>
+  </div>
+  <footer><div class="footer-inner"><div><div class="f-logo-text"><span class="f-logo-name">Paal Grant Designs</span><span class="f-logo-sub">In Landscaping</span></div><p class="f-tagline">Award-winning landscape design and construction across Victoria.</p></div><div class="f-col"><h4>Navigate</h4><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('process')">Process</a></li><li><a onclick="showPage('packages')">Design Packages</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div><div class="f-col"><h4>Contact</h4><ul><li><a>0417 164 772</a></li><li><a>info@paalgrant.com</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 Paal Grant Designs In Landscaping</span></div></footer>
+</div>
+
+<!-- PACKAGES -->
+<div class="page" id="page-packages">
+  <div style="background:#0a0d08">
+    <div class="pkg-hero"><div class="pkg-hero-bg"></div><div class="pkg-hero-text"><h1 class="section-title" style="font-size:clamp(2rem,4.5vw,3.8rem);text-transform:uppercase;letter-spacing:0.12em">3D Garden Design Packages</h1></div></div>
+    <div style="padding:52px 64px 0;text-align:center"><p class="fade-in" style="font-size:0.82rem;font-weight:300;line-height:1.9;color:rgba(201,191,175,0.52);max-width:540px;margin:0 auto">Beautiful, realistic 3D colour drawings so you can imagine your new space before it&rsquo;s built.</p></div>
+    <div class="virtual-banner fade-in"><div class="virtual-box"><div><div class="vb-label">Also Available</div><div class="vb-title">Virtual Design &mdash; Available Australia&#8209;Wide</div><p class="vb-desc">All three packages can be delivered remotely for clients outside Victoria.</p></div><div style="flex-shrink:0"><a class="btn-ghost" onclick="showPage('contact')">Enquire</a></div></div></div>
+    <div class="pkg-three">
+      <div class="pcard fade-in"><div class="card-top"><span class="card-size">Small</span><div class="card-name">Front or Back Yard</div><div class="card-area">Up to 250 m&sup2;</div><div class="card-price"><span class="price-amt">$2,400</span><span class="price-gst">inc. GST</span></div></div><div class="card-body"><div class="inc-label">What&rsquo;s Included</div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">3D Garden Design</div><div class="del-text">15+ A3 pages of scaled realistic 3D colour drawings.</div></div></div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">2D Set-Out Dimensions Plan</div><div class="del-text">Precise construction reference with measurements and scale.</div></div></div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">Planting Plan</div><div class="del-text">Plant schedule with photos, names and quantities.</div></div></div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">Materials &amp; Finishes</div><div class="del-text">Curated product list for all hardscapes.</div></div></div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">3 Rounds of Refinements</div><div class="del-text">We work with you until every detail is right.</div></div></div></div><div class="card-foot"><a class="pc-cta" onclick="showPage('contact')">Enquire About This Package</a></div></div>
+      <div class="pcard star fade-in"><div class="card-top"><span class="card-size">Medium &nbsp;&middot;&nbsp; Most Popular</span><div class="card-name">Front or Back Yard</div><div class="card-area">250 m&sup2; &ndash; 550 m&sup2;</div><div class="card-price"><span class="price-amt">$3,200</span><span class="price-gst">inc. GST</span></div></div><div class="card-body"><div class="inc-label">What&rsquo;s Included</div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">3D Garden Design</div><div class="del-text">15+ A3 pages of scaled realistic 3D colour drawings.</div></div></div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">2D Set-Out Dimensions Plan</div></div></div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">Planting Plan</div></div></div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">Materials &amp; Finishes</div></div></div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">3 Rounds of Refinements</div></div></div></div><div class="card-foot"><a class="pc-cta" onclick="showPage('contact')">Enquire About This Package</a></div></div>
+      <div class="pcard fade-in"><div class="card-top"><span class="card-size">Large</span><div class="card-name">Front or Back Yard</div><div class="card-area">550 m&sup2; &ndash; 1,500 m&sup2;</div><div class="card-price"><span class="price-amt">$3,800</span><span class="price-gst">inc. GST</span></div></div><div class="card-body"><div class="inc-label">What&rsquo;s Included</div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">3D Garden Design</div><div class="del-text">15+ A3 pages of scaled realistic 3D colour drawings.</div></div></div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">2D Set-Out Dimensions Plan</div></div></div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">Planting Plan</div></div></div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">Materials &amp; Finishes</div></div></div><div class="del-row"><div class="del-dot"></div><div><div class="del-name">3 Rounds of Refinements</div></div></div></div><div class="card-foot"><a class="pc-cta" onclick="showPage('contact')">Enquire About This Package</a></div></div>
+    </div>
+    <div class="inc-strip">
+      <div style="text-align:center"><span class="section-label fade-in" style="display:block;text-align:center">Included In Every Package</span><h2 class="section-title fade-in" style="text-align:center">What You Receive</h2></div>
+      <div class="inc-grid">
+        <div class="inc-item fade-in"><div class="inc-num">01</div><div><div class="inc-title">3D Garden Design &mdash; 15+ A3 Pages</div><div class="inc-desc">Beautiful, scaled realistic 3D colour drawings delivered digitally and printed.</div></div></div>
+        <div class="inc-item fade-in"><div class="inc-num">02</div><div><div class="inc-title">2D Set-Out Dimensions Plan</div><div class="inc-desc">Precise construction reference for paving, garden beds, walls and pathways.</div></div></div>
+        <div class="inc-item fade-in"><div class="inc-num">03</div><div><div class="inc-title">Planting Plan</div><div class="inc-desc">Detailed schedule with photographs, botanical names and quantities.</div></div></div>
+        <div class="inc-item fade-in"><div class="inc-num">04</div><div><div class="inc-title">Materials &amp; Finishes Schedule</div><div class="inc-desc">Curated product list for all hardscapes with supplier references.</div></div></div>
+        <div class="inc-item fade-in" style="grid-column:1/-1"><div class="inc-num">05</div><div><div class="inc-title">Three Rounds of Design Refinements</div><div class="inc-desc">After the initial concept is presented we work collaboratively through up to three rounds of revisions until the design is exactly right.</div></div></div>
+      </div>
+      <div style="text-align:center;margin-top:56px"><a class="btn-sage fade-in" onclick="showPage('contact')">Start a Conversation</a></div>
+    </div>
+  </div>
+  <div class="testimonials">
+    <div class="testi-inner">
+      <div class="testi-header">
+        <span class="section-label fade-in">Client Reviews</span>
+        <h2 class="section-title fade-in" style="text-transform:uppercase;letter-spacing:0.1em">What Our Clients Say</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-item fade-in">
+          <div class="testi-stars"><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span></div>
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-quote">We get so many compliments on our garden. Paal had some great ideas to make the most of the space &mdash; thoughtful, considered, and exactly right.</p>
+          <div class="testi-author"><span class="testi-name">Maryann Grant</span><span class="testi-source">Google Review</span></div>
+        </div>
+        <div class="testi-item fade-in">
+          <div class="testi-stars"><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span></div>
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-quote">I looked at a lot of different landscape designers. Great to work with, very happy with the front and back gardens &mdash; definitely choose Paal again.</p>
+          <div class="testi-author"><span class="testi-name">Gavin Mooney</span><span class="testi-source">Google Review</span></div>
+        </div>
+        <div class="testi-item fade-in">
+          <div class="testi-stars"><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span><span class="testi-star">&#9733;</span></div>
+          <div class="testi-mark">&ldquo;</div>
+          <p class="testi-quote">Paal has so much experience and energy. He transformed our space in minimal time &mdash; the garden is enthralling. We love it.</p>
+          <div class="testi-author"><span class="testi-name">Claire Duband</span><span class="testi-source">Google Review</span></div>
+        </div>
+      </div>
+      <div class="testi-aggregate fade-in">
+        <div class="testi-agg-stars"><span class="testi-star" style="font-size:0.85rem">&#9733;</span><span class="testi-star" style="font-size:0.85rem">&#9733;</span><span class="testi-star" style="font-size:0.85rem">&#9733;</span><span class="testi-star" style="font-size:0.85rem">&#9733;</span><span class="testi-star" style="font-size:0.85rem">&#9733;</span></div>
+        <span class="testi-agg-text">5.0 &nbsp;&middot;&nbsp; 24 Google Reviews</span>
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-inner"><div><div class="f-logo-text"><span class="f-logo-name">Paal Grant Designs</span><span class="f-logo-sub">In Landscaping</span></div><p class="f-tagline">Award-winning landscape design and construction across Victoria.</p></div><div class="f-col"><h4>Navigate</h4><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('process')">Process</a></li><li><a onclick="showPage('about')">About</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div><div class="f-col"><h4>Contact</h4><ul><li><a>0417 164 772</a></li><li><a>info@paalgrant.com</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 Paal Grant Designs In Landscaping</span></div></footer>
+</div>
+
+<!-- PORTFOLIO -->
+<div class="page" id="page-portfolio">
+  <div class="portfolio-page">
+    <div class="port-header"><span class="section-label fade-in">Selected Work</span><h1 class="section-title fade-in" style="margin-bottom:12px">Our Work</h1><p class="fade-in" style="font-size:0.8rem;font-weight:300;color:rgba(201,191,175,0.45);letter-spacing:0.06em;line-height:1.85;max-width:500px">Twenty years of award-winning landscape design and construction.</p></div>
+    <div class="port-grid">
+      <div class="port-card pc-a"><img src="https://paalgrant.com/wp-content/uploads/2026/03/mt-buninyong-country-estate-brick-archway-entrance-paal-grant-050-1200x630.jpg" alt="Buninyong Country Estate"><div class="port-overlay"><p class="po-loc">Buninyong</p><p class="po-name">Country Estate &mdash; Circular Pool &amp; Native Acreage Garden</p></div></div>
+      <div class="port-card pc-b"><img src="https://paalgrant.com/wp-content/uploads/2026/02/mandala-stone-moon-gate-paal-grant-074.jpg" alt="Mandala Garden"><div class="port-overlay"><p class="po-loc">Gardening World Cup &mdash; Nagasaki, Japan</p><p class="po-name">Mandala Garden &mdash; People&rsquo;s Choice &amp; Best Design</p></div></div>
+      <div class="port-card pc-c"><img src="https://paalgrant.com/wp-content/uploads/2026/03/gisborne-country-garden-curved-aggregate-paths-paal-grant-014-1200x630.jpg" alt="Gisborne Country Garden"><div class="port-overlay"><p class="po-loc">Gisborne</p><p class="po-name">Country Garden &mdash; Curved Aggregate Paths</p></div></div>
+      <div class="port-card pc-d"><img src="https://paalgrant.com/wp-content/uploads/2026/03/mt-buninyong-country-estate-brick-archway-entrance-paal-grant-050-1200x630.jpg" alt="Buninyong Detail" style="object-position:center 20%"><div class="port-overlay"><p class="po-loc">Buninyong</p><p class="po-name">Brick Archway Entrance &mdash; Country Estate</p></div></div>
+      <div class="port-card pc-e"><img src="https://paalgrant.com/wp-content/uploads/2026/02/mandala-stone-moon-gate-paal-grant-074.jpg" alt="Mandala Detail"><div class="port-overlay"><p class="po-loc">Melbourne International Flower &amp; Garden Show</p><p class="po-name">3&times; Gold Medal &mdash; Show Garden</p></div></div>
+    </div>
+    <div style="padding:44px 64px;text-align:center;border-top:1px solid rgba(255,255,255,0.06)"><a class="btn-sage fade-in" onclick="showPage('contact')">Enquire About a Project</a></div>
+  </div>
+  <footer><div class="footer-inner"><div><div class="f-logo-text"><span class="f-logo-name">Paal Grant Designs</span><span class="f-logo-sub">In Landscaping</span></div><p class="f-tagline">Award-winning landscape design and construction across Victoria.</p></div><div class="f-col"><h4>Navigate</h4><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('process')">Process</a></li><li><a onclick="showPage('packages')">Design Packages</a></li><li><a onclick="showPage('contact')">Contact</a></li></ul></div><div class="f-col"><h4>Contact</h4><ul><li><a>0417 164 772</a></li><li><a>info@paalgrant.com</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 Paal Grant Designs In Landscaping</span></div></footer>
+</div>
+
+<!-- CONTACT -->
+<div class="page" id="page-contact">
+  <div class="contact-page">
+    <div class="contact-inner">
+      <span class="section-label">Get In Touch</span>
+      <h1 class="section-title" style="margin-bottom:0">Start a Conversation</h1>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <p>Whether you have a clear vision or are just beginning to think about your garden, we&rsquo;d love to hear from you. An initial phone consultation is free.</p>
+          <div class="contact-detail">
+            <div class="cd-item"><span class="cd-label">Phone</span><span class="cd-val">0417 164 772</span></div>
+            <div class="cd-item"><span class="cd-label">Email</span><span class="cd-val">info@paalgrant.com</span></div>
+            <div class="cd-item"><span class="cd-label">Based</span><span class="cd-val">Ballarat, Victoria</span></div>
+            <div class="cd-item"><span class="cd-label">Service</span><span class="cd-val">Victoria-wide &amp; Remote Australia</span></div>
+          </div>
+          <a class="btn-sage" onclick="showPage('packages')">View Design Packages</a>
+        </div>
+        <div class="contact-form">
+          <div class="form-field"><label>Full Name</label><input type="text" placeholder="Your name"></div>
+          <div class="form-field"><label>Email Address</label><input type="email" placeholder="your@email.com"></div>
+          <div class="form-field"><label>Phone</label><input type="tel" placeholder="Your phone number"></div>
+          <div class="form-field"><label>Location</label><input type="text" placeholder="Suburb / City"></div>
+          <div class="form-field"><label>I&rsquo;m interested in</label><select><option>Small Package &mdash; up to 250m&sup2; ($2,400)</option><option>Medium Package &mdash; 250&ndash;550m&sup2; ($3,200)</option><option>Large Package &mdash; 550&ndash;1,500m&sup2; ($3,800)</option><option>Virtual Design (Remote)</option><option>General Enquiry</option></select></div>
+          <div class="form-field"><label>Tell us about your project</label><textarea placeholder="Brief description of your space and what you&rsquo;re hoping to achieve..."></textarea></div>
+          <a class="btn-sage" style="text-align:center;display:block">Send Enquiry</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-inner"><div><div class="f-logo-text"><span class="f-logo-name">Paal Grant Designs</span><span class="f-logo-sub">In Landscaping</span></div><p class="f-tagline">Award-winning landscape design and construction across Victoria.</p></div><div class="f-col"><h4>Navigate</h4><ul><li><a onclick="showPage('home')">Home</a></li><li><a onclick="showPage('packages')">Design Packages</a></li><li><a onclick="showPage('process')">Process</a></li></ul></div><div class="f-col"><h4>Contact</h4><ul><li><a>0417 164 772</a></li><li><a>info@paalgrant.com</a></li></ul></div></div><div class="footer-bottom"><span>&copy; 2026 Paal Grant Designs In Landscaping</span></div></footer>
+</div>
+
+<script>
+const pages=['home','process','about','packages','portfolio','contact'];
+const dur=8000;
+let cur=0,timer,slides;
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const p=document.getElementById('page-'+id);
+  if(p){p.classList.add('active');window.scrollTo(0,0)}
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const nl=document.getElementById('nl-'+id);
+  if(nl)nl.classList.add('active');
+  if(id==='home')startHero();else stopHero();
+  triggerFades();
+}
+
+function startHero(){
+  slides=document.querySelectorAll('.hslide');
+  if(!slides.length)return;
+  slides.forEach(s=>{s.classList.remove('enter','leave')});
+  cur=0;showSlide(cur);
+  clearInterval(timer);
+  timer=setInterval(()=>{nextSlide()},dur);
+  animateProgress();
+}
+
+function stopHero(){clearInterval(timer)}
+
+function showSlide(i){
+  if(!slides)return;
+  slides.forEach((s,idx)=>{
+    s.classList.remove('enter','leave');
+    if(idx===i){s.classList.add('enter')}
+  });
+  const el=document.getElementById('hCur');
+  if(el)el.textContent=String(i+1).padStart(2,'0');
+}
+
+function nextSlide(){
+  if(!slides)return;
+  slides[cur].classList.add('leave');
+  slides[cur].classList.remove('enter');
+  cur=(cur+1)%slides.length;
+  showSlide(cur);
+  animateProgress();
+}
+
+function animateProgress(){
+  const bar=document.getElementById('hProgress');
+  if(!bar)return;
+  bar.style.transition='none';bar.style.width='0%';
+  setTimeout(()=>{bar.style.transition='width '+dur+'ms linear';bar.style.width='100%'},50);
+}
+
+function triggerFades(){
+  setTimeout(()=>{
+    document.querySelectorAll('.page.active .fade-in').forEach(el=>{
+      el.classList.add('visible');
+    });
+  },120);
+}
+
+// Nav scroll
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('solid',window.scrollY>40);
+});
+
+// Hamburger
+const burger=document.getElementById('burger');
+const drawer=document.getElementById('drawer');
+burger.addEventListener('click',()=>{
+  burger.classList.toggle('open');
+  drawer.classList.toggle('open');
+});
+function closeDrawer(){burger.classList.remove('open');drawer.classList.remove('open')}
+
+// Init
+startHero();
+triggerFades();
+</script>
+</body>
+</html>

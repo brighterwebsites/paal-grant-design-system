@@ -1,0 +1,80 @@
+<!-- @dsCard group="Brand" viewport="700x180" subtitle="Dot, diamond, v-rule, underline — the brand's geometric motif language" name="Decorative Motifs" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-primary); background: #0a0d08; padding: 28px 32px; }
+  .row { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .motif { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .label { font-size: 0.48rem; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(138,155,122,0.6); text-align: center; }
+
+  /* Dot */
+  .dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(138,155,122,0.8); }
+
+  /* Diamond divider */
+  .divider { display: flex; align-items: center; gap: 12px; }
+  .div-line { width: 60px; height: 1px; background: rgba(138,155,122,0.38); }
+  .div-dia  { width: 7px; height: 7px; background: rgba(138,155,122,0.85); transform: rotate(45deg); }
+
+  /* Vertical rule */
+  .v-rule { width: 1px; height: 44px; background: linear-gradient(to bottom, transparent, rgba(138,155,122,0.75)); }
+
+  /* Nav underline */
+  .nav-demo { position: relative; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.82); padding-bottom: 6px; }
+  .nav-demo::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: rgba(138,155,122,0.85); transform: scaleX(0); transform-origin: left; transition: transform 0.32s; }
+  .nav-demo:hover::after { transform: scaleX(1); }
+
+  /* Top accent border */
+  .accent-top { width: 80px; height: 36px; background: #0d1710; border: 1px solid rgba(138,155,122,0.28); border-top: 2px solid rgba(138,155,122,0.7); border-radius: 0 0 6px 6px; }
+
+  /* Progress bar */
+  .progress { width: 80px; height: 2px; background: rgba(138,155,122,0.7); border-radius: 1px; }
+
+  /* Cred dot strip */
+  .cred-strip-demo { display: flex; align-items: center; gap: 8px; background: #161a14; padding: 8px 14px; border-radius: 4px; }
+  .cred-text { font-size: 0.58rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,191,175,0.55); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="motif">
+      <div class="dot"></div>
+      <div class="label">Dot accent<br>4×4px sage</div>
+    </div>
+    <div class="motif">
+      <div class="divider">
+        <div class="div-line"></div>
+        <div class="div-dia"></div>
+        <div class="div-line"></div>
+      </div>
+      <div class="label">Diamond divider<br>section separator</div>
+    </div>
+    <div class="motif">
+      <div class="v-rule"></div>
+      <div class="label">Vertical rule<br>sage gradient</div>
+    </div>
+    <div class="motif">
+      <div class="nav-demo">Design Packages</div>
+      <div class="label">Nav underline<br>hover: scaleX 0→1</div>
+    </div>
+    <div class="motif">
+      <div class="accent-top"></div>
+      <div class="label">Top accent border<br>2px sage 70%</div>
+    </div>
+    <div class="motif">
+      <div class="progress"></div>
+      <div class="label">Progress bar<br>2px sage 70%</div>
+    </div>
+    <div class="motif">
+      <div class="cred-strip-demo">
+        <div class="dot"></div>
+        <span class="cred-text">Gold Medal Winner</span>
+      </div>
+      <div class="label">Credential strip<br>dot + text</div>
+    </div>
+  </div>
+</body>
+</html>

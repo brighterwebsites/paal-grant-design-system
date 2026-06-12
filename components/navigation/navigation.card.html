@@ -1,0 +1,39 @@
+<!-- @dsCard group="Components" viewport="700x100" name="Navigation" subtitle="Fixed nav bar — transparent to solid on scroll, logo + links + CTA" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-primary); background: #0a0d08; -webkit-font-smoothing: antialiased; }
+  .nav-demo { display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 80px; background: rgba(8,11,6,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .logo-text { display: flex; flex-direction: column; gap: 2px; }
+  .logo-name { font-size: 1rem; font-weight: 200; letter-spacing: 0.3em; text-transform: uppercase; color: #fff; line-height: 1; }
+  .logo-sub  { font-size: 0.38rem; font-weight: 300; letter-spacing: 0.5em; text-transform: uppercase; color: rgba(138,155,122,0.8); }
+  .links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .links a { font-size: 0.68rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.82); text-decoration: none; cursor: pointer; position: relative; }
+  .links a.active { color: #fff; }
+  .links a.active::after { content: ""; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: rgba(138,155,122,0.85); }
+  .nav-cta { border: 1px solid rgba(138,155,122,0.6) !important; color: #fff !important; padding: 8px 22px !important; border-radius: 6px; }
+  .state-label { font-size: 0.44rem; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(138,155,122,0.6); position: absolute; bottom: 6px; right: 32px; }
+</style>
+</head>
+<body style="position:relative">
+  <div class="nav-demo">
+    <div class="logo-text">
+      <span class="logo-name">Paal Grant</span>
+      <span class="logo-sub">Designs In Landscaping</span>
+    </div>
+    <ul class="links">
+      <li><a class="active">Home</a></li>
+      <li><a>About</a></li>
+      <li><a>Process</a></li>
+      <li><a>Design Packages</a></li>
+      <li><a>Projects</a></li>
+      <li><a class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+  <span class="state-label">Solid state (scrolled)</span>
+</body>
+</html>

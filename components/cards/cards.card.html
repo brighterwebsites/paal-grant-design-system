@@ -1,0 +1,38 @@
+<!-- @dsCard group="Components" viewport="700x260" name="Project Cards" subtitle="Image overlay cards for featured and portfolio grids" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-primary); background: #1a1d18; padding: 3px; -webkit-font-smoothing: antialiased; }
+  .grid { display: grid; grid-template-columns: 1.55fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; height: 255px; }
+  .proj-card { position: relative; overflow: hidden; cursor: pointer; background: #1a1e14; border-radius: 8px; }
+  .proj-card:first-child { grid-row: 1/3; border-radius: 8px 0 0 8px; }
+  .proj-card:nth-child(2) { border-radius: 0; }
+  .proj-card:last-child  { border-radius: 0 0 8px 0; }
+  .proj-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease; }
+  .proj-card:hover img { transform: scale(1.05); }
+  .proj-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(6,9,5,0.88) 0%, transparent 55%); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; }
+  .proj-loc  { font-size: 0.6rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(138,155,122,0.9); margin-bottom: 5px; }
+  .proj-name { font-size: 0.95rem; font-weight: 200; letter-spacing: 0.06em; color: #fff; line-height: 1.25; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="proj-card">
+      <img src="https://paalgrant.com/wp-content/uploads/2026/03/mt-buninyong-country-estate-brick-archway-entrance-paal-grant-050-1200x630.jpg" alt="Buninyong">
+      <div class="proj-overlay"><p class="proj-loc">Buninyong</p><p class="proj-name">Country Estate — Circular Pool &amp; Native Garden</p></div>
+    </div>
+    <div class="proj-card">
+      <img src="https://paalgrant.com/wp-content/uploads/2026/02/mandala-stone-moon-gate-paal-grant-074.jpg" alt="Mandala">
+      <div class="proj-overlay"><p class="proj-loc">Gardening World Cup, Japan</p><p class="proj-name">Mandala Garden — Best Design</p></div>
+    </div>
+    <div class="proj-card">
+      <img src="https://paalgrant.com/wp-content/uploads/2026/03/gisborne-country-garden-curved-aggregate-paths-paal-grant-014-1200x630.jpg" alt="Gisborne">
+      <div class="proj-overlay"><p class="proj-loc">Gisborne</p><p class="proj-name">Country Garden — Curved Aggregate Paths</p></div>
+    </div>
+  </div>
+</body>
+</html>

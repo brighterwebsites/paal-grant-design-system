@@ -1,0 +1,43 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Form Fields" subtitle="Input, email, textarea, select — contact form fields" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-primary); background: #0f1410; padding: 28px 32px; -webkit-font-smoothing: antialiased; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .field { display: flex; flex-direction: column; gap: 8px; }
+  .field label { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(201,191,175,0.55); }
+  .field input, .field textarea, .field select {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12);
+    padding: 14px 18px; color: #fff; font-family: var(--font-primary);
+    font-size: 0.85rem; font-weight: 300; outline: none;
+    transition: border-color 0.25s; width: 100%; border-radius: 6px;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus { border-color: rgba(138,155,122,0.7); }
+  .field input::placeholder, .field textarea::placeholder { color: rgba(201,191,175,0.25); }
+  .field textarea { resize: vertical; min-height: 80px; }
+  .field select option { background: #1a1e14; color: #fff; }
+  .field.focused input { border-color: rgba(138,155,122,0.7); }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="field"><label>Full Name</label><input type="text" placeholder="Your name"></div>
+    <div class="field focused"><label>Email Address</label><input type="email" placeholder="your@email.com" value="paal@example.com"></div>
+    <div class="field"><label>Phone</label><input type="tel" placeholder="Your phone number"></div>
+    <div class="field"><label>Location</label><input type="text" placeholder="Suburb / City"></div>
+    <div class="field">
+      <label>I'm interested in</label>
+      <select>
+        <option>Small Package — up to 250m² ($2,400)</option>
+        <option>Medium Package — 250–550m² ($3,200)</option>
+        <option>Large Package — 550–1,500m² ($3,800)</option>
+      </select>
+    </div>
+    <div class="field"><label>About your project</label><textarea placeholder="Brief description of your space..."></textarea></div>
+  </div>
+</body>
+</html>

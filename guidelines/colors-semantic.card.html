@@ -1,0 +1,47 @@
+<!-- @dsCard group="Colors" viewport="700x260" subtitle="Semantic color roles — text, surface, border, accent" name="Semantic Colors" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-primary); background: #1a1d18; padding: 24px; }
+  .table { display: grid; grid-template-columns: 16px 160px 1fr 140px; gap: 0; }
+  .row { display: contents; }
+  .row > * { padding: 8px 10px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; }
+  .row:first-child > * { border-top: 1px solid rgba(255,255,255,0.06); }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .token { font-size: 0.6rem; font-weight: 400; letter-spacing: 0.1em; color: rgba(201,191,175,0.65); font-family: monospace; }
+  .desc  { font-size: 0.62rem; font-weight: 300; color: rgba(201,191,175,0.45); }
+  .val   { font-size: 0.58rem; font-weight: 300; color: rgba(201,191,175,0.35); font-family: monospace; }
+  .head  { font-size: 0.48rem; font-weight: 400; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(138,155,122,0.7); padding: 10px 10px 6px; }
+</style>
+</head>
+<body>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px">
+    <div>
+      <div class="head" style="padding-left:0">Text</div>
+      <div class="table">
+        <div class="row"><div style="padding:8px 4px;border-bottom:1px solid rgba(255,255,255,0.06)"><div class="dot" style="background:#ffffff"></div></div><div class="token" style="border-bottom:1px solid rgba(255,255,255,0.06)">--text-heading</div><div class="desc" style="border-bottom:1px solid rgba(255,255,255,0.06)">Primary headings, hero, titles</div><div class="val" style="border-bottom:1px solid rgba(255,255,255,0.06)">#ffffff</div></div>
+        <div class="row"><div style="padding:8px 4px;border-bottom:1px solid rgba(255,255,255,0.06)"><div class="dot" style="background:rgba(201,191,175,0.85)"></div></div><div class="token" style="border-bottom:1px solid rgba(255,255,255,0.06)">--text-body-strong</div><div class="desc" style="border-bottom:1px solid rgba(255,255,255,0.06)">Emphasis in body copy</div><div class="val" style="border-bottom:1px solid rgba(255,255,255,0.06)">cream 85%</div></div>
+        <div class="row"><div style="padding:8px 4px;border-bottom:1px solid rgba(255,255,255,0.06)"><div class="dot" style="background:rgba(201,191,175,0.72)"></div></div><div class="token" style="border-bottom:1px solid rgba(255,255,255,0.06)">--text-body</div><div class="desc" style="border-bottom:1px solid rgba(255,255,255,0.06)">Standard paragraph copy</div><div class="val" style="border-bottom:1px solid rgba(255,255,255,0.06)">cream 72%</div></div>
+        <div class="row"><div style="padding:8px 4px;border-bottom:1px solid rgba(255,255,255,0.06)"><div class="dot" style="background:rgba(201,191,175,0.48)"></div></div><div class="token" style="border-bottom:1px solid rgba(255,255,255,0.06)">--text-muted</div><div class="desc" style="border-bottom:1px solid rgba(255,255,255,0.06)">Subtitles, secondary info</div><div class="val" style="border-bottom:1px solid rgba(255,255,255,0.06)">cream 48%</div></div>
+        <div class="row"><div style="padding:8px 4px;border-bottom:1px solid rgba(255,255,255,0.06)"><div class="dot" style="background:rgba(201,191,175,0.38)"></div></div><div class="token" style="border-bottom:1px solid rgba(255,255,255,0.06)">--text-micro</div><div class="desc" style="border-bottom:1px solid rgba(255,255,255,0.06)">Notes, captions, prices</div><div class="val" style="border-bottom:1px solid rgba(255,255,255,0.06)">cream 38%</div></div>
+        <div class="row"><div style="padding:8px 4px"><div class="dot" style="background:#8a9b7a"></div></div><div class="token">--text-label</div><div class="desc">Section labels, overlines</div><div class="val">sage 90%</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="head" style="padding-left:0">Surface & Border</div>
+      <div class="table">
+        <div class="row"><div style="padding:8px 4px;border-bottom:1px solid rgba(255,255,255,0.06)"><div class="dot" style="background:#0a0d08;border:1px solid rgba(255,255,255,0.2)"></div></div><div class="token" style="border-bottom:1px solid rgba(255,255,255,0.06)">--bg-page</div><div class="desc" style="border-bottom:1px solid rgba(255,255,255,0.06)">Root page background</div><div class="val" style="border-bottom:1px solid rgba(255,255,255,0.06)">#0a0d08</div></div>
+        <div class="row"><div style="padding:8px 4px;border-bottom:1px solid rgba(255,255,255,0.06)"><div class="dot" style="background:#242422"></div></div><div class="token" style="border-bottom:1px solid rgba(255,255,255,0.06)">--bg-section</div><div class="desc" style="border-bottom:1px solid rgba(255,255,255,0.06)">Alternating sections</div><div class="val" style="border-bottom:1px solid rgba(255,255,255,0.06)">#242422</div></div>
+        <div class="row"><div style="padding:8px 4px;border-bottom:1px solid rgba(255,255,255,0.06)"><div class="dot" style="background:#0d1710"></div></div><div class="token" style="border-bottom:1px solid rgba(255,255,255,0.06)">--bg-card</div><div class="desc" style="border-bottom:1px solid rgba(255,255,255,0.06)">Featured / highlighted cards</div><div class="val" style="border-bottom:1px solid rgba(255,255,255,0.06)">#0d1710</div></div>
+        <div class="row"><div style="padding:8px 4px;border-bottom:1px solid rgba(255,255,255,0.06)"><div class="dot" style="background:rgba(255,255,255,0.07)"></div></div><div class="token" style="border-bottom:1px solid rgba(255,255,255,0.06)">--border-default</div><div class="desc" style="border-bottom:1px solid rgba(255,255,255,0.06)">Structural dividers</div><div class="val" style="border-bottom:1px solid rgba(255,255,255,0.06)">white 7%</div></div>
+        <div class="row"><div style="padding:8px 4px;border-bottom:1px solid rgba(255,255,255,0.06)"><div class="dot" style="background:rgba(138,155,122,0.45)"></div></div><div class="token" style="border-bottom:1px solid rgba(255,255,255,0.06)">--border-accent</div><div class="desc" style="border-bottom:1px solid rgba(255,255,255,0.06)">Sage bordered components</div><div class="val" style="border-bottom:1px solid rgba(255,255,255,0.06)">sage 45%</div></div>
+        <div class="row"><div style="padding:8px 4px"><div class="dot" style="background:rgba(138,155,122,0.7)"></div></div><div class="token">--border-accent-strong</div><div class="desc">Featured top border rule</div><div class="val">sage 70%</div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

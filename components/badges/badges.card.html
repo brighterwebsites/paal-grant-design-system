@@ -1,0 +1,55 @@
+<!-- @dsCard group="Components" viewport="700x220" name="Badges & Labels" subtitle="Section label, award badge, size badge, tag, breadcrumb" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-primary); background: var(--bg-page); padding: 28px 32px; -webkit-font-smoothing: antialiased; }
+  .row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+  .row:last-child { margin-bottom: 0; }
+  .row-label { font-size: 0.48rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(138,155,122,0.5); width: 80px; flex-shrink: 0; }
+  .section-label { font-size: 0.58rem; font-weight: 300; letter-spacing: 0.45em; text-transform: uppercase; color: rgba(138,155,122,0.9); }
+  .award-badge { display: inline-flex; align-items: center; gap: 12px; background: rgba(138,155,122,0.1); border: 1px solid rgba(138,155,122,0.45); padding: 12px 24px; border-radius: 8px; }
+  .award-stars { color: rgba(138,155,122,1); font-size: 0.75rem; letter-spacing: 4px; }
+  .award-text { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(138,155,122,0.9); }
+  .size-badge { font-size: 0.55rem; font-weight: 400; letter-spacing: 0.4em; text-transform: uppercase; color: rgba(138,155,122,0.85); }
+  .tag { display: inline-block; background: rgba(138,155,122,0.1); border: 1px solid rgba(138,155,122,0.4); padding: 8px 20px; font-size: 0.62rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(138,155,122,0.9); border-radius: 8px; }
+  .pkgd-size-badge { display: inline-block; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(138,155,122,0.85); border: 1px solid rgba(138,155,122,0.3); padding: 7px 18px; border-radius: 8px; }
+  .breadcrumb { font-size: 0.72rem; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(201,191,175,0.3); }
+  .breadcrumb span { color: rgba(138,155,122,0.7); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <span class="row-label">Section label</span>
+    <span class="section-label">Selected Work</span>
+    <span class="section-label">How We Work</span>
+    <span class="section-label">The Studio</span>
+  </div>
+  <div class="row">
+    <span class="row-label">Award badge</span>
+    <div class="award-badge">
+      <span class="award-stars">★ ★ ★ ★ ★</span>
+      <span class="award-text">Award-Winning Landscape Design</span>
+    </div>
+  </div>
+  <div class="row">
+    <span class="row-label">Size badge</span>
+    <span class="size-badge">Small</span>
+    <span class="size-badge">Medium · Most Popular</span>
+    <span class="size-badge">Large</span>
+  </div>
+  <div class="row">
+    <span class="row-label">Tag</span>
+    <span class="tag">Onsite or Virtual · $350 credited</span>
+    <span class="tag">Transparent Pricing</span>
+    <span class="pkgd-size-badge">Small Package</span>
+  </div>
+  <div class="row">
+    <span class="row-label">Breadcrumb</span>
+    <span class="breadcrumb">Design Packages &nbsp;/&nbsp; <span>Small</span></span>
+  </div>
+</body>
+</html>

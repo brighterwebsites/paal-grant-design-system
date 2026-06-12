@@ -1,0 +1,73 @@
+/* ─────────────────────────────────────────────
+   PAAL GRANT — Typography Tokens
+   ───────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;1,200;1,300&display=swap');
+
+:root {
+  /* ── Families ── */
+  --font-primary:        "Raleway", sans-serif;
+
+  /* ── Weights ── */
+  --fw-thin:             100;   /* display headings, large numerals */
+  --fw-extralight:       200;   /* subheadings, nav drawer, section titles */
+  --fw-light:            300;   /* body copy, captions, descriptors */
+  --fw-regular:          400;   /* labels, nav links, CTAs, badges */
+
+  /* ── Scale ── */
+  --text-display-xl:     clamp(3.5rem, 7.5vw, 6.5rem);   /* hero headline */
+  --text-display-lg:     clamp(2.5rem, 5vw,   4.5rem);   /* page titles */
+  --text-display-md:     clamp(2rem,   4.5vw, 3.8rem);   /* section titles */
+  --text-display-sm:     1.9rem;                          /* package card names */
+  --text-heading-lg:     1.8rem;                          /* process step titles */
+  --text-heading-md:     1.6rem;                          /* package names */
+  --text-heading-sm:     1.1rem;                          /* project card names */
+  --text-body-lg:        1rem;                            /* intro body */
+  --text-body-md:        0.92rem;                         /* about body */
+  --text-body-sm:        0.88rem;                         /* standard body */
+  --text-body-xs:        0.82rem;                         /* small descriptors */
+  --text-label-md:       0.78rem;                         /* deliverable names */
+  --text-label-sm:       0.72rem;                         /* nav links, breadcrumbs */
+  --text-micro-lg:       0.68rem;                         /* card sub-text */
+  --text-micro-md:       0.65rem;                         /* button text, CTAs */
+  --text-micro-sm:       0.62rem;                         /* footer links, notes */
+  --text-micro-xs:       0.58rem;                         /* section labels */
+  --text-nano:           0.55rem;                         /* package size badges */
+
+  /* ── Letter spacing ── */
+  --ls-tight:            0.02em;
+  --ls-normal:           0.04em;
+  --ls-wide:             0.06em;
+  --ls-wider:            0.08em;
+  --ls-heading:          0.1em;
+  --ls-display:          0.12em;
+  --ls-label:            0.18em;
+  --ls-nav:              0.2em;
+  --ls-spaced:           0.25em;
+  --ls-cap:              0.28em;
+  --ls-loose:            0.3em;
+  --ls-looser:           0.35em;
+  --ls-ultra:            0.45em;
+  --ls-max:              0.5em;
+
+  /* ── Line heights ── */
+  --lh-tight:            1.05;
+  --lh-heading:          1.1;
+  --lh-compact:          1.25;
+  --lh-normal:           1.7;
+  --lh-relaxed:          1.8;
+  --lh-body:             1.85;
+  --lh-loose:            1.9;
+  --lh-spacious:         1.95;
+
+  /* ── Semantic type roles ── */
+  --type-section-label:  var(--text-micro-xs);   /* "Selected Work", "How We Work" */
+  --type-section-title:  var(--text-display-md);
+  --type-page-title:     var(--text-display-lg);
+  --type-hero-headline:  var(--text-display-xl);
+  --type-body:           var(--text-body-sm);
+  --type-caption:        var(--text-micro-sm);
+  --type-nav:            var(--text-label-sm);
+  --type-cta:            var(--text-micro-md);
+  --type-badge:          var(--text-nano);
+}

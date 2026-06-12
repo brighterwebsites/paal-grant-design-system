@@ -1,0 +1,90 @@
+<!-- @dsCard group="Spacing" viewport="700x380" subtitle="Spacing scale, section padding, border radius, border width" name="Spacing & Layout" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-primary); background: #0f1210; padding: 24px; }
+  .head { font-size: 0.48rem; font-weight: 400; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(138,155,122,0.7); margin-bottom: 10px; }
+  .scale { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 20px; }
+  .bar { background: rgba(138,155,122,0.35); border-radius: 2px; min-width: 12px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+  .bar-label { font-size: 0.42rem; font-weight: 300; color: rgba(201,191,175,0.45); margin-top: 4px; white-space: nowrap; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .token-row { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .token-name { font-size: 0.55rem; font-weight: 400; letter-spacing: 0.1em; color: rgba(201,191,175,0.55); font-family: monospace; }
+  .token-val  { font-size: 0.6rem; font-weight: 300; color: rgba(255,255,255,0.5); }
+  .radii { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 0; }
+  .radius-demo { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .radius-box { width: 44px; height: 44px; background: rgba(138,155,122,0.2); border: 1px solid rgba(138,155,122,0.4); }
+  .r-label { font-size: 0.48rem; font-weight: 300; color: rgba(201,191,175,0.45); text-align: center; }
+</style>
+</head>
+<body>
+  <div class="head">Spacing Scale (base 4px)</div>
+  <div class="scale" style="margin-bottom:6px">
+    <div><div class="bar" style="height:4px;width:14px"></div></div>
+    <div><div class="bar" style="height:8px;width:14px"></div></div>
+    <div><div class="bar" style="height:12px;width:14px"></div></div>
+    <div><div class="bar" style="height:16px;width:14px"></div></div>
+    <div><div class="bar" style="height:20px;width:14px"></div></div>
+    <div><div class="bar" style="height:24px;width:14px"></div></div>
+    <div><div class="bar" style="height:28px;width:14px"></div></div>
+    <div><div class="bar" style="height:32px;width:14px"></div></div>
+    <div><div class="bar" style="height:36px;width:14px"></div></div>
+    <div><div class="bar" style="height:40px;width:14px"></div></div>
+    <div><div class="bar" style="height:44px;width:14px"></div></div>
+    <div><div class="bar" style="height:48px;width:14px"></div></div>
+    <div><div class="bar" style="height:56px;width:14px"></div></div>
+    <div><div class="bar" style="height:64px;width:14px"></div></div>
+    <div><div class="bar" style="height:72px;width:14px"></div></div>
+    <div><div class="bar" style="height:80px;width:14px"></div></div>
+    <div><div class="bar" style="height:96px;width:14px;background:rgba(138,155,122,0.5)"></div></div>
+    <div><div class="bar" style="height:100px;width:14px;background:rgba(138,155,122,0.6)"></div></div>
+  </div>
+  <div style="display:flex;gap:4px;margin-bottom:20px">
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">4</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">8</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">12</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">16</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">20</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">24</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">28</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">32</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">36</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">40</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">44</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">48</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">56</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">64</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">72</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.3);width:14px;text-align:center">80</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.45);width:14px;text-align:center">96</span>
+    <span style="font-size:0.42rem;color:rgba(201,191,175,0.45);width:14px;text-align:center">100</span>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="head">Layout Tokens</div>
+      <div class="token-row"><span class="token-name">--section-padding-v</span><span class="token-val">100px</span></div>
+      <div class="token-row"><span class="token-name">--section-padding-h</span><span class="token-val">52px</span></div>
+      <div class="token-row"><span class="token-name">--section-padding-h-wide</span><span class="token-val">64px</span></div>
+      <div class="token-row"><span class="token-name">--nav-height</span><span class="token-val">100px</span></div>
+      <div class="token-row"><span class="token-name">--nav-height-solid</span><span class="token-val">80px</span></div>
+      <div class="token-row"><span class="token-name">--card-padding-v / h</span><span class="token-val">40 / 36px</span></div>
+      <div class="token-row" style="border:none"><span class="token-name">--gap-grid-tight</span><span class="token-val">3px</span></div>
+    </div>
+    <div>
+      <div class="head">Border Radius</div>
+      <div class="radii">
+        <div class="radius-demo"><div class="radius-box" style="border-radius:0px"></div><div class="r-label">0px<br>Hero sections</div></div>
+        <div class="radius-demo"><div class="radius-box" style="border-radius:4px"></div><div class="r-label">4px<br>Hamburger</div></div>
+        <div class="radius-demo"><div class="radius-box" style="border-radius:6px"></div><div class="r-label">6px<br>Inputs, nav CTA</div></div>
+        <div class="radius-demo"><div class="radius-box" style="border-radius:8px"></div><div class="r-label">8px<br>Cards, panels</div></div>
+        <div class="radius-demo"><div class="radius-box" style="border-radius:12px 12px 0 0"></div><div class="r-label">12px top<br>Footer</div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

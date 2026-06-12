@@ -1,0 +1,64 @@
+<!-- @dsCard group="Type" viewport="700x520" subtitle="Raleway type scale — display, heading, body, label, micro" name="Type Scale" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-primary); background: #0a0d08; padding: 28px 32px; }
+  .row { display: grid; grid-template-columns: 130px 1fr 100px; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); gap: 16px; }
+  .meta { display: flex; flex-direction: column; gap: 2px; }
+  .token { font-size: 0.52rem; font-weight: 400; letter-spacing: 0.15em; color: rgba(138,155,122,0.7); font-family: monospace; }
+  .detail { font-size: 0.5rem; font-weight: 300; color: rgba(201,191,175,0.35); letter-spacing: 0.05em; }
+  .usage  { font-size: 0.5rem; font-weight: 300; color: rgba(201,191,175,0.3); text-align: right; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="meta"><span class="token">--text-display-xl</span><span class="detail">clamp 3.5–6.5rem · wt 100</span></div>
+    <div style="font-size:clamp(2.2rem,5vw,4rem);font-weight:100;color:#fff;letter-spacing:0.08em;text-transform:uppercase;line-height:1">Dream Garden</div>
+    <div class="usage">Hero headline</div>
+  </div>
+  <div class="row">
+    <div class="meta"><span class="token">--text-display-lg</span><span class="detail">clamp 2.5–4.5rem · wt 100</span></div>
+    <div style="font-size:clamp(2rem,3.5vw,3rem);font-weight:100;color:#fff;letter-spacing:0.08em;text-transform:uppercase;line-height:1">Our Process</div>
+    <div class="usage">Page title</div>
+  </div>
+  <div class="row">
+    <div class="meta"><span class="token">--text-display-md</span><span class="detail">clamp 2–3.8rem · wt 100</span></div>
+    <div style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:100;color:#fff;letter-spacing:0.08em;text-transform:uppercase">Recent Projects</div>
+    <div class="usage">Section title</div>
+  </div>
+  <div class="row">
+    <div class="meta"><span class="token">--text-heading-lg</span><span class="detail">1.8rem · wt 200</span></div>
+    <div style="font-size:1.4rem;font-weight:200;color:#fff;letter-spacing:0.12em;text-transform:uppercase">Consultation</div>
+    <div class="usage">Process step</div>
+  </div>
+  <div class="row">
+    <div class="meta"><span class="token">--text-body-lg</span><span class="detail">1rem · wt 300 · italic</span></div>
+    <div style="font-size:1rem;font-weight:200;font-style:italic;color:rgba(201,191,175,0.72);letter-spacing:0.04em;line-height:1.7">Let's work together to create your</div>
+    <div class="usage">Hero sub</div>
+  </div>
+  <div class="row">
+    <div class="meta"><span class="token">--text-body-sm</span><span class="detail">0.88rem · wt 300 · lh 1.9</span></div>
+    <div style="font-size:0.88rem;font-weight:300;color:rgba(201,191,175,0.72);line-height:1.9;max-width:420px">Every project is individually designed. We do not use templates. The result is a landscape that belongs to its site, its climate, and the people who live there.</div>
+    <div class="usage">Body copy</div>
+  </div>
+  <div class="row">
+    <div class="meta"><span class="token">--text-label-sm</span><span class="detail">0.72rem · wt 400 · ls 0.2em</span></div>
+    <div style="font-size:0.72rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.82)">Design Packages &nbsp;·&nbsp; Projects</div>
+    <div class="usage">Nav links</div>
+  </div>
+  <div class="row">
+    <div class="meta"><span class="token">--type-section-label</span><span class="detail">0.58rem · wt 300 · ls 0.45em</span></div>
+    <div style="font-size:0.58rem;font-weight:300;letter-spacing:0.45em;text-transform:uppercase;color:rgba(138,155,122,0.9)">Selected Work</div>
+    <div class="usage">Section label</div>
+  </div>
+  <div class="row" style="border-bottom:none">
+    <div class="meta"><span class="token">--type-cta</span><span class="detail">0.65rem · wt 400 · ls 0.25em</span></div>
+    <div style="font-size:0.65rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:#fff">View Design Packages</div>
+    <div class="usage">Button / CTA</div>
+  </div>
+</body>
+</html>

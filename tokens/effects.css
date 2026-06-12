@@ -1,0 +1,57 @@
+/* ─────────────────────────────────────────────
+   PAAL GRANT — Effects & Motion Tokens
+   ───────────────────────────────────────────── */
+
+:root {
+
+  /* ── Transitions ── */
+  --transition-fast:       0.25s ease;
+  --transition-mid:        0.28s ease;
+  --transition-slow:       0.32s ease;
+  --transition-nav:        0.3s ease;
+  --transition-bg:         0.5s ease;
+  --transition-fade:       0.9s ease;
+
+  /* ── Easing ── */
+  --ease-hero-enter:       cubic-bezier(0.25, 0.46, 0.45, 0.94);   /* Ken Burns enter */
+  --ease-hero-leave:       cubic-bezier(0.55, 0, 1, 0.45);          /* Ken Burns leave */
+  --ease-smooth:           cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Blur ── */
+  --blur-nav:              blur(14px);     /* solid nav backdrop */
+  --blur-drawer:           blur(16px);     /* mobile nav drawer */
+
+  /* ── Fade-in animation ── */
+  --fade-in-distance:      24px;           /* translateY start offset */
+  --fade-in-duration:      0.9s;
+
+  /* ── Image hover ── */
+  --img-hover-scale:       scale(1.05);    /* project/portfolio card hover */
+  --img-hover-duration:    0.7s ease;
+
+  /* ── Underline hover (nav links) ── */
+  --nav-underline-height:  1px;
+  --nav-underline-origin:  left;
+  --nav-underline-duration: 0.32s ease;
+
+  /* ── Progress bar ── */
+  --progress-height:       2px;
+  --progress-color:        rgba(138,155,122,0.7);
+}
+
+/* ── Fade-in utility keyframe ── */
+@keyframes pg-fade-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Ken Burns hero keyframes ── */
+@keyframes pg-ken-enter {
+  0%   { opacity: 0; transform: scale(1.12) translateY(28px); }
+  8%   { opacity: 1; }
+  100% { opacity: 1; transform: scale(1.03) translateY(-18px); }
+}
+@keyframes pg-ken-leave {
+  0%   { opacity: 1; transform: scale(1.03) translateY(-18px); }
+  100% { opacity: 0; transform: scale(1.0)  translateY(-65px); }
+}

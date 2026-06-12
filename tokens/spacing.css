@@ -1,0 +1,69 @@
+/* ─────────────────────────────────────────────
+   PAAL GRANT — Spacing Tokens
+   ───────────────────────────────────────────── */
+
+:root {
+
+  /* ── Base scale (4px grid) ── */
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:    12px;
+  --space-4:    16px;
+  --space-5:    20px;
+  --space-6:    24px;
+  --space-7:    28px;
+  --space-8:    32px;
+  --space-9:    36px;
+  --space-10:   40px;
+  --space-11:   44px;
+  --space-12:   48px;
+  --space-14:   56px;
+  --space-16:   64px;
+  --space-18:   72px;
+  --space-20:   80px;
+  --space-24:   96px;
+  --space-25:   100px;
+  --space-28:   112px;
+  --space-30:   120px;
+
+  /* ── Semantic layout spacing ── */
+  --section-padding-v:      100px;    /* vertical section padding */
+  --section-padding-h:       52px;    /* horizontal section padding */
+  --section-padding-h-wide:  64px;    /* wide sections (packages, portfolio) */
+  --section-padding-h-mobile: 24px;   /* mobile override */
+
+  --nav-height:              100px;
+  --nav-height-solid:         80px;
+  --nav-padding-h:            52px;
+  --nav-logo-height:           68px;
+  --nav-logo-height-solid:     52px;
+
+  --card-padding-v:           40px;
+  --card-padding-h:           36px;
+  --card-padding-v-lg:        44px;
+  --card-padding-h-lg:        44px;
+
+  --footer-padding-v:         64px;
+  --footer-padding-h:         52px;
+  --footer-padding-bottom:    36px;
+
+  /* ── Grid gaps ── */
+  --gap-grid-tight:        3px;    /* featured / portfolio image grids */
+  --gap-grid-cards:        0px;    /* package card rows (edge-to-edge) */
+  --gap-nav:               44px;
+  --gap-nav-links:         40px;
+  --gap-section-header:    56px;
+  --gap-form:              18px;
+  --gap-footer-cols:       60px;
+  --gap-cred-strip:        60px;
+
+  /* ── Border radius ── */
+  --radius-sm:             4px;    /* hamburger */
+  --radius-md:             6px;    /* nav CTA, inputs, thumbnails */
+  --radius-lg:             8px;    /* cards, panels, images */
+  --radius-footer:         12px;   /* footer top corners only */
+
+  /* ── Border widths ── */
+  --border-width:          1px;
+  --border-width-accent:   2px;    /* star card top border, photo caption top */
+}

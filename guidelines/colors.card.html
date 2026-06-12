@@ -1,0 +1,69 @@
+<!-- @dsCard group="Colors" viewport="700x320" subtitle="Core palette — backgrounds, sage, cream, white" name="Color Palette" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-primary); background: #1a1d18; padding: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+  .swatch { display: flex; flex-direction: column; }
+  .color { height: 64px; border-radius: 4px 4px 0 0; }
+  .label { padding: 6px 8px; background: #0f1210; border-radius: 0 0 4px 4px; }
+  .name { font-size: 0.52rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,191,175,0.65); margin-bottom: 2px; }
+  .hex  { font-size: 0.6rem; font-weight: 300; color: rgba(255,255,255,0.55); }
+  .row { display: flex; gap: 3px; margin-top: 3px; }
+  .mini { flex: 1; height: 28px; border-radius: 3px; }
+  .section-title { font-size: 0.52rem; font-weight: 400; letter-spacing: 0.35em; text-transform: uppercase; color: rgba(138,155,122,0.7); margin-bottom: 8px; margin-top: 16px; }
+  .section-title:first-child { margin-top: 0; }
+</style>
+</head>
+<body>
+  <div class="section-title">Backgrounds</div>
+  <div class="grid">
+    <div class="swatch"><div class="color" style="background:#080b06;border:1px solid rgba(255,255,255,0.08)"></div><div class="label"><div class="name">Footer</div><div class="hex">#080b06</div></div></div>
+    <div class="swatch"><div class="color" style="background:#0a0d08;border:1px solid rgba(255,255,255,0.08)"></div><div class="label"><div class="name">Page</div><div class="hex">#0a0d08</div></div></div>
+    <div class="swatch"><div class="color" style="background:#0d1210"></div><div class="label"><div class="name">Card Alt</div><div class="hex">#0d1210</div></div></div>
+    <div class="swatch"><div class="color" style="background:#0d1710"></div><div class="label"><div class="name">Card</div><div class="hex">#0d1710</div></div></div>
+    <div class="swatch"><div class="color" style="background:#161a14"></div><div class="label"><div class="name">Surface 2</div><div class="hex">#161a14</div></div></div>
+    <div class="swatch"><div class="color" style="background:#242422"></div><div class="label"><div class="name">Surface 1</div><div class="hex">#242422</div></div></div>
+    <div class="swatch"><div class="color" style="background:#0f1410"></div><div class="label"><div class="name">Contact</div><div class="hex">#0f1410</div></div></div>
+  </div>
+
+  <div class="section-title" style="margin-top:18px">Sage — Brand Accent</div>
+  <div class="row">
+    <div class="mini" style="background:rgba(138,155,122,0.07)"></div>
+    <div class="mini" style="background:rgba(138,155,122,0.1)"></div>
+    <div class="mini" style="background:rgba(138,155,122,0.15)"></div>
+    <div class="mini" style="background:rgba(138,155,122,0.28)"></div>
+    <div class="mini" style="background:rgba(138,155,122,0.45)"></div>
+    <div class="mini" style="background:rgba(138,155,122,0.6)"></div>
+    <div class="mini" style="background:rgba(138,155,122,0.7)"></div>
+    <div class="mini" style="background:rgba(138,155,122,0.85)"></div>
+    <div class="mini" style="background:#8a9b7a"></div>
+  </div>
+  <div style="display:flex;gap:3px;margin-top:3px">
+    <span style="font-size:0.48rem;color:rgba(201,191,175,0.4);letter-spacing:0.15em">07%</span>
+    <span style="font-size:0.48rem;color:rgba(201,191,175,0.4);letter-spacing:0.15em;margin-left:18px">10%</span>
+    <span style="font-size:0.48rem;color:rgba(201,191,175,0.4);letter-spacing:0.15em;margin-left:21px">15%</span>
+    <span style="font-size:0.48rem;color:rgba(201,191,175,0.4);letter-spacing:0.15em;margin-left:24px">28%</span>
+    <span style="font-size:0.48rem;color:rgba(201,191,175,0.4);letter-spacing:0.15em;margin-left:20px">45%</span>
+    <span style="font-size:0.48rem;color:rgba(201,191,175,0.4);letter-spacing:0.15em;margin-left:22px">60%</span>
+    <span style="font-size:0.48rem;color:rgba(201,191,175,0.4);letter-spacing:0.15em;margin-left:22px">70%</span>
+    <span style="font-size:0.48rem;color:rgba(201,191,175,0.4);letter-spacing:0.15em;margin-left:18px">85%</span>
+    <span style="font-size:0.48rem;color:rgba(201,191,175,0.4);letter-spacing:0.15em;margin-left:20px">100%</span>
+  </div>
+
+  <div class="section-title" style="margin-top:18px">Cream — Body Text</div>
+  <div class="row">
+    <div class="mini" style="background:rgba(201,191,175,0.32)"></div>
+    <div class="mini" style="background:rgba(201,191,175,0.38)"></div>
+    <div class="mini" style="background:rgba(201,191,175,0.45)"></div>
+    <div class="mini" style="background:rgba(201,191,175,0.55)"></div>
+    <div class="mini" style="background:rgba(201,191,175,0.72)"></div>
+    <div class="mini" style="background:rgba(201,191,175,0.85)"></div>
+    <div class="mini" style="background:#c9bfaf"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!-- @dsCard group="Brand" viewport="700x340" subtitle="Logo variants — landscape and stacked, dark and light" name="Logo Usage" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-primary); background: #1a1d18; padding: 0; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+  .cell { padding: 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+  .cell.dark  { background: #0a0d08; }
+  .cell.light { background: #f5f2ec; }
+  .logo { max-height: 60px; width: auto; max-width: 100%; }
+  .logo-stacked { max-height: 120px; width: auto; max-width: 180px; }
+  .tag { font-size: 0.48rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; }
+  .tag.on-dark  { color: rgba(201,191,175,0.4); }
+  .tag.on-light { color: rgba(10,13,8,0.4); }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="cell dark">
+      <img class="logo" src="../assets/logo-landscape-white.png" alt="Paal Grant landscape logo white">
+      <span class="tag on-dark">Landscape · White on dark</span>
+    </div>
+    <div class="cell light">
+      <img class="logo" src="../assets/logo-landscape-black.png" alt="Paal Grant landscape logo black">
+      <span class="tag on-light">Landscape · Black on light</span>
+    </div>
+    <div class="cell dark">
+      <img class="logo-stacked" src="../assets/logo-stacked-white.png" alt="Paal Grant stacked logo white">
+      <span class="tag on-dark">Stacked · White on dark</span>
+    </div>
+    <div class="cell light">
+      <img class="logo-stacked" src="../assets/logo-stacked-black.png" alt="Paal Grant stacked logo black">
+      <span class="tag on-light">Stacked · Black on light</span>
+    </div>
+  </div>
+</body>
+</html>
