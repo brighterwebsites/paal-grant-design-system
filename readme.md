@@ -14,11 +14,13 @@ Paal Grant is a design-led practice, not a generic landscaping contractor. The b
 - **Nature-rooted craft** — organic materials, green-tinged neutrals, earthy cream tones
 - **Quiet luxury** — refined restraint, never loud; sparse copy; lots of breathing room
 
-**Primary services:** 3D Garden Design Packages (Small $2,400 / Medium $3,200 / Large $3,800 inc. GST), full landscape construction, and virtual design delivery Australia-wide.
+**Primary services:** 3D Garden Design Packages (Small $2,400 / Medium $3,200 / Large $3,800 inc. GST) and virtual design delivery Australia-wide.
 
 **Service areas:** Victoria — Ballarat, Geelong, Daylesford, Castlemaine, Torquay. Remote via Australia.
 
-**Contact:** 0417 164 772 · paalgrant@gmail.com · Ballarat, Victoria
+**Contact:** 0417 164 772 · paalgrant@gmail.com · Victoria
+
+**Target Primary Service Location** Ballarat, but physically located in Buninyong
 
 ---
 
@@ -30,13 +32,11 @@ Paal Grant is a design-led practice, not a generic landscaping contractor. The b
 - **Emoji:** Never used — brand is entirely emoji-free.
 - **Numbers:** Written as numerals always (3D, 15+, 20 years, $2,400).
 - **Punctuation:** Smart quotes (curly), em dashes for ranges and clauses, mid-dots for location lists.
-- **Copy length:** Short. One idea per sentence. Headlines are often 2–3 words.
-- **Example headlines:** "Dream Garden", "Our Process", "Selected Work", "Start a Conversation"
-- **Example body copy:** "Every project is individually designed. We do not use templates."
-
+- **Copy length:** Short. 
 ---
 
 ## Visual Foundations
+Client provided from mockup
 
 ### Colors
 - **Page background** — `#0a0d08` — near-black with a green undertone, never pure black
