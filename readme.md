@@ -1,5 +1,7 @@
 # Paal Grant — Design System
 
+Visual Design System v 16 (https://github.com/brighterwebsites/paal-grant-design-system/blob/main/design-system.html)
+
 **Paal Grant Designs In Landscaping** is an award-winning landscape designer based in Regional, Victoria (Primary Ballarat/Physically Bunningyong). The studio is founded and led by Paal Grant, with over 20 years of experience creating site-responsive residential landscapes across Victoria and internationally.
 
 **Sources used:** `uploads/paalgrant-redesign (16).html` — full multi-page website redesign, including all CSS, components, content, and JavaScript interactions.
