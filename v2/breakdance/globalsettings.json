@@ -1,0 +1,92 @@
+{
+  "settings": {
+    "colors": {
+      "brand": "var(--color-sage)",
+      "text": "var(--color-cream-72)",
+      "headings": "var(--color-eggshell)",
+      "links": "var(--color-sage)",
+      "background": "var(--color-page)",
+      "palette": {
+        "colors": [
+
+          /* ── Backgrounds ── */
+          { "cssVariableName": "color-page",           "label": "Page",           "value": "#2b2b2b" },
+          { "cssVariableName": "color-section",        "label": "Section",        "value": "#383838" },
+          { "cssVariableName": "color-footer",         "label": "Footer",         "value": "#222222" },
+          { "cssVariableName": "color-card-dark",      "label": "Card Dark",      "value": "#1e1e1c" },
+          { "cssVariableName": "color-card-mid",       "label": "Card Mid",       "value": "#323232" },
+          { "cssVariableName": "color-card-featured",  "label": "Card Featured",  "value": "#1a2018" },
+          { "cssVariableName": "color-nav-bg",         "label": "Nav BG",         "value": "#0d1410" },
+
+          /* ── Sage — brand accent ── */
+          { "cssVariableName": "color-sage",     "label": "Sage",     "value": "#8a9b7a" },
+          { "cssVariableName": "color-sage-alt", "label": "Sage Alt", "value": "#a8b299" },
+          { "cssVariableName": "color-sage-90",  "label": "Sage 90",  "value": "#8A9B7AE6" },
+          { "cssVariableName": "color-sage-85",  "label": "Sage 85",  "value": "#8A9B7AD9" },
+          { "cssVariableName": "color-sage-75",  "label": "Sage 75",  "value": "#8A9B7ABF" },
+          { "cssVariableName": "color-sage-70",  "label": "Sage 70",  "value": "#8A9B7AB3" },
+          { "cssVariableName": "color-sage-60",  "label": "Sage 60",  "value": "#8A9B7A99" },
+          { "cssVariableName": "color-sage-45",  "label": "Sage 45",  "value": "#8A9B7A73" },
+          { "cssVariableName": "color-sage-28",  "label": "Sage 28",  "value": "#8A9B7A47" },
+          { "cssVariableName": "color-sage-22",  "label": "Sage 22",  "value": "#8A9B7A38" },
+          { "cssVariableName": "color-sage-15",  "label": "Sage 15",  "value": "#8A9B7A26" },
+          { "cssVariableName": "color-sage-10",  "label": "Sage 10",  "value": "#8A9B7A1A" },
+          { "cssVariableName": "color-sage-07",  "label": "Sage 07",  "value": "#8A9B7A12" },
+          { "cssVariableName": "color-sage-06",  "label": "Sage 06",  "value": "#8A9B7A0F" },
+
+          /* ── Gold — award accent ── */
+          { "cssVariableName": "color-gold",    "label": "Gold",    "value": "#D2AA50" },
+          { "cssVariableName": "color-gold-80", "label": "Gold 80", "value": "#D2AA50CC" },
+          { "cssVariableName": "color-gold-75", "label": "Gold 75", "value": "#D2AA50BF" },
+          { "cssVariableName": "color-gold-60", "label": "Gold 60", "value": "#D2AA5099" },
+          { "cssVariableName": "color-gold-55", "label": "Gold 55", "value": "#D2AA508C" },
+          { "cssVariableName": "color-gold-35", "label": "Gold 35", "value": "#D2AA5059" },
+          { "cssVariableName": "color-gold-30", "label": "Gold 30", "value": "#D2AA504D" },
+          { "cssVariableName": "color-gold-08", "label": "Gold 08", "value": "#D2AA5014" },
+          { "cssVariableName": "color-gold-05", "label": "Gold 05", "value": "#D2AA500D" },
+
+          /* ── Cream — body text ── */
+          { "cssVariableName": "color-cream",    "label": "Cream",    "value": "#c9bfaf" },
+          { "cssVariableName": "color-cream-85", "label": "Cream 85", "value": "#C9BFAFD9" },
+          { "cssVariableName": "color-cream-72", "label": "Cream 72", "value": "#C9BFAFB8" },
+          { "cssVariableName": "color-cream-55", "label": "Cream 55", "value": "#C9BFAF8C" },
+          { "cssVariableName": "color-cream-52", "label": "Cream 52", "value": "#C9BFAF85" },
+          { "cssVariableName": "color-cream-48", "label": "Cream 48", "value": "#C9BFAF7A" },
+          { "cssVariableName": "color-cream-45", "label": "Cream 45", "value": "#C9BFAF73" },
+          { "cssVariableName": "color-cream-38", "label": "Cream 38", "value": "#C9BFAF61" },
+          { "cssVariableName": "color-cream-32", "label": "Cream 32", "value": "#C9BFAF52" },
+
+          /* ── White / Eggshell — headings & UI ── */
+          { "cssVariableName": "color-white",    "label": "White",    "value": "#ffffff" },
+          { "cssVariableName": "color-eggshell", "label": "Eggshell", "value": "#eceae4" },
+          { "cssVariableName": "color-white-88", "label": "White 88", "value": "#FFFFFFE0" },
+          { "cssVariableName": "color-white-85", "label": "White 85", "value": "#FFFFFFD9" },
+          { "cssVariableName": "color-white-82", "label": "White 82", "value": "#FFFFFFD1" },
+          { "cssVariableName": "color-white-78", "label": "White 78", "value": "#FFFFFFC7" },
+          { "cssVariableName": "color-white-30", "label": "White 30", "value": "#FFFFFF4D" },
+          { "cssVariableName": "color-white-12", "label": "White 12", "value": "#FFFFFF1F" },
+          { "cssVariableName": "color-white-10", "label": "White 10", "value": "#FFFFFF1A" },
+          { "cssVariableName": "color-white-08", "label": "White 08", "value": "#FFFFFF14" },
+          { "cssVariableName": "color-white-07", "label": "White 07", "value": "#FFFFFF12" },
+          { "cssVariableName": "color-white-06", "label": "White 06", "value": "#FFFFFF0F" },
+          { "cssVariableName": "color-white-04", "label": "White 04", "value": "#FFFFFF0A" },
+
+          /* ── Muted tones ── */
+          { "cssVariableName": "color-muted", "label": "Muted", "value": "#a8a5a0" },
+          { "cssVariableName": "color-dim",   "label": "Dim",   "value": "#808080" },
+
+          /* ── Overlays ── */
+          { "cssVariableName": "overlay-nav-solid", "label": "Nav Overlay", "value": "#2B2B2BF7" }
+
+        ],
+        "gradients": []
+      }
+    },
+    "typography": null,
+    "code": null,
+    "buttons": null,
+    "containers": null,
+    "forms": null,
+    "other": null
+  }
+}
