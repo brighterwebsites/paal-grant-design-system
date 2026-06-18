@@ -1,0 +1,665 @@
+[
+  {"name": ".cursor",    "type": "class", "properties": {}},
+  {"name": ".overlay",   "type": "class", "properties": {}},
+  {"name": ".tint",      "type": "class", "properties": {}},
+  {"name": ".toc-ignore","type": "class", "properties": {}},
+  {"name": ".stack-fade","type": "class", "properties": {}},
+  {"name": ".phone-link","type": "class", "properties": {}},
+  {"name": ".email-link","type": "class", "properties": {}},
+  {"name": ".pg_footer-box", "type": "class", "properties": {}},
+  {"name": ".pg_home-pcks",  "type": "class", "properties": {}},
+  {"name": ".pg_archive-more", "type": "class", "properties": {}},
+  {"name": ".pg_quick_contact", "type": "class", "properties": {}},
+  {"name": ".wmu-preview-img", "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  \n}"}}}},
+  {"name": ".trust-projects",  "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  \n}", "breakpoint_tablet_landscape": null}}}},
+
+  {"name": ".ga-hrcy-method",  "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  \n}"}}}},
+  {"name": ".ga-hrcy-aut",     "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  \n}"}}}},
+  {"name": ".ga-hrcy-end",     "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  \n}"}}}},
+  {"name": ".ga-hrcy-faq",     "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  \n}"}}}},
+  {"name": ".ga-hrcy-pricing", "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  \n}"}}}},
+  {"name": ".ga-hrcy-assist",  "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  \n}"}}}},
+  {"name": ".ga-hrcy-specs",   "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  \n}"}}}},
+  {"name": ".ga-hrcy-atf",     "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  \n}"}}}},
+  {"name": ".ga-cta-main",     "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  \n}"}}}},
+  {"name": ".ga-cta-end",      "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  \n}"}}}},
+  {"name": ".ga-cta-phone",    "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  \n}"}}}},
+  {"name": ".ga-cta-mid",      "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  \n}"}}}},
+  {"name": ".ga-cta-assist",   "type": "class", "properties": {}},
+  {"name": ".ga-nav-service",  "type": "class", "properties": {}},
+  {"name": ".ga-nav-projects", "type": "class", "properties": {}},
+  {"name": ".ga-form",         "type": "class", "properties": {}},
+
+  {
+    "name": ".faded-line",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": ".faded-line {\n  position: relative;\n  padding-top: 8px;\n}\n\n.faded-line::before {\n  content: \"\";\n  position: absolute;\n  left: 0;\n  right: 0;\n  top: 0;\n  height: 1px;\n  background: linear-gradient(\n    to left,\n    transparent,\n    rgba(255,255,255,0.4),\n    transparent\n  );\n}\n\n",
+          "breakpoint_phone_landscape": "%%SELECTOR%% {\n  \n}"
+        }
+      }
+    }
+  },
+
+  {"name": ".pg-golden--secondary", "type": "class", "properties": {}},
+  {"name": ".pg-golden--hero",      "type": "class", "properties": {}},
+  {"name": ".pg-golden--tertiary",  "type": "class", "properties": {}},
+  {"name": ".pg-golden--icons",     "type": "class", "properties": {}},
+  {
+    "name": ".pg-golden--grid",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% {\n  display: grid;\n  grid-template-columns: repeat(13, 1fr);\n  grid-template-rows: repeat(8, 1fr);\n  gap: 4px;\n  width: 100%;\n  aspect-ratio: 1.618 / 1;\n  box-sizing: border-box;\n}\n\n%%SELECTOR%% * {\n  box-sizing: border-box;\n}\n",
+          "breakpoint_tablet_landscape": null,
+          "breakpoint_tablet_portrait": null,
+          "breakpoint_phone_landscape": "%%SELECTOR%% {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-template-rows: auto;\n  aspect-ratio: 4 / 5;\n  gap: 4px;\n  height: calc(100% / 3);\n}\n\n.pg-golden--hero,\n.pg-golden--secondary,\n.pg-golden--tertiary,\n.pg-golden--icons {\n  grid-column: auto;\n  grid-row: auto;\n}\n\n.pg-golden--hero {\n  grid-column: span 2;\n  grid-row: span 1;\n  position: relative;\n  overflow: hidden;\n  aspect-ratio: unset;\n}\n",
+          "breakpoint_phone_portrait": null,
+          "custom_breakpoint_330px": "%%SELECTOR%% {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  grid-template-rows: repeat(4, auto);\n  gap: 4px;\n  height: calc(100vw * 2.5);\n}\n\n.pg-golden--hero {\n  grid-column: 1 / 3;\n  grid-row: 1 / 3;\n}\n\n/* Tile 2 — Secondary (5x5)\n   Add class: pg-golden--secondary */\n.pg-golden--secondary {\n  grid-column: 1 / 2;\n  grid-row: 3 / 5;\n}\n\n/* Tile 3 — Tertiary (3x3)\n   Add class: pg-golden--tertiary */\n.pg-golden--tertiary {\n  grid-column: 2 / 3;\n  grid-row: 3 / 5;\n}\n\n.pg-golden--icons {\n  grid-column: 1 / 2;\n  grid-row: 5 / 8;\n}\n\n/* Tile 4 — Icon zone (merged bottom-right 2x3)\n   Add class: pg-golden--icons */\n.pg-golden--icon-box {\n  grid-column: 2 / 3;\n  grid-row: 3 / 4;\n}\n"
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg-golden--icon-box",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "/* Icon box — overlays on top of tile 4\n   Add class: pg-golden--icon-box\n   Place AFTER pg-golden--icons in the parent grid */\n.pg-golden--icon-box {\n  grid-column: 12 / 14;\n  grid-row: 6 / 9;\n  position: relative;\n  z-index: 2;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 12px;\n  pointer-events: none;\n}\n\n/* Make the icons themselves clickable */\n.pg-golden--icon-box a,\n.pg-golden--icon-box button,\n.pg-golden--icon-box .bde-icon {\n  pointer-events: auto;\n}\n\n/* Push icons tile behind */\n.pg-golden--icons {\n  z-index: 1;\n}\n\n",
+          "breakpoint_phone_landscape": "\n  .pg-golden--icon-box {\n    grid-column: auto;\n    grid-row: auto;\n    min-height: 220px;\n  }\n\n",
+          "breakpoint_phone_portrait": "\n  .pg-golden--icon-box {\n    min-height: 0;\n    aspect-ratio: 1 / 1;\n  }"
+        }
+      }
+    }
+  },
+
+  {
+    "name": ".pg-stack-wrapper",
+    "type": "class",
+    "properties": {
+      "size": {"width": {"breakpoint_base": {"number": 100, "unit": "%", "style": "100%"}}},
+      "custom_css": {
+        "css": {
+          "breakpoint_base": ".pg-stack-wrapper {\n  display: block !important;\n  position: relative !important;\n}\n\n.pg-stack-panel {\n  position: sticky !important;\n  top: 0 !important;\n  height: 100vh !important;\n  overflow: hidden !important;\n}\n\n.pg-stack-panel:nth-child(1) { z-index: 3; }\n.pg-stack-panel:nth-child(2) { z-index: 2; }\n.pg-stack-panel:nth-child(3) { z-index: 1; }\n",
+          "breakpoint_tablet_portrait": null
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg-stack-panel",
+    "type": "class",
+    "properties": {
+      "size": {"width": {"breakpoint_base": {"number": 100, "unit": "%", "style": "100%"}}}
+    }
+  },
+
+  {
+    "name": ".pg_hover_reveal-up",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": ".pg_hover_reveal-up .bde-text {\n  max-height: 0;\n  overflow: hidden;\n  opacity: 0;\n  transition:\n    opacity 0.2s,\n    max-height 0.2s;\n}\n\n.pg_hover_reveal-up:hover .bde-text,\n.pg_hover_reveal-up:focus-within .bde-text {\n  opacity: 1;\n  max-height: 100vh;\n  transition:\n    opacity 0.8s ease-in-out,\n    max-height 0.8s ease-in-out;\n}\n"
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg-hover-reveal--grid",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% {\n  grid-gap: 3px;\n}\n%%SELECTOR%% > div {\n  min-height: 15rem;\n}\n%%SELECTOR%% .bde-heading, %%SELECTOR%% .bde-text {\n  transition: 0.4s;\n}\n\n%%SELECTOR%% .bde-text {\n  max-height: 0;\n  overflow: hidden;\n  transition: 0.2s;\n  opacity: 0;\n}\n%%SELECTOR%% > div:hover .bde-text,\n%%SELECTOR%% > div:focus-within .bde-text {\n  opacity: 1;\n  max-height: 100vh;\n  transition: 0.8s ease-in-out;\n}",
+          "breakpoint_tablet_landscape": null,
+          "breakpoint_tablet_portrait": null
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg_down-icon",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": " .pg_down-icon {\n  transition: transform 0.3s ease;\n}\n\n.bde-div:hover .pg_down-icon {\n  transform: translateY(8px);\n}"
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg_archive-hover",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%%:hover .pg_archive-more {\n  color: var(--color-sage);\n}"
+        }
+      }
+    }
+  },
+
+  {
+    "name": ".pg_card",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% {\n  backdrop-filter: blur(10px);\n  -webkit-backdrop-filter: blur(8px);\n  box-shadow: 0 4px 30px var(--color-white-06);\n}\n"
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg_card_lite",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% {\n  backdrop-filter: blur(2px);\n  -webkit-backdrop-filter: blur(2px);\n  box-shadow: 0 4px 30px var(--color-white-06);\n}\n",
+          "breakpoint_phone_landscape": null,
+          "breakpoint_tablet_landscape": null,
+          "breakpoint_tablet_portrait": null
+        }
+      }
+    }
+  },
+
+  {
+    "name": ".pg_details-box",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% .bde-text {\n  padding: 5px 0px 0px 0px;\n  line-height: 1.2\n}"
+        }
+      },
+      "size": {"width": {"breakpoint_base": {"number": 100, "unit": "%", "style": "100%"}}}
+    }
+  },
+  {"name": ".pg_details-box-2",   "type": "class", "properties": {}},
+  {"name": ".pg_details-box--icon","type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": null}}}},
+  {"name": ".details-content",     "type": "class", "properties": {}},
+  {
+    "name": ".pg_details-closed",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": ".pg_details-closed > .bde-text {\n  padding: 5px 0px 0px 0px;\n  line-height: 1.2\n}"
+        }
+      },
+      "typography": {"typography": {"custom": {"customTypography": {"fontWeight": null, "advanced": null}}}}
+    }
+  },
+  {
+    "name": ".pg_details-close-tab-l",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% .bde-text {\n  padding: 5px 0px 0px 0px;\n  line-height: 1.2\n}"
+        }
+      },
+      "size": {"width": {"breakpoint_base": {"number": 100, "unit": "%", "style": "100%"}}}
+    }
+  },
+  {"name": ".pg_details-close-tab-p", "type": "class", "properties": {}},
+
+  {
+    "name": ".pg_badge",
+    "type": "class",
+    "properties": {
+      "typography": {
+        "color": {"breakpoint_base": "var(--color-eggshell)"},
+        "typography": {"custom": {"customTypography": {"fontWeight": {"breakpoint_base": "500"}}}}
+      },
+      "spacing": {
+        "padding": {
+          "breakpoint_base": {
+            "bottom": {"number": 5,  "unit": "px", "style": "5px"},
+            "top":    {"number": 5,  "unit": "px", "style": "5px"},
+            "left":   {"number": 10, "unit": "px", "style": "10px"},
+            "right":  {"number": 10, "unit": "px", "style": "10px"}
+          }
+        }
+      }
+    }
+  },
+
+  {"name": ".pg_progression-list", "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": null}}}},
+  {
+    "name": ".progression-list",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% {\n  display: grid;\n  grid-auto-flow: column;\n  justify-items: start;\n  grid-template-columns: 30px 1fr 30px;\n}\n\n/* counter reset */\n.progression-list {\n  counter-reset: step;\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n/* increment per item */\n.progression-list > li {\n  counter-increment: step;\n  width: 100%;\n}\n\n/* override global summary styles only here */\n.progression-list > li > details > summary {\n  display: grid;\n  grid-template-columns: 30px 1fr 30px;\n  align-items: center;\n  column-gap: 10px;\n  justify-content: unset;\n}\n\n/* left number */\n.progression-list > li > details > summary::before {\n  content: counter(step);\n  display: grid;\n  place-items: center;\n  width: 20px;\n  height: 20px;\n  font-size: 0.875rem;\n  line-height: 1;\n  border-radius: 50%;\n  color: var(--color-card-featured);\n  background-color: var(--color-sage-15);\n}\n\n/* keep right icon aligned */\n.progression-list > li > details > summary::after {\n  justify-self: end;\n}\n",
+          "custom_breakpoint_330px": null
+        }
+      }
+    }
+  },
+
+  {
+    "name": ".pg-subheading",
+    "type": "class",
+    "properties": {
+      "typography": {
+        "typography": {
+          "custom": {
+            "customTypography": {
+              "advanced": {
+                "textTransform": {"breakpoint_base": "uppercase"},
+                "letterSpacing": {"breakpoint_base": {"number": 2, "unit": "px", "style": "2px"}}
+              },
+              "fontSize": {"breakpoint_phone_landscape": {"number": 12, "unit": "px", "style": "12px"}}
+            }
+          }
+        }
+      },
+      "spacing": {
+        "margin": {"breakpoint_phone_landscape": {"bottom": {"number": 5, "unit": "px", "style": "5px"}}}
+      }
+    }
+  },
+  {
+    "name": ".pg_smaller",
+    "type": "class",
+    "properties": {
+      "typography": {
+        "typography": {
+          "custom": {
+            "customTypography": {
+              "fontSize": {"breakpoint_base": {"number": 14, "unit": "px", "style": "14px"}}
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg_smaller_hide",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "custom_breakpoint_330px": " @media (min-width: 0px) and (max-width: 375px) {\n%%SELECTOR%%{ display: none;}\n}",
+          "breakpoint_phone_portrait": null,
+          "breakpoint_base": "%%SELECTOR%% {\n  \n}"
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg_inclusions",
+    "type": "class",
+    "properties": {
+      "typography": {
+        "typography": {
+          "custom": {
+            "customTypography": {
+              "lineHeight": {"breakpoint_base": {"number": "1.2", "unit": "custom", "style": "1.2"}},
+              "fontSize": {"breakpoint_base": {"number": 14, "unit": "px", "style": "14px"}}
+            }
+          }
+        }
+      },
+      "spacing": {
+        "padding": {"breakpoint_base": {"top": {"number": 5, "unit": "px", "style": "5px"}}},
+        "margin":  {"breakpoint_base": {"top": {"number": 5, "unit": "px", "style": "5px"}}}
+      }
+    }
+  },
+  {
+    "name": ".pg_process-summary",
+    "type": "class",
+    "properties": {
+      "typography": {
+        "typography": {
+          "custom": {
+            "customTypography": {
+              "fontWeight": {"breakpoint_base": "700"},
+              "advanced": {
+                "letterSpacing": {"breakpoint_base": {"number": 1, "unit": "px", "style": "1px"}}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg_process-short-title",
+    "type": "class",
+    "properties": {
+      "typography": {
+        "typography": {
+          "custom": {
+            "customTypography": {
+              "fontSize": null,
+              "fontWeight": {"breakpoint_base": "700"},
+              "advanced": {
+                "letterSpacing": {"breakpoint_base": {"number": 1, "unit": "px", "style": "1px"}}
+              }
+            }
+          }
+        }
+      },
+      "size": {"width": {"breakpoint_base": {"number": 100, "unit": "%", "style": "100%"}}}
+    }
+  },
+  {
+    "name": ".pg_h3-list",
+    "type": "class",
+    "properties": {
+      "typography": {
+        "typography": {
+          "custom": {
+            "customTypography": {
+              "fontSize": {"breakpoint_base": {"number": 18, "unit": "px", "style": "18px"}},
+              "fontWeight": {"breakpoint_base": "900"}
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg_finalcta-byline",
+    "type": "class",
+    "properties": {
+      "spacing": {
+        "margin": null,
+        "padding": {"breakpoint_phone_landscape": {"bottom": null}}
+      },
+      "typography": {"text_align": {"breakpoint_phone_landscape": "center"}}
+    }
+  },
+
+  {
+    "name": ".breadcrumbs-dark",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "/** dark text on light bg */\n.breadcrumbs-dark .bw-breadcrumbs li::marker {\n  color: var(--bde-body-text-color)!important;\n}\n.breadcrumbs-dark .bw-breadcrumbs li,\n.breadcrumbs-dark .bw-breadcrumbs li a {\n  color: var(--bde-body-text-color)!important;\n}",
+          "breakpoint_tablet_portrait": null,
+          "breakpoint_tablet_landscape": null,
+          "breakpoint_phone_landscape": null
+        }
+      }
+    }
+  },
+  {
+    "name": ".breadcrumbs-light",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "/** light text on dark bg */\n\n%%SELECTOR%% .bw-breadcrumbs li::marker {\n  color: var(--bde-background-color)!important;\n}\n%%SELECTOR%% .bw-breadcrumbs li,\n%%SELECTOR%% .bw-breadcrumbs li a {\n  color: var(--bde-background-color)!important;\n}\n",
+          "breakpoint_tablet_landscape": null,
+          "breakpoint_phone_portrait": null,
+          "breakpoint_phone_landscape": null
+        }
+      }
+    }
+  },
+  {
+    "name": ".breadcrumbs-centerd",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% ul.bw-breadcrumbs {\n  justify-content: center;\n}"
+        }
+      }
+    }
+  },
+
+  {
+    "name": ".pg_home-grid-1",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% {\n  grid-column: span 2;\n}",
+          "breakpoint_tablet_landscape": "%%SELECTOR%% {\n  grid-column: span 2;\n}",
+          "breakpoint_tablet_portrait": "%%SELECTOR%% {\n  grid-column: span 1;\n}"
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg_home-grid-2",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% {\n  grid-column: span 6;\n}",
+          "breakpoint_tablet_landscape": "%%SELECTOR%% {\n  grid-column: span 3;\n}",
+          "breakpoint_tablet_portrait": "%%SELECTOR%% {\n  grid-column: span 1;\n}",
+          "breakpoint_phone_landscape": null
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg_pkg_inc-heading-outer",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% {\n  grid-column: span 3;\n}",
+          "breakpoint_tablet_landscape": null,
+          "breakpoint_tablet_portrait": null
+        }
+      }
+    }
+  },
+
+  {
+    "name": ".pg_grid--5--3",
+    "type": "class",
+    "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  grid-column: span 3;\n}"}}}
+  },
+  {"name": ".pg_grid--5-2", "type": "class", "properties": {}},
+  {
+    "name": ".pg_grid--8-5",
+    "type": "class",
+    "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  grid-column: span 5;\n}"}}}
+  },
+  {
+    "name": ".pg_grid--8-3",
+    "type": "class",
+    "properties": {"custom_css": {"css": {"breakpoint_base": "%%SELECTOR%% {\n  grid-column: span 3;\n}"}}}
+  },
+  {"name": ".pg_grid_7_5", "type": "class", "properties": {"custom_css": {"css": {"breakpoint_base": null}}}},
+  {
+    "name": ".pg_grid_7_6",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% {\n  grid-column: span 6;\n}",
+          "breakpoint_tablet_landscape": null,
+          "breakpoint_phone_landscape": null
+        }
+      }
+    }
+  },
+  {"name": ".gp_grid_6_1", "type": "class", "properties": {"custom_css": {"css": {"breakpoint_tablet_landscape": null}}}},
+  {
+    "name": ".gp_grid_6_5",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% {\n  grid-column: span 5;\n}",
+          "breakpoint_tablet_landscape": null
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg_grid_12_2",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% {\n  grid-column: span 2;\n}",
+          "breakpoint_tablet_landscape": "%%SELECTOR%% {\n  grid-column: span 3;\n}",
+          "breakpoint_tablet_portrait": "%%SELECTOR%% {\n  grid-column: span 12;\n  Order: 2;\n}"
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg_grid_12_10",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": "%%SELECTOR%% {\n  grid-column: span 10;\n}",
+          "breakpoint_tablet_landscape": "%%SELECTOR%% {\n  grid-column: span 9;\n}",
+          "breakpoint_tablet_portrait": "%%SELECTOR%% {\n  grid-column: span 12;\n}"
+        }
+      }
+    }
+  },
+
+  {
+    "name": ".pg_home-pck-title",
+    "type": "class",
+    "properties": {
+      "spacing": {
+        "padding": {
+          "breakpoint_base": {
+            "left":   {"number": 10, "unit": "px", "style": "10px"},
+            "right":  {"number": 10, "unit": "px", "style": "10px"},
+            "top":    {"number": 10, "unit": "px", "style": "10px"},
+            "bottom": {"number": 10, "unit": "px", "style": "10px"}
+          },
+          "breakpoint_tablet_portrait": {
+            "left":   {"number": 5,  "unit": "px", "style": "5px"},
+            "right":  {"number": 5,  "unit": "px", "style": "5px"},
+            "top":    {"number": 2,  "unit": "px", "style": "2px"},
+            "bottom": {"number": 10, "unit": "px", "style": "10px"}
+          },
+          "breakpoint_phone_portrait": {
+            "top":    {"number": 5, "unit": "px", "style": "5px"},
+            "bottom": {"number": 0, "unit": "px", "style": "0px"}
+          },
+          "breakpoint_phone_landscape": {
+            "top":    {"number": 5, "unit": "px", "style": "5px"},
+            "bottom": {"number": 0, "unit": "px", "style": "0px"}
+          }
+        }
+      },
+      "typography": {
+        "text_align": {"breakpoint_base": "center"},
+        "typography": {
+          "custom": {
+            "customTypography": {
+              "fontSize": {
+                "breakpoint_base": {"number": 20, "unit": "px", "style": "20px"},
+                "breakpoint_tablet_portrait": {"number": 18, "unit": "px", "style": "18px"},
+                "breakpoint_phone_portrait":  {"number": 16, "unit": "px", "style": "16px"},
+                "breakpoint_phone_landscape": {"number": 16, "unit": "px", "style": "16px"}
+              },
+              "fontWeight": {"breakpoint_phone_portrait": "700"}
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg_home-pck-text",
+    "type": "class",
+    "properties": {
+      "typography": {
+        "typography": {
+          "custom": {
+            "customTypography": {
+              "fontSize": {"breakpoint_base": {"number": 14, "unit": "px", "style": "14px"}}
+            }
+          }
+        }
+      },
+      "spacing": {
+        "padding": {"breakpoint_phone_landscape": {"top": {"number": 5, "unit": "px", "style": "5px"}}}
+      }
+    }
+  },
+
+  {
+    "name": ".pg_benefits-grid",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_tablet_portrait": "%%SELECTOR%% {\n  display: none;\n}"
+        }
+      }
+    }
+  },
+  {
+    "name": ".pg_package-image",
+    "type": "class",
+    "properties": {
+      "custom_css": {
+        "css": {
+          "breakpoint_base": null,
+          "breakpoint_phone_landscape": "%%SELECTOR%% {\n  order: 2;\n}"
+        }
+      }
+    }
+  },
+
+  {
+    "name": ".pg_exta_overlay",
+    "type": "class",
+    "properties": {
+      "layout": {
+        "advanced": {
+          "position": {
+            "position": {"breakpoint_base": "absolute"},
+            "bottom":   {"breakpoint_base": {"number": 0, "unit": "px", "style": "0px"}},
+            "left":     {"breakpoint_base": {"number": 0, "unit": "px", "style": "0px"}}
+          }
+        }
+      },
+      "size": {
+        "width":      {"breakpoint_base": {"number": 100, "unit": "%", "style": "100%"}},
+        "min_height": {"breakpoint_phone_landscape": {"number": 50, "unit": "%", "style": "50%"}}
+      },
+      "background": {
+        "layers": {
+          "breakpoint_phone_landscape": [
+            {
+              "type": "gradient",
+              "gradient": {
+                "points": [
+                  {"left": 0, "red": 0, "green": 0, "blue": 0, "alpha": 1},
+                  {"left": 97.94871794871794, "red": 255, "green": 255, "blue": 255, "alpha": 0}
+                ],
+                "type": "linear",
+                "degree": 0,
+                "svgValue": "<linearGradient x1=\"0.5\" y1=\"1\" x2=\"0.5\" y2=\"0\" id=\"%%GRADIENTID%%\"><stop stop-opacity=\"1\" stop-color=\"#000000\" offset=\"0\"></stop><stop stop-opacity=\"0\" stop-color=\"#ffffff\" offset=\"0.9794871794871794\"></stop></linearGradient>",
+                "value": "linear-gradient(0deg,rgba(0, 0, 0, 1) 0%,rgba(255, 255, 255, 0) 97.94871794871794%)"
+              },
+              "blend": "multiply"
+            }
+          ]
+        }
+      }
+    }
+  }
+]
