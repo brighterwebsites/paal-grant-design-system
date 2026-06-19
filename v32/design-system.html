@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paal Grant — Design System v32</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Raleway",sans-serif;background:#1a1a1a;color:#c8c5be;-webkit-font-smoothing:antialiased}
+
+/* ── DS LAYOUT ── */
+.ds-wrapper{max-width:1400px;margin:0 auto;padding:0 52px 120px}
+.ds-header{padding:80px 52px 64px;background:#111;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:0}
+.ds-nav{display:flex;gap:0;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,0.07);background:#111;position:sticky;top:0;z-index:100}
+.ds-nav a{font-size:0.62rem;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:#808080;padding:18px 24px;text-decoration:none;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap}
+.ds-nav a:hover{color:#eceae4;border-bottom-color:rgba(138,155,122,0.6)}
+.ds-section{padding:80px 0 0}
+.ds-section+.ds-section{border-top:1px solid rgba(255,255,255,0.07);margin-top:80px}
+.ds-section-title{font-size:0.55rem;font-weight:600;letter-spacing:0.5em;text-transform:uppercase;color:rgba(138,155,122,0.7);margin-bottom:8px}
+.ds-section-name{font-size:2rem;font-weight:100;letter-spacing:0.08em;color:#eceae4;margin-bottom:48px}
+.ds-subsection{margin-bottom:56px}
+.ds-subsection-label{font-size:0.55rem;font-weight:500;letter-spacing:0.4em;text-transform:uppercase;color:#808080;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.ds-row{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+.ds-col{display:flex;flex-direction:column;gap:16px}
+.ds-label{font-size:0.6rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:#808080;margin-top:8px}
+.ds-value{font-size:0.72rem;font-weight:300;color:#a8a5a0;letter-spacing:0.04em}
+.ds-preview-bg{background:#2b2b2b;padding:40px;border-radius:8px;border:1px solid rgba(255,255,255,0.07)}
+.ds-preview-dark{background:#222222;padding:40px;border-radius:8px;border:1px solid rgba(255,255,255,0.07)}
+.ds-preview-light{background:#f9f2e2;padding:40px;border-radius:8px;border:1px solid rgba(138,145,120,0.25)}
+.ds-code{font-family:monospace;font-size:0.72rem;color:#a8b299;background:rgba(138,155,122,0.08);padding:3px 8px;border-radius:4px}
+.note{font-size:0.75rem;font-weight:300;line-height:1.8;color:#808080;font-style:italic;margin-top:12px}
+
+/* ─────────────────────────────
+   1. COLOR PALETTE
+───────────────────────────────*/
+.swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+.swatch{border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.08)}
+.swatch-color{height:80px}
+.swatch-info{padding:14px 16px;background:#1a1a1a}
+.swatch-name{font-size:0.7rem;font-weight:500;letter-spacing:0.1em;color:#eceae4;margin-bottom:4px}
+.swatch-hex{font-size:0.65rem;font-weight:300;font-family:monospace;color:#808080}
+.swatch-use{font-size:0.6rem;font-weight:300;letter-spacing:0.06em;color:#606060;margin-top:3px;line-height:1.5}
+
+/* ─────────────────────────────
+   2. TYPOGRAPHY
+───────────────────────────────*/
+.type-specimen{padding:24px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:baseline}
+.type-specimen:last-child{border-bottom:none}
+.type-meta{display:flex;flex-direction:column;gap:4px;padding-top:4px}
+.type-role{font-size:0.58rem;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:rgba(138,155,122,0.75)}
+.type-specs{font-size:0.62rem;font-weight:300;letter-spacing:0.06em;color:#808080;line-height:1.7;font-family:monospace}
+
+/* ─────────────────────────────
+   3. SPACING
+───────────────────────────────*/
+.spacing-row{display:flex;align-items:flex-end;gap:0;flex-wrap:wrap}
+.spacing-item{display:flex;flex-direction:column;align-items:center;gap:8px}
+.spacing-bar{background:rgba(138,155,122,0.35);width:40px;border-radius:3px 3px 0 0}
+.spacing-val{font-size:0.58rem;font-weight:400;letter-spacing:0.1em;color:#a8b299;font-family:monospace}
+.spacing-name{font-size:0.55rem;font-weight:300;letter-spacing:0.06em;color:#606060}
+
+/* ─────────────────────────────
+   4. BUTTONS
+───────────────────────────────*/
+.btn-sage{display:inline-block;background:rgba(138,155,122,0.15);border:1px solid rgba(138,155,122,0.7);color:#eceae4;padding:14px 44px;font-size:0.65rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background 0.28s,border-color 0.28s;border-radius:6px}
+.btn-sage:hover{background:rgba(138,155,122,0.3);border-color:rgba(138,155,122,1)}
+.btn-ghost{display:inline-block;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);padding:14px 44px;font-size:0.65rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:border-color 0.28s,color 0.28s;border-radius:6px}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.7);color:#eceae4}
+.nav-cta-demo{display:inline-block;border:1px solid rgba(138,155,122,0.6);color:#eceae4;padding:10px 28px;font-size:0.7rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background 0.25s,border-color 0.25s;border-radius:6px}
+.nav-cta-demo:hover{background:rgba(138,155,122,0.2);border-color:rgba(138,155,122,1)}
+.btn-inverted{display:inline-block;background:#1e2419;border:1px solid #2d3022;color:#f9f2e2;padding:14px 44px;font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background 0.28s;border-radius:6px}
+.btn-inverted:hover{background:#252d1e}
+
+/* ─────────────────────────────
+   5. NAV
+───────────────────────────────*/
+.nav-demo{display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:100px;background:linear-gradient(to bottom,rgba(8,11,6,0.82) 0%,transparent 100%);border-radius:8px;position:relative;overflow:hidden}
+.nav-demo-bg{position:absolute;inset:0;background:url('https://paalgrant.com/wp-content/uploads/2026/03/mt-buninyong-country-estate-brick-archway-entrance-paal-grant-050-1200x630.jpg') center/cover;z-index:-1;opacity:0.35;border-radius:8px}
+.logo-text-demo{display:flex;flex-direction:column;gap:1px}
+.logo-name-demo{font-size:1rem;font-weight:200;letter-spacing:0.32em;text-transform:uppercase;color:#eceae4;line-height:1}
+.logo-sub-demo{font-size:0.38rem;font-weight:300;letter-spacing:0.52em;text-transform:uppercase;color:rgba(138,155,122,0.8)}
+.nav-links-demo{display:flex;align-items:center;gap:36px;list-style:none}
+.nav-links-demo a{font-size:0.72rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:#eceae4;text-decoration:none;white-space:nowrap}
+
+/* ─────────────────────────────
+   6. SECTION LABEL + TITLE
+───────────────────────────────*/
+.section-label{font-size:0.58rem;font-weight:300;letter-spacing:0.45em;text-transform:uppercase;color:rgba(138,155,122,0.9);margin-bottom:18px;display:block}
+.section-title{font-size:clamp(2rem,4.5vw,3.8rem);font-weight:100;letter-spacing:0.08em;line-height:1.1;color:#eceae4}
+
+/* ─────────────────────────────
+   7. DIVIDER
+───────────────────────────────*/
+.intro-divider{display:flex;align-items:center;gap:22px}
+.div-line{width:88px;height:1px;background:rgba(138,155,122,0.38)}
+.div-dia{width:7px;height:7px;background:rgba(138,155,122,0.85);transform:rotate(45deg)}
+
+/* ─────────────────────────────
+   8. AWARD BADGE
+───────────────────────────────*/
+.award-badge{display:inline-flex;align-items:center;gap:14px;background:rgba(138,155,122,0.1);border:1px solid rgba(138,155,122,0.45);padding:16px 36px;border-radius:8px}
+.award-stars{color:rgba(138,155,122,1);font-size:0.95rem;letter-spacing:5px}
+.award-text{font-size:0.95rem;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:rgba(138,155,122,1)}
+
+/* ─────────────────────────────
+   9. PACKAGE CARDS
+───────────────────────────────*/
+.pkg-cards-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;border-radius:10px;overflow:visible}
+.hpk{background:#1e2419;border:1px solid rgba(184,192,160,0.3);border-left:3px solid #b8c0a0;padding:40px 36px;display:flex;flex-direction:column;transition:background 0.3s,border-color 0.3s;border-radius:8px}
+.hpk:hover{background:#252d1e}
+.hpk.mid{background:#f9f2e2;border:2px solid #8a9178;border-top:3px solid #69614e;border-left:3px solid #69614e;position:relative;border-radius:8px}
+.hpk.mid::before{content:"Most Popular";position:absolute;top:0;right:0;font-size:0.48rem;font-weight:600;letter-spacing:0.32em;text-transform:uppercase;color:#69614e;padding:7px 14px;border-left:1px solid rgba(106,97,78,0.25);border-bottom:1px solid rgba(106,97,78,0.25);background:rgba(106,97,78,0.06)}
+.hpk-size{font-size:0.68rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:#8a9178;margin-bottom:14px;display:block}
+.hpk.mid .hpk-size{color:#69614e}
+.hpk-name{font-size:1.6rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#f9f2e2;margin-bottom:5px}
+.hpk.mid .hpk-name{color:#2d3022}
+.hpk-area{font-size:0.78rem;font-weight:700;letter-spacing:0.08em;color:#d5c7ad;margin-bottom:24px}
+.hpk.mid .hpk-area{color:#69614e}
+.hpk-price{display:flex;align-items:baseline;gap:5px;margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid rgba(138,145,120,0.2)}
+.hpk.mid .hpk-price{border-bottom-color:rgba(106,97,78,0.2)}
+.hpk-amt{font-size:2.4rem;font-weight:500;color:#f9f2e2;letter-spacing:0.02em}
+.hpk.mid .hpk-amt{color:#2d3022}
+.hpk-gst{font-size:0.68rem;font-weight:500;color:#d5c7ad;letter-spacing:0.1em}
+.hpk.mid .hpk-gst{color:#8a9178}
+.hpk-cta{display:block;text-align:center;padding:13px;border:1px solid rgba(184,192,160,0.5);font-size:0.6rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#f9f2e2;cursor:pointer;margin-top:auto;text-decoration:none;transition:background 0.28s,border-color 0.28s;border-radius:6px;background:rgba(184,192,160,0.1)}
+.hpk-cta:hover{background:rgba(184,192,160,0.2);border-color:#b8c0a0;color:#f9f2e2}
+.hpk.mid .hpk-cta{background:#1e2419;border-color:#2d3022;color:#f9f2e2}
+.hpk.mid .hpk-cta:hover{background:#252d1e}
+
+/* ─────────────────────────────
+   10. PROJECT CARDS
+───────────────────────────────*/
+.proj-card-demo{position:relative;overflow:hidden;cursor:pointer;background:#1a1e14;border-radius:10px;aspect-ratio:4/3}
+.proj-card-demo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s ease}
+.proj-card-demo:hover img{transform:scale(1.05)}
+.proj-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,9,5,0.88) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
+.proj-loc{font-size:0.6rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(138,155,122,0.9);margin-bottom:6px}
+.proj-name{font-size:1.1rem;font-weight:200;letter-spacing:0.06em;color:#eceae4}
+.proj-grid-demo{display:grid;grid-template-columns:1.55fr 1fr;grid-template-rows:1fr 1fr;gap:3px;height:360px;border-radius:12px;overflow:hidden}
+.proj-grid-demo .proj-card-demo{border-radius:0;aspect-ratio:auto}
+.proj-grid-demo .proj-card-demo:first-child{grid-row:1/3}
+
+/* ─────────────────────────────
+   11. REVIEW CARD
+───────────────────────────────*/
+.review-card{background:#323232;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:36px 36px 32px;max-width:380px;display:flex;flex-direction:column;gap:18px;transition:border-color 0.3s,transform 0.3s}
+.review-card:hover{border-color:rgba(168,178,153,0.4);transform:translateY(-4px)}
+.review-card-top{display:flex;align-items:center;gap:14px}
+.review-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:300;color:#2b2b2b;flex-shrink:0}
+.review-name{font-size:0.85rem;font-weight:400;letter-spacing:0.06em;color:#eceae4;margin-bottom:2px}
+.review-date{font-size:0.62rem;font-weight:300;letter-spacing:0.1em;color:#a8a5a0}
+.review-stars{display:flex;gap:3px;margin-left:auto}
+.review-stars span{color:#a8b299;font-size:0.85rem}
+.review-text{font-size:0.88rem;font-weight:300;line-height:1.85;color:#c8c5be;font-style:italic;flex:1}
+.review-text::before{content:open-quote;color:rgba(168,178,153,0.4);font-size:2rem;line-height:0;vertical-align:-0.5em;margin-right:4px}
+.review-google{display:flex;align-items:center;gap:8px;font-size:0.6rem;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:#a8a5a0;border-top:1px solid rgba(255,255,255,0.07);padding-top:16px}
+.review-google-dot{width:6px;height:6px;border-radius:50%;background:#a8b299}
+
+/* ─────────────────────────────
+   12. CREDENTIAL / AWARD CARD
+───────────────────────────────*/
+.cred-item-demo{background:#1e1e1c;border:1px solid rgba(180,145,60,0.3);border-top:2px solid rgba(210,170,80,0.75);border-radius:12px;padding:32px 36px 28px;width:280px;display:flex;flex-direction:column;align-items:center;gap:0;transition:transform 0.3s,border-color 0.3s}
+.cred-item-demo:hover{transform:translateY(-4px);border-top-color:rgba(210,170,80,0.95)}
+.cred-award-title{font-size:0.54rem;font-weight:400;letter-spacing:0.38em;text-transform:uppercase;color:rgba(210,170,80,0.8);text-align:center;margin-bottom:10px;display:block}
+.cred-award-name{font-size:0.9rem;font-weight:200;letter-spacing:0.08em;color:#eceae4;text-align:center;line-height:1.4;margin-bottom:8px;display:block}
+.cred-award-sub{font-size:0.65rem;font-weight:300;letter-spacing:0.12em;color:rgba(210,170,80,0.55);text-align:center;display:block;line-height:1.5}
+
+/* ─────────────────────────────
+   13. BIO / PHOTO BLOCK
+───────────────────────────────*/
+.bio-photo-demo{display:flex;flex-direction:column;max-width:260px}
+.bio-photo-demo img{width:100%;display:block;object-fit:cover;aspect-ratio:3/4;border-radius:8px 8px 0 0;filter:grayscale(8%)}
+.bio-photo-name{padding:12px 14px;background:#323232;border-radius:0 0 8px 8px;border:1px solid rgba(255,255,255,0.08);border-top:2px solid #a8b299}
+.bio-photo-name span:first-child{display:block;font-size:0.85rem;font-weight:300;letter-spacing:0.12em;text-transform:uppercase;color:#eceae4;margin-bottom:3px}
+.bio-photo-name span:last-child{display:block;font-size:0.6rem;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:#a8b299}
+
+/* ─────────────────────────────
+   14. PROCESS STEP
+───────────────────────────────*/
+.process-step-demo{display:grid;grid-template-columns:120px 1fr;gap:40px;padding:48px 0;border-top:1px solid rgba(255,255,255,0.08);align-items:start}
+.psb-num{font-size:4rem;font-weight:700;color:rgba(138,155,122,0.55);letter-spacing:0.06em;line-height:1}
+.psb-title{font-size:1.6rem;font-weight:200;letter-spacing:0.12em;text-transform:uppercase;color:#eceae4;margin-bottom:14px}
+.psb-body{font-size:0.88rem;font-weight:300;line-height:1.9;color:#c8c5be;max-width:520px}
+.psb-body strong{color:rgba(255,255,255,0.9);font-weight:400}
+.psb-tag{display:inline-block;margin-top:18px;background:rgba(138,155,122,0.1);border:1px solid rgba(138,155,122,0.4);padding:8px 20px;font-size:0.62rem;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:rgba(138,155,122,0.9);border-radius:8px}
+.three-d-callout{background:#2b2b2b;border-left:2px solid rgba(138,155,122,0.6);padding:28px 32px;margin-top:24px;border-radius:8px}
+.three-d-callout p{font-size:1rem;font-weight:200;font-style:italic;letter-spacing:0.04em;line-height:1.7;color:#eceae4}
+
+/* ─────────────────────────────
+   15. FORM ELEMENTS
+───────────────────────────────*/
+.contact-form-demo{display:flex;flex-direction:column;gap:18px;max-width:480px}
+.form-field{display:flex;flex-direction:column;gap:8px}
+.form-field label{font-size:0.6rem;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:#a8a5a0}
+.form-field input,.form-field textarea,.form-field select{background:rgba(30,30,26,0.3);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;color:#eceae4;font-family:"Raleway",sans-serif;font-size:0.85rem;font-weight:300;outline:none;transition:border-color 0.25s;width:100%;border-radius:6px}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{border-color:rgba(138,155,122,0.7)}
+.form-field textarea{resize:vertical;min-height:100px}
+.form-field select option{background:#1a1e14;color:#eceae4}
+
+/* ─────────────────────────────
+   16. FOOTER
+───────────────────────────────*/
+.footer-demo{background:#222222;padding:56px 52px 32px;border-top:1px solid rgba(255,255,255,0.07);border-radius:12px 12px 0 0}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:44px}
+.f-logo-text{display:flex;flex-direction:column;gap:3px;margin-bottom:16px}
+.f-logo-name{font-size:1.1rem;font-weight:200;letter-spacing:0.3em;text-transform:uppercase;color:#eceae4;line-height:1}
+.f-logo-sub{font-size:0.42rem;font-weight:300;letter-spacing:0.5em;text-transform:uppercase;color:rgba(138,155,122,0.8)}
+.f-tagline{font-size:0.78rem;font-weight:300;line-height:1.8;color:#a8a5a0}
+.f-col h4{font-size:0.58rem;font-weight:400;letter-spacing:0.3em;text-transform:uppercase;color:rgba(138,155,122,0.75);margin-bottom:20px}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.f-col ul a{font-size:0.8rem;font-weight:300;color:#a8a5a0;text-decoration:none;cursor:pointer;transition:color 0.25s}
+.f-col ul a:hover{color:rgba(255,255,255,0.8)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);flex-wrap:wrap;gap:12px}
+.footer-bottom span{font-size:0.62rem;font-weight:300;letter-spacing:0.1em;color:#808080}
+
+/* ─────────────────────────────
+   17. ANIMATIONS PREVIEW
+───────────────────────────────*/
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.9s,transform 0.9s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+.art-word{
+  font-family:"Raleway",sans-serif;font-size:1.6rem;font-weight:200;letter-spacing:0.18em;text-transform:uppercase;
+  color:#eceae4;display:inline-block;opacity:0;transform:translateY(40px) rotateX(30deg);transform-origin:center bottom;
+  animation:artWordIn 0.8s cubic-bezier(0.23,1,0.32,1) both;animation-delay:var(--d);
+}
+.art-accent{color:#a8b299}
+@keyframes artWordIn{0%{opacity:0;transform:translateY(40px) rotateX(30deg)}60%{opacity:1}100%{opacity:1;transform:translateY(0) rotateX(0deg)}}
+
+.hero-tagline-word{
+  font-family:"Raleway",sans-serif;font-size:1.6rem;font-weight:300;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(255,255,255,0.97);display:inline-block;opacity:0;
+  transform:translateY(60px) rotateX(40deg) scale(0.85);transform-origin:center bottom;
+  animation:rollIn 0.9s cubic-bezier(0.23,1,0.32,1) forwards;animation-delay:var(--d);
+}
+.hero-tagline-word.accent{color:rgba(178,195,163,1)}
+@keyframes rollIn{0%{opacity:0;transform:translateY(60px) rotateX(40deg) scale(0.85)}60%{opacity:1}100%{opacity:1;transform:translateY(0) rotateX(0deg) scale(1)}}
+
+/* ─────────────────────────────
+   18. BORDER RADIUS CHART
+───────────────────────────────*/
+.radius-grid{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:12px}
+.radius-box{background:rgba(138,155,122,0.15);border:1px solid rgba(138,155,122,0.4);width:80px;height:80px}
+
+/* ─────────────────────────────
+   19. SCROLLING MARQUEE DEMO
+───────────────────────────────*/
+.marquee-wrap{position:relative;overflow:hidden;padding:20px 0}
+.marquee-wrap::before,.marquee-wrap::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.marquee-wrap::before{left:0;background:linear-gradient(to right,#1a1a1a 0%,transparent 100%)}
+.marquee-wrap::after{right:0;background:linear-gradient(to left,#1a1a1a 0%,transparent 100%)}
+.marquee-track{display:flex;gap:24px;width:max-content;animation:marqueeScroll 20s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ─────────────────────────────
+   20. MISC UTILITY
+───────────────────────────────*/
+.v-rule{width:1px;height:80px;background:linear-gradient(to bottom,transparent,rgba(138,155,122,0.75));margin:0 auto}
+.location-line{font-size:0.72rem;font-weight:300;letter-spacing:0.35em;text-transform:uppercase;color:rgba(201,191,175,0.82)}
+.intro-headline{font-size:clamp(2.8rem,7.5vw,5rem);font-weight:100;letter-spacing:0.1em;text-transform:uppercase;color:#eceae4;line-height:1.06}
+.intro-headline .sub{display:block;font-size:0.4em;font-style:italic;font-weight:200;letter-spacing:0.16em;text-transform:none;color:#c8c5be;margin-bottom:12px}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<div class="ds-header">
+  <div style="max-width:1400px;margin:0 auto;padding:0 52px">
+    <p style="font-size:0.58rem;font-weight:500;letter-spacing:0.5em;text-transform:uppercase;color:rgba(138,155,122,0.7);margin-bottom:10px">Design System</p>
+    <h1 style="font-size:clamp(2.4rem,5vw,4rem);font-weight:100;letter-spacing:0.1em;color:#eceae4;margin-bottom:12px">Paal Grant Designs<br><span style="font-style:italic;font-weight:200;font-size:0.55em;letter-spacing:0.16em;color:#a8b299">In Landscaping</span></h1>
+    <p style="font-size:0.75rem;font-weight:300;letter-spacing:0.08em;color:#808080">Version 32 &nbsp;·&nbsp; June 2026 &nbsp;·&nbsp; Raleway / Dark Olive / Parchment</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════ DS NAV ═══════════════════════ -->
+<nav class="ds-nav">
+  <a href="#colors">Colors</a>
+  <a href="#typography">Typography</a>
+  <a href="#spacing">Spacing</a>
+  <a href="#buttons">Buttons</a>
+  <a href="#navigation">Navigation</a>
+  <a href="#section-pattern">Section Pattern</a>
+  <a href="#package-cards">Package Cards</a>
+  <a href="#project-cards">Project Cards</a>
+  <a href="#review-card">Review Card</a>
+  <a href="#award-card">Award Card</a>
+  <a href="#bio-block">Bio Block</a>
+  <a href="#process-step">Process Step</a>
+  <a href="#forms">Forms</a>
+  <a href="#footer">Footer</a>
+  <a href="#animations">Animations</a>
+  <a href="#border-radius">Border Radius</a>
+  <a href="#marquee">Marquee</a>
+</nav>
+
+<!-- ═══════════════════════ CONTENT ═══════════════════════ -->
+<div class="ds-wrapper">
+
+
+  <!-- ═══ 1. COLOR PALETTE ═══ -->
+  <section class="ds-section" id="colors">
+    <p class="ds-section-title">01</p>
+    <h2 class="ds-section-name">Color Palette</h2>
+
+    <div class="ds-subsection">
+      <p class="ds-subsection-label">Backgrounds</p>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#2b2b2b"></div>
+          <div class="swatch-info"><p class="swatch-name">Body Dark</p><p class="swatch-hex">#2b2b2b</p><p class="swatch-use">Primary page background</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#383838"></div>
+          <div class="swatch-info"><p class="swatch-name">Section Alt</p><p class="swatch-hex">#383838</p><p class="swatch-use">Alternating section bg</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#1e1e1c"></div>
+          <div class="swatch-info"><p class="swatch-name">Deeper Dark</p><p class="swatch-hex">#1e1e1c</p><p class="swatch-use">Credential strip bg</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#222222"></div>
+          <div class="swatch-info"><p class="swatch-name">Footer</p><p class="swatch-hex">#222222</p><p class="swatch-use">Footer background</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#323232"></div>
+          <div class="swatch-info"><p class="swatch-name">Card Surface</p><p class="swatch-hex">#323232</p><p class="swatch-use">Review cards, media cards</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#1e2419;border:1px solid rgba(255,255,255,0.06)"></div>
+          <div class="swatch-info"><p class="swatch-name">Olivewood Dark</p><p class="swatch-hex">#1e2419</p><p class="swatch-use">Pkg card bg (small/large)</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#f9f2e2"></div>
+          <div class="swatch-info"><p class="swatch-name">Parchment</p><p class="swatch-hex">#f9f2e2</p><p class="swatch-use">Most Popular card bg (inverted)</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <p class="ds-subsection-label">Text</p>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#eceae4"></div>
+          <div class="swatch-info"><p class="swatch-name">Headline</p><p class="swatch-hex">#eceae4</p><p class="swatch-use">Primary headings, nav links</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#c8c5be"></div>
+          <div class="swatch-info"><p class="swatch-name">Body</p><p class="swatch-hex">#c8c5be</p><p class="swatch-use">Body copy, body paragraphs</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#a8a5a0"></div>
+          <div class="swatch-info"><p class="swatch-name">Muted</p><p class="swatch-hex">#a8a5a0</p><p class="swatch-use">Secondary labels, dates</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#808080"></div>
+          <div class="swatch-info"><p class="swatch-name">Ghost</p><p class="swatch-hex">#808080</p><p class="swatch-use">Footer copyright, meta text</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#2d3022"></div>
+          <div class="swatch-info"><p class="swatch-name">Parchment Dark</p><p class="swatch-hex">#2d3022</p><p class="swatch-use">Headings on parchment cards</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#69614e"></div>
+          <div class="swatch-info"><p class="swatch-name">Parchment Mid</p><p class="swatch-hex">#69614e</p><p class="swatch-use">Secondary text on parchment cards</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <p class="ds-subsection-label">Accent — Sage / Olive</p>
+      <div class="swatch-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background:rgba(138,155,122,1)"></div>
+          <div class="swatch-info"><p class="swatch-name">Sage Full</p><p class="swatch-hex">rgba(138,155,122,1)</p><p class="swatch-use">Stars, active borders, highlights</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#a8b299"></div>
+          <div class="swatch-info"><p class="swatch-name">Sage Mid</p><p class="swatch-hex">#a8b299</p><p class="swatch-use">Stars, decorative dots, bio caption</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#8a9178"></div>
+          <div class="swatch-info"><p class="swatch-name">Olive</p><p class="swatch-hex">#8a9178</p><p class="swatch-use">Card borders, size labels</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#b8c0a0"></div>
+          <div class="swatch-info"><p class="swatch-name">Sage Light</p><p class="swatch-hex">#b8c0a0</p><p class="swatch-use">Card left borders, CTA text</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#d5c7ad"></div>
+          <div class="swatch-info"><p class="swatch-name">Parchment Warm</p><p class="swatch-hex">#d5c7ad</p><p class="swatch-use">Area labels, GST text on dark cards</p></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:rgba(210,170,80,0.85)"></div>
+          <div class="swatch-info"><p class="swatch-name">Gold</p><p class="swatch-hex">rgba(210,170,80,0.85)</p><p class="swatch-use">Award card top border, award labels</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 2. TYPOGRAPHY ═══ -->
+  <section class="ds-section" id="typography">
+    <p class="ds-section-title">02</p>
+    <h2 class="ds-section-name">Typography</h2>
+    <p class="note" style="margin-bottom:40px">All type is set in <strong style="color:#a8b299">Raleway</strong> via Google Fonts. Weights 100–800 are loaded.</p>
+
+    <div class="ds-preview-bg">
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-role">Display Hero</span>
+          <span class="type-specs">clamp(2.8rem,7.5vw,6.5rem)<br>weight 100<br>LS 0.1em · uppercase</span>
+        </div>
+        <div class="intro-headline"><span class="sub">Designed for living</span>Paal Grant</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-role">Section Title</span>
+          <span class="type-specs">clamp(2rem,4.5vw,3.8rem)<br>weight 100<br>LS 0.08em</span>
+        </div>
+        <div class="section-title">Featured Projects</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-role">Package Name</span>
+          <span class="type-specs">1.6rem<br>weight 800<br>LS 0.06em · uppercase</span>
+        </div>
+        <div style="font-size:1.6rem;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:#f9f2e2">Standard</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-role">Hero Tagline</span>
+          <span class="type-specs">clamp(1.2rem,2.5vw,2rem)<br>weight 300<br>LS 0.22em · uppercase</span>
+        </div>
+        <div style="font-size:clamp(1.2rem,2.5vw,2rem);font-weight:300;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.97)">Designed Like Art</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-role">Nav Link</span>
+          <span class="type-specs">0.72rem<br>weight 400<br>LS 0.2em · uppercase</span>
+        </div>
+        <div style="font-size:0.72rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:#eceae4">About Us</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-role">Section Label</span>
+          <span class="type-specs">0.58rem<br>weight 300<br>LS 0.45em · uppercase<br>color: sage</span>
+        </div>
+        <span class="section-label">Our Work</span>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-role">Body / Paragraph</span>
+          <span class="type-specs">0.88–0.98rem<br>weight 300<br>line-height 1.9</span>
+        </div>
+        <p style="font-size:0.95rem;font-weight:300;line-height:1.9;color:#c8c5be;max-width:600px">Paal Grant brings over two decades of horticultural knowledge and an <em style="font-style:italic;color:#d0cdc6">obsessive attention to craft</em> to every project — from intimate courtyard redesigns to sweeping country estate grounds.</p>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-role">Process Number</span>
+          <span class="type-specs">5rem<br>weight 700<br>LS 0.06em<br>color: sage 55%</span>
+        </div>
+        <div style="font-size:5rem;font-weight:700;color:rgba(138,155,122,0.55);letter-spacing:0.06em;line-height:1">01</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-role">Card Label / Size</span>
+          <span class="type-specs">0.68–0.78rem<br>weight 600–700<br>LS 0.28em · uppercase<br>color: olive / sage</span>
+        </div>
+        <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.28em;text-transform:uppercase;color:#8a9178">Small Garden</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-role">Price Amount</span>
+          <span class="type-specs">2.4–2.8rem<br>weight 500<br>LS 0.02em</span>
+        </div>
+        <div style="font-size:2.4rem;font-weight:500;color:#f9f2e2;letter-spacing:0.02em">$2,500</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-role">Button / CTA</span>
+          <span class="type-specs">0.6–0.7rem<br>weight 500<br>LS 0.2–0.25em · uppercase</span>
+        </div>
+        <div style="font-size:0.65rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#eceae4">Get Started Today</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <span class="type-role">Footer Nav / Small</span>
+          <span class="type-specs">0.8rem<br>weight 300<br>color: muted</span>
+        </div>
+        <div style="font-size:0.8rem;font-weight:300;color:#a8a5a0">Design Packages</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══ 3. SPACING ═══ -->
+  <section class="ds-section" id="spacing">
+    <p class="ds-section-title">03</p>
+    <h2 class="ds-section-name">Spacing Scale</h2>
+
+    <div class="ds-subsection">
+      <p class="ds-subsection-label">Core Spacing Units (used as padding/gap values)</p>
+      <div class="spacing-row" style="align-items:flex-end;gap:16px">
+        <div class="spacing-item"><div class="spacing-bar" style="height:3px"></div><p class="spacing-val">3px</p><p class="spacing-name">Grid gap</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:4px"></div><p class="spacing-val">4px</p><p class="spacing-name">Thumb gap</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:8px"></div><p class="spacing-val">8px</p><p class="spacing-name">Nav CTA pad</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:10px"></div><p class="spacing-val">10px</p><p class="spacing-name">Nav gap</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:14px"></div><p class="spacing-val">14px</p><p class="spacing-name">Label gap</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:18px"></div><p class="spacing-val">18px</p><p class="spacing-name">Form gap</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:24px"></div><p class="spacing-val">24px</p><p class="spacing-name">Card gap</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:28px"></div><p class="spacing-val">28px</p><p class="spacing-name">Card inner</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:32px"></div><p class="spacing-val">32px</p><p class="spacing-name">Block pad</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:40px"></div><p class="spacing-val">40px</p><p class="spacing-name">Card pad</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:44px"></div><p class="spacing-val">44px</p><p class="spacing-name">Card pad lg</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:52px"></div><p class="spacing-val">52px</p><p class="spacing-name">H-padding</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:64px"></div><p class="spacing-val">64px</p><p class="spacing-name">H-padding xl</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:80px"></div><p class="spacing-val">80px</p><p class="spacing-name">Section gap</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:100px"></div><p class="spacing-val">100px</p><p class="spacing-name">Section pad</p></div>
+        <div class="spacing-item"><div class="spacing-bar" style="height:120px"></div><p class="spacing-val">120px</p><p class="spacing-name">Section pad xl</p></div>
+      </div>
+    </div>
+
+    <div class="ds-subsection" style="margin-top:48px">
+      <p class="ds-subsection-label">Key Layout Rules</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px">
+        <div style="background:#222;padding:20px 24px;border:1px solid rgba(255,255,255,0.07);border-radius:8px">
+          <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:8px">Section Padding</p>
+          <p style="font-size:0.82rem;font-weight:300;color:#c8c5be;line-height:1.7"><span class="ds-code">100px 52px</span> desktop<br><span class="ds-code">52-64px 24px</span> mobile</p>
+        </div>
+        <div style="background:#222;padding:20px 24px;border:1px solid rgba(255,255,255,0.07);border-radius:8px">
+          <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:8px">Max Width</p>
+          <p style="font-size:0.82rem;font-weight:300;color:#c8c5be;line-height:1.7"><span class="ds-code">1200px</span> content<br><span class="ds-code">1300px</span> about grid<br><span class="ds-code">900px</span> contact</p>
+        </div>
+        <div style="background:#222;padding:20px 24px;border:1px solid rgba(255,255,255,0.07);border-radius:8px">
+          <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:8px">Nav Height</p>
+          <p style="font-size:0.82rem;font-weight:300;color:#c8c5be;line-height:1.7"><span class="ds-code">100px</span> default<br><span class="ds-code">80px</span> scrolled / solid state</p>
+        </div>
+        <div style="background:#222;padding:20px 24px;border:1px solid rgba(255,255,255,0.07);border-radius:8px">
+          <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:8px">Breakpoint</p>
+          <p style="font-size:0.82rem;font-weight:300;color:#c8c5be;line-height:1.7"><span class="ds-code">900px</span> mobile breakpoint<br>Hamburger nav, stacked grids</p>
+        </div>
+        <div style="background:#222;padding:20px 24px;border:1px solid rgba(255,255,255,0.07);border-radius:8px">
+          <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:8px">Grid Gaps</p>
+          <p style="font-size:0.82rem;font-weight:300;color:#c8c5be;line-height:1.7"><span class="ds-code">3px</span> photo grids<br><span class="ds-code">12px</span> package cards<br><span class="ds-code">24px</span> review/cred carousels</p>
+        </div>
+        <div style="background:#222;padding:20px 24px;border:1px solid rgba(255,255,255,0.07);border-radius:8px">
+          <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:8px">Grid Columns</p>
+          <p style="font-size:0.82rem;font-weight:300;color:#c8c5be;line-height:1.7">Featured: <span class="ds-code">1.55fr 1fr</span><br>Packages: <span class="ds-code">repeat(3,1fr)</span><br>Portfolio: <span class="ds-code">repeat(12,1fr)</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 4. BUTTONS ═══ -->
+  <section class="ds-section" id="buttons">
+    <p class="ds-section-title">04</p>
+    <h2 class="ds-section-name">Buttons &amp; CTAs</h2>
+
+    <div class="ds-preview-bg">
+      <div class="ds-row" style="flex-wrap:wrap;gap:32px;align-items:flex-start">
+
+        <div class="ds-col">
+          <a class="btn-sage" href="#">View Our Projects</a>
+          <p class="ds-label">.btn-sage</p>
+          <p class="ds-value">bg rgba(138,155,122,0.15) · border sage 0.7 · 6px radius<br>pad 14px 44px · 0.65rem · weight 400 · LS 0.25em</p>
+        </div>
+
+        <div class="ds-col">
+          <a class="btn-ghost" href="#">Learn More</a>
+          <p class="ds-label">.btn-ghost</p>
+          <p class="ds-value">border rgba(255,255,255,0.3) · 6px radius<br>pad 14px 44px · 0.65rem · weight 400 · LS 0.25em</p>
+        </div>
+
+        <div class="ds-col">
+          <a class="nav-cta-demo" href="#">Get a Quote</a>
+          <p class="ds-label">.nav-cta</p>
+          <p class="ds-value">border sage 0.6 · 6px radius<br>pad 10px 28px · 0.7rem · weight 400 · LS 0.2em</p>
+        </div>
+
+        <div class="ds-col" style="background:#f9f2e2;padding:24px;border-radius:8px">
+          <a class="btn-inverted" href="#">Book Consultation</a>
+          <p class="ds-label" style="color:#69614e">Parchment Card CTA</p>
+          <p class="ds-value" style="color:#8a9178">bg #1e2419 · border #2d3022 · text #f9f2e2<br>weight 500 · LS 0.2em</p>
+        </div>
+
+      </div>
+
+      <div style="margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.06)">
+        <p class="ds-subsection-label">States</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:16px">
+          <div style="background:#222;padding:16px;border-radius:6px;border:1px solid rgba(255,255,255,0.06)">
+            <p style="font-size:0.6rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:6px">Default</p>
+            <p style="font-size:0.72rem;font-weight:300;color:#c8c5be">Base styles as shown above</p>
+          </div>
+          <div style="background:#222;padding:16px;border-radius:6px;border:1px solid rgba(255,255,255,0.06)">
+            <p style="font-size:0.6rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:6px">:hover</p>
+            <p style="font-size:0.72rem;font-weight:300;color:#c8c5be">Increased bg opacity · brighter border · color #eceae4</p>
+          </div>
+          <div style="background:#222;padding:16px;border-radius:6px;border:1px solid rgba(255,255,255,0.06)">
+            <p style="font-size:0.6rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:6px">Transition</p>
+            <p style="font-size:0.72rem;font-weight:300;color:#c8c5be">0.25–0.28s ease (background, border-color, color)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 5. NAVIGATION ═══ -->
+  <section class="ds-section" id="navigation">
+    <p class="ds-section-title">05</p>
+    <h2 class="ds-section-name">Navigation</h2>
+
+    <div class="ds-subsection">
+      <p class="ds-subsection-label">Default State — Transparent Gradient</p>
+      <div class="nav-demo">
+        <div class="nav-demo-bg"></div>
+        <div class="logo-text-demo">
+          <span class="logo-name-demo">Paal Grant</span>
+          <span class="logo-sub-demo">Designs In Landscaping</span>
+        </div>
+        <ul class="nav-links-demo">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Process</a></li>
+          <li><a href="#">Design Packages</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><a class="nav-cta-demo" href="#">Contact</a></li>
+        </ul>
+      </div>
+      <p class="note">On scroll: transitions to <span class="ds-code">rgba(43,43,43,0.97)</span> + <span class="ds-code">backdrop-filter:blur(14px)</span>. Height shrinks from 100px → 80px. Logo height 68px → 52px.</p>
+    </div>
+
+    <div class="ds-subsection">
+      <p class="ds-subsection-label">Solid / Scrolled State</p>
+      <div style="background:rgba(43,43,43,0.97);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:80px;border-radius:8px">
+        <div class="logo-text-demo">
+          <span class="logo-name-demo" style="font-size:0.85rem">Paal Grant</span>
+          <span class="logo-sub-demo">Designs In Landscaping</span>
+        </div>
+        <ul class="nav-links-demo">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Process</a></li>
+          <li><a href="#">Design Packages</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><a class="nav-cta-demo" href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ds-subsection">
+      <p class="ds-subsection-label">Link Underline Animation</p>
+      <div class="ds-preview-bg" style="padding:20px 32px">
+        <p style="font-size:0.75rem;font-weight:300;color:#a8a5a0;line-height:1.8">Nav links use a <span class="ds-code">::after</span> pseudo-element: <span class="ds-code">height:1px</span>, <span class="ds-code">background:rgba(138,155,122,0.85)</span>, <span class="ds-code">scaleX(0→1)</span> on hover/active. Transform-origin: left. Duration: 0.32s.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 6. SECTION PATTERN ═══ -->
+  <section class="ds-section" id="section-pattern">
+    <p class="ds-section-title">06</p>
+    <h2 class="ds-section-name">Section Label + Title Pattern</h2>
+
+    <div class="ds-preview-bg">
+      <span class="section-label">Our Featured Work</span>
+      <div class="section-title" style="margin-bottom:32px">Bringing Spaces<br>to Life</div>
+      <div class="intro-divider" style="margin-bottom:0">
+        <div class="div-line"></div>
+        <div class="div-dia"></div>
+        <div class="div-line"></div>
+      </div>
+    </div>
+
+    <p class="note" style="margin-top:20px">Label: 0.58rem / weight 300 / LS 0.45em / uppercase / sage 90%. Title: clamp(2rem,4.5vw,3.8rem) / weight 100 / LS 0.08em. Divider: two 88px lines + 7×7 rotated diamond, both sage 38–85%.</p>
+
+    <div class="ds-subsection" style="margin-top:40px">
+      <p class="ds-subsection-label">Award Badge</p>
+      <div class="ds-preview-bg" style="display:flex;justify-content:center">
+        <div class="award-badge">
+          <span class="award-stars">★★★★★</span>
+          <span class="award-text">Award Winning Landscape Design</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-subsection" style="margin-top:32px">
+      <p class="ds-subsection-label">Location Line</p>
+      <div class="ds-preview-bg">
+        <p class="location-line">Ballarat &amp; Surrounds &nbsp;·&nbsp; Victoria, Australia</p>
+      </div>
+      <p class="note">0.72rem / weight 300 / LS 0.35em / uppercase / color rgba(201,191,175,0.82)</p>
+    </div>
+
+    <div class="ds-subsection" style="margin-top:32px">
+      <p class="ds-subsection-label">Vertical Rule</p>
+      <div class="ds-preview-bg" style="display:flex;justify-content:center">
+        <div class="v-rule"></div>
+      </div>
+      <p class="note">1px wide, gradient from transparent → rgba(138,155,122,0.75), 80px tall. Used as section separator.</p>
+    </div>
+  </section>
+
+
+  <!-- ═══ 7. PACKAGE CARDS ═══ -->
+  <section class="ds-section" id="package-cards">
+    <p class="ds-section-title">07</p>
+    <h2 class="ds-section-name">Package Cards</h2>
+    <p class="note" style="margin-bottom:32px">Three-card grid: Small Garden · Standard (Most Popular, inverted) · Large Estate. The middle card is the only inverted card — parchment background with dark olive text.</p>
+
+    <div class="pkg-cards-row">
+
+      <div class="hpk">
+        <span class="hpk-size">Small Garden</span>
+        <div class="hpk-name">Essentials</div>
+        <div class="hpk-area">Up to 200m²</div>
+        <div class="hpk-price">
+          <span class="hpk-amt">$2,500</span>
+          <span class="hpk-gst">+ GST</span>
+        </div>
+        <a class="hpk-cta" href="#">Get Started</a>
+      </div>
+
+      <div class="hpk mid">
+        <span class="hpk-size">Standard</span>
+        <div class="hpk-name">Signature</div>
+        <div class="hpk-area">200m² – 800m²</div>
+        <div class="hpk-price">
+          <span class="hpk-amt">$4,500</span>
+          <span class="hpk-gst">+ GST</span>
+        </div>
+        <a class="hpk-cta" href="#">Get Started</a>
+      </div>
+
+      <div class="hpk">
+        <span class="hpk-size">Large Estate</span>
+        <div class="hpk-name">Estate</div>
+        <div class="hpk-area">800m² +</div>
+        <div class="hpk-price">
+          <span class="hpk-amt">$8,500</span>
+          <span class="hpk-gst">+ GST</span>
+        </div>
+        <a class="hpk-cta" href="#">Get Started</a>
+      </div>
+
+    </div>
+
+    <div style="margin-top:32px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px">
+      <div style="background:#222;padding:20px 24px;border:1px solid rgba(255,255,255,0.07);border-radius:8px">
+        <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:8px">Dark Cards (Olivewood)</p>
+        <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7">bg <span class="ds-code">#1e2419</span> · border <span class="ds-code">rgba(184,192,160,0.3)</span><br>left border <span class="ds-code">3px solid #b8c0a0</span> · text <span class="ds-code">#f9f2e2</span></p>
+      </div>
+      <div style="background:#222;padding:20px 24px;border:1px solid rgba(255,255,255,0.07);border-radius:8px">
+        <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:8px">Parchment Card (Inverted)</p>
+        <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7">bg <span class="ds-code">#f9f2e2</span> · border <span class="ds-code">#8a9178</span><br>top+left <span class="ds-code">3px solid #69614e</span> · text <span class="ds-code">#2d3022</span></p>
+      </div>
+      <div style="background:#222;padding:20px 24px;border:1px solid rgba(255,255,255,0.07);border-radius:8px">
+        <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:8px">"Most Popular" Tag</p>
+        <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7">Absolute top-right corner via <span class="ds-code">::before</span><br>0.48rem / weight 600 / LS 0.32em / uppercase</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 8. PROJECT CARDS ═══ -->
+  <section class="ds-section" id="project-cards">
+    <p class="ds-section-title">08</p>
+    <h2 class="ds-section-name">Project Cards</h2>
+
+    <div class="ds-subsection">
+      <p class="ds-subsection-label">Featured Grid — 1.55fr / 1fr / 1fr (2-row right)</p>
+      <div class="proj-grid-demo">
+        <div class="proj-card-demo">
+          <img src="https://paalgrant.com/wp-content/uploads/2026/03/mt-buninyong-country-estate-brick-archway-entrance-paal-grant-050-1200x630.jpg" alt="">
+          <div class="proj-overlay">
+            <p class="proj-loc">Ballarat, VIC</p>
+            <p class="proj-name">Mt Buninyong Country Estate</p>
+          </div>
+        </div>
+        <div class="proj-card-demo">
+          <img src="https://paalgrant.com/wp-content/uploads/2026/02/mandala-stone-moon-gate-paal-grant-074.jpg" alt="">
+          <div class="proj-overlay">
+            <p class="proj-loc">Ballarat, VIC</p>
+            <p class="proj-name">Mandala Stone Garden</p>
+          </div>
+        </div>
+        <div class="proj-card-demo">
+          <img src="https://paalgrant.com/wp-content/uploads/2026/03/mt-buninyong-country-estate-brick-archway-entrance-paal-grant-050-1200x630.jpg" alt="">
+          <div class="proj-overlay">
+            <p class="proj-loc">Smythesdale, VIC</p>
+            <p class="proj-name">Private Estate Gardens</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-subsection" style="margin-top:32px">
+      <p class="ds-subsection-label">Single Card Anatomy</p>
+      <div style="display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start">
+        <div class="proj-card-demo" style="width:320px">
+          <img src="https://paalgrant.com/wp-content/uploads/2026/02/mandala-stone-moon-gate-paal-grant-074.jpg" alt="">
+          <div class="proj-overlay">
+            <p class="proj-loc">Ballarat, VIC</p>
+            <p class="proj-name">Mandala Stone Moon Gate</p>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;padding-top:8px">
+          <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:4px">Overlay</p>
+          <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7">Gradient: bottom 88% → transparent 55%<br><span class="ds-code">rgba(6,9,5,0.88)</span></p>
+          <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-top:8px;margin-bottom:4px">Location Label</p>
+          <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7">0.6rem / weight 300 / LS 0.25em / uppercase<br>color: sage 90%</p>
+          <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-top:8px;margin-bottom:4px">Project Name</p>
+          <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7">1.1rem / weight 200 / LS 0.06em<br>color: #eceae4</p>
+          <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-top:8px;margin-bottom:4px">Hover</p>
+          <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7">Image <span class="ds-code">scale(1.05)</span> over 0.7s ease</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 9. REVIEW CARD ═══ -->
+  <section class="ds-section" id="review-card">
+    <p class="ds-section-title">09</p>
+    <h2 class="ds-section-name">Review Card</h2>
+    <p class="note" style="margin-bottom:32px">Used in a scrolling marquee carousel on the home page. Cards are 380px wide and have a 12px border-radius.</p>
+
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-avatar" style="background:#a8b299">S</div>
+          <div>
+            <p class="review-name">Sarah M.</p>
+            <p class="review-date">March 2026</p>
+          </div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        </div>
+        <p class="review-text">Paal transformed our tired backyard into an absolute masterpiece. His vision for the space exceeded everything we imagined.</p>
+        <div class="review-google"><div class="review-google-dot"></div>Google Review</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card-top">
+          <div class="review-avatar" style="background:#8a9178">J</div>
+          <div>
+            <p class="review-name">James T.</p>
+            <p class="review-date">January 2026</p>
+          </div>
+          <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        </div>
+        <p class="review-text">The 3D design package gave us complete confidence in the final result. Worth every cent — we knew exactly what to expect.</p>
+        <div class="review-google"><div class="review-google-dot"></div>Google Review</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 10. AWARD / CREDENTIAL CARD ═══ -->
+  <section class="ds-section" id="award-card">
+    <p class="ds-section-title">10</p>
+    <h2 class="ds-section-name">Award &amp; Credential Card</h2>
+    <p class="note" style="margin-bottom:32px">Used in the scrolling credentials marquee on the home page. Gold accent (top border + text), dark near-black bg. Width: 280px, border-radius: 12px.</p>
+
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+      <div class="cred-item-demo">
+        <span class="cred-award-title">HIA Award</span>
+        <span class="cred-award-name">Best Residential<br>Landscape Design</span>
+        <span class="cred-award-sub">2024 · Victoria</span>
+      </div>
+      <div class="cred-item-demo">
+        <span class="cred-award-title">Landscape SA</span>
+        <span class="cred-award-name">Excellence in<br>Sustainable Design</span>
+        <span class="cred-award-sub">2023 · National</span>
+      </div>
+      <div class="cred-item-demo">
+        <span class="cred-award-title">Master Builders</span>
+        <span class="cred-award-name">Premium Outdoor<br>Living Award</span>
+        <span class="cred-award-sub">2022 · Ballarat Region</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 11. BIO / PHOTO BLOCK ═══ -->
+  <section class="ds-section" id="bio-block">
+    <p class="ds-section-title">11</p>
+    <h2 class="ds-section-name">Bio Photo Block</h2>
+    <p class="note" style="margin-bottom:32px">Used in About page and Home bio section. Photo (3:4) with name caption below. Caption has a 2px sage top border.</p>
+
+    <div style="display:flex;gap:48px;flex-wrap:wrap;align-items:flex-start">
+      <div class="bio-photo-demo">
+        <img src="https://paalgrant.com/wp-content/uploads/2026/02/mandala-stone-moon-gate-paal-grant-074.jpg" alt="">
+        <div class="bio-photo-name">
+          <span>Paal Grant</span>
+          <span>Principal Designer</span>
+        </div>
+      </div>
+      <div style="max-width:440px;padding-top:8px">
+        <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:16px">Anatomy</p>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7"><strong style="color:#eceae4;font-weight:400">Photo</strong> — aspect-ratio 3:4, object-fit: cover, filter: grayscale(8%), top radius 8px</p>
+          <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7"><strong style="color:#eceae4;font-weight:400">Caption bg</strong> — #323232, border-top: 2px solid #a8b299, bottom radius 8px</p>
+          <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7"><strong style="color:#eceae4;font-weight:400">Name</strong> — 0.85rem / weight 300 / LS 0.12em / uppercase / #eceae4</p>
+          <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7"><strong style="color:#eceae4;font-weight:400">Title</strong> — 0.6rem / weight 300 / LS 0.2em / uppercase / #a8b299</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 12. PROCESS STEP ═══ -->
+  <section class="ds-section" id="process-step">
+    <p class="ds-section-title">12</p>
+    <h2 class="ds-section-name">Process Step</h2>
+
+    <div class="ds-preview-bg">
+      <div class="process-step-demo">
+        <div class="psb-num">01</div>
+        <div>
+          <p class="psb-title">Site Consultation</p>
+          <p class="psb-body">We visit your property and take the time to understand how you <strong>live in your outdoor space</strong> — how you move through it, what light it receives, and what problems need solving.</p>
+          <span class="psb-tag">Included in all packages</span>
+          <div class="three-d-callout" style="max-width:520px">
+            <p>Every project begins with listening — your brief is the foundation we build everything else upon.</p>
+          </div>
+        </div>
+      </div>
+      <div class="process-step-demo">
+        <div class="psb-num">02</div>
+        <div>
+          <p class="psb-title">3D Concept Design</p>
+          <p class="psb-body">Using photorealistic 3D rendering, we create a complete visual of your finished garden — so you can see <strong>exactly what you're investing in</strong> before a single plant goes in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 13. FORM ELEMENTS ═══ -->
+  <section class="ds-section" id="forms">
+    <p class="ds-section-title">13</p>
+    <h2 class="ds-section-name">Form Elements</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;flex-wrap:wrap">
+      <div class="ds-preview-bg">
+        <form class="contact-form-demo" onsubmit="return false">
+          <div class="form-field">
+            <label>Your Name</label>
+            <input type="text" placeholder="e.g. Jane Smith">
+          </div>
+          <div class="form-field">
+            <label>Email Address</label>
+            <input type="email" placeholder="jane@example.com">
+          </div>
+          <div class="form-field">
+            <label>Package Interest</label>
+            <select>
+              <option>Essentials — Small Garden</option>
+              <option>Signature — Standard</option>
+              <option>Estate — Large Property</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Message</label>
+            <textarea placeholder="Tell us about your project…"></textarea>
+          </div>
+          <a class="btn-sage" href="#" style="text-align:center">Send Enquiry</a>
+        </form>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:20px;padding-top:8px">
+        <div>
+          <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:10px">Input / Textarea / Select</p>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7">bg <span class="ds-code">rgba(30,30,26,0.3)</span></p>
+            <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7">border <span class="ds-code">1px solid rgba(255,255,255,0.1)</span></p>
+            <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7">:focus border <span class="ds-code">rgba(138,155,122,0.7)</span></p>
+            <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7">padding <span class="ds-code">14px 18px</span></p>
+            <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7">0.85rem / weight 300 / #eceae4</p>
+            <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7">border-radius <span class="ds-code">6px</span></p>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:0.62rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#a8b299;margin-bottom:10px">Label</p>
+          <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.7">0.6rem / weight 400 / LS 0.28em / uppercase / color #a8a5a0</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 14. FOOTER ═══ -->
+  <section class="ds-section" id="footer">
+    <p class="ds-section-title">14</p>
+    <h2 class="ds-section-name">Footer</h2>
+
+    <div class="footer-demo">
+      <div class="footer-inner">
+        <div>
+          <div class="f-logo-text">
+            <span class="f-logo-name">Paal Grant</span>
+            <span class="f-logo-sub">Designs In Landscaping</span>
+          </div>
+          <p class="f-tagline">Award-winning landscape design for private estates and residential properties across Victoria.</p>
+        </div>
+        <div class="f-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Process</a></li>
+            <li><a href="#">Design Packages</a></li>
+            <li><a href="#">Projects</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#">Ballarat, VIC</a></li>
+            <li><a href="#">hello@paalgrant.com</a></li>
+            <li><a href="#">0400 000 000</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Paal Grant Designs In Landscaping</span>
+        <span>Designed by Brighter Websites</span>
+      </div>
+    </div>
+    <p class="note" style="margin-top:16px">Footer uses <span class="ds-code">border-radius:12px 12px 0 0</span> (rounded top corners only). Grid: <span class="ds-code">2fr 1fr 1fr</span>, gap 60px.</p>
+  </section>
+
+
+  <!-- ═══ 15. ANIMATIONS ═══ -->
+  <section class="ds-section" id="animations">
+    <p class="ds-section-title">15</p>
+    <h2 class="ds-section-name">Animations</h2>
+
+    <div class="ds-subsection">
+      <p class="ds-subsection-label">Scroll Fade-In (.fade-in → .visible)</p>
+      <div class="ds-preview-bg">
+        <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.8">Elements start at <span class="ds-code">opacity:0; transform:translateY(24px)</span> and transition to <span class="ds-code">opacity:1; transform:translateY(0)</span> over <strong style="color:#eceae4;font-weight:400">0.9s</strong> when <span class="ds-code">.visible</span> is added via IntersectionObserver. Applied globally to sections and cards.</p>
+      </div>
+    </div>
+
+    <div class="ds-subsection" style="margin-top:32px">
+      <p class="ds-subsection-label">Hero Tagline Roll-In (rollIn)</p>
+      <div class="ds-preview-bg" style="text-align:center;padding:48px 40px;overflow:hidden">
+        <div style="display:inline-flex;align-items:center;gap:16px;margin-bottom:0">
+          <div style="width:60px;height:1px;background:rgba(255,255,255,0.45)"></div>
+          <div style="display:inline-flex;gap:0.4em;perspective:600px">
+            <span class="hero-tagline-word" style="--d:0.2s">Designed</span>
+            <span class="hero-tagline-word accent" style="--d:0.5s">Like</span>
+            <span class="hero-tagline-word" style="--d:0.8s">Art</span>
+          </div>
+          <div style="width:60px;height:1px;background:rgba(255,255,255,0.45)"></div>
+        </div>
+      </div>
+      <p class="note" style="margin-top:12px">Each word: <span class="ds-code">translateY(60px) rotateX(40deg) scale(0.85)</span> → natural. Duration 0.9s, staggered 0.3s per word. Accent word in sage green.</p>
+    </div>
+
+    <div class="ds-subsection" style="margin-top:32px">
+      <p class="ds-subsection-label">Art Heading Word Animation (artWordIn)</p>
+      <div class="ds-preview-bg" style="text-align:center;padding:48px 40px;overflow:hidden">
+        <div style="display:inline-flex;gap:0.3em">
+          <span class="art-word" style="--d:0s">Bringing</span>
+          <span class="art-word art-accent" style="--d:0.15s">Your</span>
+          <span class="art-word" style="--d:0.3s">Vision</span>
+          <span class="art-word art-accent" style="--d:0.45s">to</span>
+          <span class="art-word" style="--d:0.6s">Life</span>
+        </div>
+      </div>
+      <p class="note" style="margin-top:12px"><span class="ds-code">translateY(40px) rotateX(30deg)</span> → natural. Duration 0.8s, 0.15s stagger. Used in "Designed Like Art" sub-heading sections.</p>
+    </div>
+
+    <div class="ds-subsection" style="margin-top:32px">
+      <p class="ds-subsection-label">Ken Burns Hero Slideshow</p>
+      <div class="ds-preview-bg" style="padding:20px 28px">
+        <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.8">
+          <strong style="color:#eceae4;font-weight:400">Enter (kenEnter):</strong> <span class="ds-code">scale(1.12) translateY(28px) → scale(1.03) translateY(-18px)</span>, 10s, opacity fades in over first 8%.<br>
+          <strong style="color:#eceae4;font-weight:400">Leave (kenLeave):</strong> <span class="ds-code">scale(1.03) translateY(-18px) → scale(1.0) translateY(-65px)</span>, 1.8s, opacity out.<br>
+          Progress bar: <span class="ds-code">height:2px</span>, sage 70%, animates <span class="ds-code">width: 0 → 100%</span> over slide duration.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ 16. BORDER RADIUS ═══ -->
+  <section class="ds-section" id="border-radius">
+    <p class="ds-section-title">16</p>
+    <h2 class="ds-section-name">Border Radius</h2>
+
+    <div class="radius-grid">
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:4px"></div>
+        <p class="ds-value">4px</p>
+        <p class="ds-label">Hamburger</p>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:6px"></div>
+        <p class="ds-value">6px</p>
+        <p class="ds-label">Buttons, inputs,<br>form fields</p>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:8px"></div>
+        <p class="ds-value">8px</p>
+        <p class="ds-label">Package cards,<br>badge, bio photo,<br>callout, virtual box</p>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:10px"></div>
+        <p class="ds-value">10px</p>
+        <p class="ds-label">Portfolio cards</p>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius:12px"></div>
+        <p class="ds-value">12px</p>
+        <p class="ds-label">Featured grid,<br>review cards,<br>award cards,<br>footer top corners</p>
+      </div>
+    </div>
+
+    <p class="note" style="margin-top:32px">3px gap photo grids have <span class="ds-code">border-radius:0</span> on inner cards but outer wrapper clips with <span class="ds-code">overflow:hidden</span> and appropriate corner radii on first/last child.</p>
+  </section>
+
+
+  <!-- ═══ 17. SCROLLING MARQUEE ═══ -->
+  <section class="ds-section" id="marquee">
+    <p class="ds-section-title">17</p>
+    <h2 class="ds-section-name">Scrolling Marquee</h2>
+    <p class="note" style="margin-bottom:32px">Used for Review cards and Award/Credential cards. The track is duplicated to create a seamless loop. Pauses on hover.</p>
+
+    <div class="ds-subsection">
+      <p class="ds-subsection-label">Review Carousel Demo</p>
+      <div class="marquee-wrap">
+        <div class="marquee-track">
+          <!-- Set 1 -->
+          <div class="review-card" style="background:#323232">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#a8b299">A</div>
+              <div><p class="review-name">Amanda R.</p><p class="review-date">April 2026</p></div>
+              <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+            <p class="review-text">Truly outstanding craftsmanship. Paal transformed our space into something extraordinary.</p>
+            <div class="review-google"><div class="review-google-dot"></div>Google Review</div>
+          </div>
+          <div class="review-card" style="background:#323232">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#8a9178">B</div>
+              <div><p class="review-name">Ben H.</p><p class="review-date">February 2026</p></div>
+              <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+            <p class="review-text">The 3D design gave us complete peace of mind. We knew exactly what we were getting.</p>
+            <div class="review-google"><div class="review-google-dot"></div>Google Review</div>
+          </div>
+          <div class="review-card" style="background:#323232">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#69614e">C</div>
+              <div><p class="review-name">Catherine L.</p><p class="review-date">January 2026</p></div>
+              <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+            <p class="review-text">Our garden is now the envy of the entire street. Paal's attention to detail is unmatched.</p>
+            <div class="review-google"><div class="review-google-dot"></div>Google Review</div>
+          </div>
+          <!-- Set 2 (duplicate for loop) -->
+          <div class="review-card" style="background:#323232">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#a8b299">A</div>
+              <div><p class="review-name">Amanda R.</p><p class="review-date">April 2026</p></div>
+              <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+            <p class="review-text">Truly outstanding craftsmanship. Paal transformed our space into something extraordinary.</p>
+            <div class="review-google"><div class="review-google-dot"></div>Google Review</div>
+          </div>
+          <div class="review-card" style="background:#323232">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#8a9178">B</div>
+              <div><p class="review-name">Ben H.</p><p class="review-date">February 2026</p></div>
+              <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+            <p class="review-text">The 3D design gave us complete peace of mind. We knew exactly what we were getting.</p>
+            <div class="review-google"><div class="review-google-dot"></div>Google Review</div>
+          </div>
+          <div class="review-card" style="background:#323232">
+            <div class="review-card-top">
+              <div class="review-avatar" style="background:#69614e">C</div>
+              <div><p class="review-name">Catherine L.</p><p class="review-date">January 2026</p></div>
+              <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+            <p class="review-text">Our garden is now the envy of the entire street. Paal's attention to detail is unmatched.</p>
+            <div class="review-google"><div class="review-google-dot"></div>Google Review</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-subsection" style="margin-top:32px">
+      <p class="ds-subsection-label">Technique</p>
+      <div class="ds-preview-bg" style="padding:20px 28px">
+        <p style="font-size:0.75rem;font-weight:300;color:#c8c5be;line-height:1.8">
+          Wrapper has <span class="ds-code">overflow:hidden</span>. Track is <span class="ds-code">display:flex; width:max-content</span>. Content duplicated to fill seamlessly. Animation: <span class="ds-code">translateX(0 → -50%)</span>.<br>
+          Reviews: 40s. Credentials: 30s. Both pause on hover via <span class="ds-code">animation-play-state:paused</span>.<br>
+          Edge fade: <span class="ds-code">::before</span> / <span class="ds-code">::after</span> gradients, 120px wide, fade to section background color.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+</div><!-- /ds-wrapper -->
+
+</body>
+</html>
