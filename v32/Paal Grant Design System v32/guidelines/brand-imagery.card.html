@@ -1,0 +1,33 @@
+<!-- @dsCard group="Brand" viewport="700x260" name="Imagery Style" subtitle="Project photography — warm, earthy, natural light" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+body { margin: 0; background: var(--bg-page); font-family: var(--font-primary); padding: 0; }
+.grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3px; height: 260px; }
+.img-cell { overflow: hidden; position: relative; background: #1a1e14; }
+.img-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(6,9,5,0.85) 0%, transparent 60%); padding: 18px 16px 14px; }
+.loc { font-size: 0.55rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(138,155,122,0.9); margin-bottom: 4px; }
+.name { font-size: 0.9rem; font-weight: 200; letter-spacing: 0.06em; color: #eceae4; }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="img-cell">
+    <img src="../../assets/mt-buninyong-country-estate-brick-archway-entrance-paal-grant-050-1200x630.webp" alt="Buninyong">
+    <div class="overlay"><div class="loc">Buninyong</div><div class="name">Country Estate</div></div>
+  </div>
+  <div class="img-cell">
+    <img src="../../assets/mandala-stone-moon-gate-paal-grant-074.jpg" alt="Mandala">
+    <div class="overlay"><div class="loc">Japan</div><div class="name">Mandala Garden</div></div>
+  </div>
+  <div class="img-cell">
+    <img src="../../assets/gisborne-country-garden-curved-aggregate-paths-paal-grant-014-1200x630.webp" alt="Gisborne">
+    <div class="overlay"><div class="loc">Gisborne</div><div class="name">Country Garden</div></div>
+  </div>
+</div>
+</body>
+</html>

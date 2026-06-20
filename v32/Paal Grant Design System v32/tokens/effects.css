@@ -1,0 +1,105 @@
+/* ─────────────────────────────────────────────
+   PAAL GRANT — Effects & Motion Tokens  (v28)
+   v28: added text-reveal motion — staggered line/word rise
+   ───────────────────────────────────────────── */
+
+:root {
+
+  /* ── Transitions ── */
+  --transition-fast:       0.25s ease;  /* @kind other */
+  --transition-mid:        0.28s ease;  /* @kind other */
+  --transition-slow:       0.32s ease;  /* @kind other */
+  --transition-nav:        0.30s ease;  /* @kind other */
+  --transition-bg:         0.50s ease;  /* @kind other */
+  --transition-fade:       0.90s ease;  /* @kind other */
+  --transition-img:        0.70s ease;  /* @kind other */
+
+  /* ── Easing ── */
+  --ease-hero-enter:       cubic-bezier(0.25, 0.46, 0.45, 0.94);  /* @kind other */
+  --ease-hero-leave:       cubic-bezier(0.55, 0, 1, 0.45);         /* @kind other */
+  --ease-smooth:           cubic-bezier(0.4, 0, 0.2, 1);           /* @kind other */
+  --ease-hero-tagline:     cubic-bezier(0.23, 1, 0.32, 1);         /* @kind other */
+
+  /* ── Blur ── */
+  --blur-nav:              blur(14px);   /* @kind other */
+  --blur-drawer:           blur(16px);   /* @kind other */
+
+  /* ── Fade-in ── */
+  --fade-in-distance:      24px;   /* @kind other */
+  --fade-in-duration:      0.9s;   /* @kind other */
+
+  /* ── Image hover ── */
+  --img-hover-scale:       scale(1.05);  /* @kind other */
+  --img-hover-duration:    0.7s ease;    /* @kind other */
+
+  /* ── Nav underline ── */
+  --nav-underline-height:  1px;          /* @kind other */
+  --nav-underline-origin:  left;         /* @kind other */
+  --nav-underline-duration: 0.32s ease;  /* @kind other */
+
+  /* ── Progress bar ── */
+  --progress-height:       2px;                      /* @kind other */
+  --progress-color:        rgba(138,155,122,0.7);    /* @kind color */
+
+  /* ── Scroll tracks ── */
+  --scroll-duration-reviews:  40s;  /* @kind other */
+  --scroll-duration-awards:   30s;  /* @kind other */
+
+  /* ── Shimmer ── */
+  --shimmer-duration:      0.6s ease;  /* @kind other */
+
+  /* ── Hero tagline ── */
+  --tagline-rollIn-duration: 0.9s;   /* @kind other */
+  --tagline-lineIn-duration: 1.2s;   /* @kind other */
+
+  /* ── Text reveal (v28) — section titles & body rise into place ── */
+  --text-reveal-duration:  0.85s;   /* @kind other */
+  --text-reveal-distance:  18px;    /* @kind other */
+  --text-reveal-stagger:   0.08s;   /* @kind other */ /* delay step between lines/words */
+  --ease-text-reveal:      cubic-bezier(0.22, 1, 0.36, 1);  /* @kind other */
+}
+
+/* ── Utility keyframes ── */
+@keyframes pg-fade-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+@keyframes pg-ken-enter {
+  0%   { opacity: 0; transform: scale(1.12) translateY(28px); }
+  8%   { opacity: 1; }
+  100% { opacity: 1; transform: scale(1.03) translateY(-18px); }
+}
+@keyframes pg-ken-leave {
+  0%   { opacity: 1; transform: scale(1.03) translateY(-18px); }
+  100% { opacity: 0; transform: scale(1.0) translateY(-65px); }
+}
+@keyframes pg-review-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes pg-award-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes pg-tagline-roll-in {
+  0%   { opacity: 0; transform: translateY(60px) rotateX(40deg) scale(0.85); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); }
+}
+@keyframes pg-tagline-line-in {
+  to { transform: scaleX(1); }
+}
+
+/* ── Text reveal (v28) ── */
+@keyframes pg-text-rise {
+  from { opacity: 0; transform: translateY(var(--text-reveal-distance, 18px)); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pg-text-mask-up {
+  from { opacity: 0; transform: translateY(100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pg-letter-spacing-in {
+  from { opacity: 0; letter-spacing: 0.5em; }
+  to   { opacity: 1; }
+}

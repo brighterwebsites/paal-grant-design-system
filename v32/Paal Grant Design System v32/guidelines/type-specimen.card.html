@@ -1,0 +1,44 @@
+<!-- @dsCard group="Type" viewport="700x200" name="Typeface Specimen" subtitle="Raleway — weight 100 dominates all headings; 200/300/400 for hierarchy below" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;1,200&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+body { margin: 0; background: var(--bg-page); font-family: var(--font-primary); padding: 28px 28px 20px; -webkit-font-smoothing: antialiased; }
+.row { display: flex; align-items: baseline; gap: 20px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.row:last-child { border-bottom: none; }
+.wt { font-size: 0.48rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(138,155,122,0.55); width: 100px; flex-shrink: 0; line-height: 1.6; }
+.usage { font-size: 0.44rem; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.2); width: 160px; flex-shrink: 0; line-height: 1.6; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <span class="wt">100 Thin</span>
+    <span style="font-size:2.4rem;font-weight:100;letter-spacing:0.1em;color:#eceae4;line-height:1">Dream Garden</span>
+    <span class="usage">ALL headings, section titles, prices, page titles, step numbers</span>
+  </div>
+  <div class="row">
+    <span class="wt">200 XLight</span>
+    <span style="font-size:1.1rem;font-weight:200;letter-spacing:0.06em;color:#eceae4">Country Estate — Circular Pool &amp; Native Garden</span>
+    <span class="usage">Project card names, process titles, callout quotes, footer brand, nav drawer</span>
+  </div>
+  <div class="row">
+    <span class="wt">200 Italic</span>
+    <span style="font-size:1rem;font-weight:200;font-style:italic;letter-spacing:0.04em;color:#eceae4">"Designs presented in 3D so you can see your garden before it is built."</span>
+    <span class="usage">Pullquote callouts only</span>
+  </div>
+  <div class="row">
+    <span class="wt">300 Light</span>
+    <span style="font-size:0.9rem;font-weight:300;letter-spacing:0.06em;line-height:1.9;color:rgba(201,191,175,0.72)">Creating calm, grounded gardens shaped by climate, place, and the way people want to live.</span>
+    <span class="usage">All body copy, captions, descriptors, location lines</span>
+  </div>
+  <div class="row">
+    <span class="wt">400 Regular</span>
+    <span style="font-size:0.72rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.82)">DESIGN PACKAGES &nbsp;·&nbsp; CONTACT &nbsp;·&nbsp; VIEW ALL PROJECTS</span>
+    <span class="usage">Nav, buttons, labels, badges, form labels, tags</span>
+  </div>
+</body>
+</html>

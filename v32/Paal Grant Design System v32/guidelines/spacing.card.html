@@ -1,0 +1,41 @@
+<!-- @dsCard group="Spacing" viewport="700x200" name="Spacing Scale" subtitle="4px grid — section, card, nav, gap tokens" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+body { margin: 0; background: var(--bg-page); font-family: var(--font-primary); padding: 24px; -webkit-font-smoothing: antialiased; }
+.grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; margin-bottom: 16px; }
+.block { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.bar { background: rgba(138,155,122,0.35); width: 100%; }
+.lbl { font-size: 0.48rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(138,155,122,0.7); text-align: center; }
+.val { font-size: 0.48rem; font-weight: 300; color: rgba(255,255,255,0.35); text-align: center; }
+.row { display: flex; gap: 0; margin-top: 8px; }
+.item { flex: 1; padding: 10px 8px; border-right: 1px solid rgba(255,255,255,0.06); }
+.item:last-child { border-right: none; }
+.item-lbl { font-size: 0.48rem; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(138,155,122,0.6); margin-bottom: 3px; }
+.item-val { font-size: 0.62rem; font-weight: 300; color: rgba(255,255,255,0.55); }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="block"><div class="bar" style="height:4px"></div><div class="lbl">1</div><div class="val">4px</div></div>
+  <div class="block"><div class="bar" style="height:8px"></div><div class="lbl">2</div><div class="val">8px</div></div>
+  <div class="block"><div class="bar" style="height:12px"></div><div class="lbl">3</div><div class="val">12px</div></div>
+  <div class="block"><div class="bar" style="height:16px"></div><div class="lbl">4</div><div class="val">16px</div></div>
+  <div class="block"><div class="bar" style="height:24px"></div><div class="lbl">6</div><div class="val">24px</div></div>
+  <div class="block"><div class="bar" style="height:32px"></div><div class="lbl">8</div><div class="val">32px</div></div>
+  <div class="block"><div class="bar" style="height:48px"></div><div class="lbl">12</div><div class="val">48px</div></div>
+  <div class="block"><div class="bar" style="height:64px"></div><div class="lbl">16</div><div class="val">64px</div></div>
+</div>
+<div class="row">
+  <div class="item"><div class="item-lbl">Section V</div><div class="item-val">100px</div></div>
+  <div class="item"><div class="item-lbl">Section H</div><div class="item-val">52px</div></div>
+  <div class="item"><div class="item-lbl">Section H Wide</div><div class="item-val">64px</div></div>
+  <div class="item"><div class="item-lbl">Mobile H</div><div class="item-val">24px</div></div>
+  <div class="item"><div class="item-lbl">Nav Height</div><div class="item-val">100 / 80px</div></div>
+  <div class="item"><div class="item-lbl">Image Gap</div><div class="item-val">3px</div></div>
+</div>
+</body>
+</html>
