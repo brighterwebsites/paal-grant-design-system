@@ -1,0 +1,535 @@
+/* ═══════════════════════════════════════════════════════════════
+   PAAL GRANT — Global CSS  (v32)
+   For DB insert via Breakdance > Global Settings > Code > Stylesheet
+   Uses CSS custom properties where possible.
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300&display=swap');
+
+:root {
+  /* Breakdance font overrides */
+  --bde-body-font-family:   "Raleway", sans-serif;
+  --bde-heading-font-family: "Raleway", sans-serif;
+
+  /* ── Colors — Backgrounds ── */
+  --color-page:           #2b2b2b;
+  --color-section:        #383838;
+  --color-footer:         #222222;
+  --color-card-dark:      #1e1e1c;
+  --color-card-mid:       #323232;
+  --color-card-featured:  #1a2018;
+  --color-nav-bg:         #0d1410;
+
+  /* ── Colors — Sage ── */
+  --color-sage:           #8a9b7a;
+  --color-sage-alt:       #a8b299;
+  --color-sage-90:        rgba(138,155,122,0.90);
+  --color-sage-85:        rgba(138,155,122,0.85);
+  --color-sage-75:        rgba(138,155,122,0.75);
+  --color-sage-70:        rgba(138,155,122,0.70);
+  --color-sage-60:        rgba(138,155,122,0.60);
+  --color-sage-45:        rgba(138,155,122,0.45);
+  --color-sage-28:        rgba(138,155,122,0.28);
+  --color-sage-22:        rgba(138,155,122,0.22);
+  --color-sage-15:        rgba(138,155,122,0.15);
+  --color-sage-10:        rgba(138,155,122,0.10);
+  --color-sage-07:        rgba(138,155,122,0.07);
+  --color-sage-06:        rgba(138,155,122,0.06);
+
+  /* ── Colors — Gold ── */
+  --color-gold:           rgba(210,170,80,1);
+  --color-gold-80:        rgba(210,170,80,0.80);
+  --color-gold-75:        rgba(210,170,80,0.75);
+  --color-gold-60:        rgba(210,170,80,0.60);
+  --color-gold-55:        rgba(210,170,80,0.55);
+  --color-gold-35:        rgba(210,170,80,0.35);
+  --color-gold-30:        rgba(210,170,80,0.30);
+  --color-gold-08:        rgba(210,170,80,0.08);
+  --color-gold-05:        rgba(210,170,80,0.05);
+  --color-award-bg:       linear-gradient(160deg, #2a2620 0%, #1a1610 50%, #2a2620 100%);
+
+  /* ── Colors — Parchment / Olivewood (v32 new) ── */
+  --color-parchment:      #f9f2e2;
+  --color-parchment-dark: #2d3022;
+  --color-parchment-mid:  #69614e;
+  --color-parchment-warm: #d5c7ad;
+  --color-olivewood:      #1e2419;
+  --color-olive:          #8a9178;
+  --color-olive-light:    #b8c0a0;
+  --color-awards-strip:   #ece8de;
+  --color-gold-botanical: rgba(200,165,80,0.90);
+
+  /* ── Colors — Cream ── */
+  --color-cream:          #c9bfaf;
+  --color-cream-85:       rgba(201,191,175,0.85);
+  --color-cream-72:       rgba(201,191,175,0.72);
+  --color-cream-55:       rgba(201,191,175,0.55);
+  --color-cream-52:       rgba(201,191,175,0.52);
+  --color-cream-48:       rgba(201,191,175,0.48);
+  --color-cream-45:       rgba(201,191,175,0.45);
+  --color-cream-38:       rgba(201,191,175,0.38);
+  --color-cream-32:       rgba(201,191,175,0.32);
+
+  /* ── Colors — White ── */
+  --color-white:          #ffffff;
+  --color-eggshell:       #eceae4;
+  --color-white-88:       rgba(255,255,255,0.88);
+  --color-white-85:       rgba(255,255,255,0.85);
+  --color-white-82:       rgba(255,255,255,0.82);
+  --color-white-78:       rgba(255,255,255,0.78);
+  --color-white-30:       rgba(255,255,255,0.30);
+  --color-white-12:       rgba(255,255,255,0.12);
+  --color-white-10:       rgba(255,255,255,0.10);
+  --color-white-08:       rgba(255,255,255,0.08);
+  --color-white-07:       rgba(255,255,255,0.07);
+  --color-white-06:       rgba(255,255,255,0.06);
+  --color-white-04:       rgba(255,255,255,0.04);
+
+  /* ── Colors — Muted ── */
+  --color-muted:          #a8a5a0;
+  --color-dim:            #808080;
+
+  /* ── Colors — Semantic aliases ── */
+  --bg-page:              var(--color-page);
+  --bg-section:           var(--color-section);
+  --bg-card:              var(--color-card-mid);
+  --bg-card-featured:     var(--color-card-featured);
+  --bg-footer:            var(--color-footer);
+  --text-heading:         var(--color-eggshell);
+  --text-body:            var(--color-cream-72);
+  --text-body-strong:     var(--color-cream-85);
+  --text-muted:           var(--color-muted);
+  --text-dim:             var(--color-dim);
+  --text-label:           var(--color-sage-90);
+  --text-nav:             var(--color-white-82);
+  --accent:               var(--color-sage);
+  --accent-alt:           var(--color-sage-alt);
+  --accent-muted:         var(--color-sage-70);
+  --accent-subtle:        var(--color-sage-15);
+  --accent-ghost:         var(--color-sage-07);
+  --accent-gold:          var(--color-gold);
+  --accent-gold-muted:    var(--color-gold-75);
+  --accent-gold-subtle:   var(--color-gold-08);
+  --border-default:       var(--color-white-07);
+  --border-mid:           var(--color-white-12);
+  --border-accent:        var(--color-sage-45);
+  --border-accent-strong: var(--color-sage-70);
+  --border-gold:          var(--color-gold-35);
+  --border-gold-strong:   var(--color-gold-75);
+  --overlay-hero:         linear-gradient(to bottom, rgba(6,9,5,0.38) 0%, rgba(6,9,5,0.04) 38%, rgba(6,9,5,0.72) 100%);
+  --overlay-card:         linear-gradient(to top, rgba(6,9,5,0.88) 0%, transparent 55%);
+  --overlay-nav:          linear-gradient(to bottom, rgba(8,11,6,0.82) 0%, transparent 100%);
+  --overlay-nav-solid:    rgba(43,43,43,0.97);
+
+  /* ── Typography — Family ── */
+  --font-primary:         "Raleway", sans-serif;
+
+  /* ── Typography — Weights ── */
+  --fw-thin:              100;
+  --fw-extralight:        200;
+  --fw-light:             300;
+  --fw-regular:           400;
+  --fw-medium:            500;
+  --fw-semibold:          600;
+  --fw-bold:              700;
+  --fw-extrabold:         800;
+
+  /* ── Typography — Type scale ── */
+  --text-display-xl:      clamp(3.5rem, 7.5vw, 6.5rem);
+  --text-display-lg:      clamp(2.5rem, 5vw, 4.5rem);
+  --text-display-md:      clamp(2rem, 4.5vw, 3.8rem);
+  --text-display-sm:      clamp(2.2rem, 3.5vw, 3.5rem);
+  --text-heading-lg:      1.9rem;
+  --text-heading-md:      1.8rem;
+  --text-heading-sm:      1.6rem;
+  --text-heading-xs:      1.15rem;
+  --text-subhead:         1.1rem;
+  --text-body-lg:         1rem;
+  --text-body-md:         0.98rem;
+  --text-body:            0.92rem;
+  --text-body-sm:         0.88rem;
+  --text-body-xs:         0.85rem;
+  --text-label-lg:        0.95rem;
+  --text-label-md:        0.82rem;
+  --text-label-sm:        0.78rem;
+  --text-label-xs:        0.75rem;
+  --text-ui-lg:           0.72rem;
+  --text-ui-md:           0.70rem;
+  --text-ui-sm:           0.68rem;
+  --text-ui-xs:           0.65rem;
+  --text-micro-lg:        0.62rem;
+  --text-micro-md:        0.60rem;
+  --text-micro-sm:        0.58rem;
+  --text-nano:            0.55rem;
+  --text-nano-sm:         0.54rem;
+
+  /* ── Typography — Letter spacing ── */
+  --ls-tight:             0.02em;
+  --ls-normal:            0.04em;
+  --ls-wide:              0.06em;
+  --ls-wider:             0.08em;
+  --ls-heading:           0.10em;
+  --ls-display:           0.12em;
+  --ls-label:             0.14em;
+  --ls-nav:               0.18em;
+  --ls-navlink:           0.20em;
+  --ls-spaced:            0.22em;
+  --ls-cta:               0.25em;
+  --ls-cap:               0.28em;
+  --ls-loose:             0.30em;
+  --ls-looser:            0.35em;
+  --ls-ultra:             0.38em;
+  --ls-max:               0.42em;
+  --ls-brand:             0.45em;
+  --ls-brand-max:         0.50em;
+
+  /* ── Typography — Line heights ── */
+  --lh-tight:             1.05;
+  --lh-heading:           1.1;
+  --lh-compact:           1.25;
+  --lh-normal:            1.4;
+  --lh-relaxed:           1.7;
+  --lh-body:              1.75;
+  --lh-loose:             1.8;
+  --lh-spacious:          1.85;
+  --lh-airy:              1.9;
+  --lh-editorial:         1.95;
+
+  /* ── Typography — Semantic roles ── */
+  --type-section-label:   var(--text-micro-sm);
+  --type-section-title:   var(--text-display-md);
+  --type-page-title:      var(--text-display-lg);
+  --type-hero-headline:   var(--text-display-xl);
+  --type-body:            var(--text-body);
+  --type-caption:         var(--text-micro-lg);
+  --type-nav:             var(--text-ui-lg);
+  --type-cta:             var(--text-ui-xs);
+  --type-badge:           var(--text-nano);
+
+  /* ── Spacing — Base scale ── */
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:    12px;
+  --space-4:    16px;
+  --space-5:    20px;
+  --space-6:    24px;
+  --space-7:    28px;
+  --space-8:    32px;
+  --space-9:    36px;
+  --space-10:   40px;
+  --space-11:   44px;
+  --space-12:   48px;
+  --space-14:   56px;
+  --space-16:   64px;
+  --space-18:   72px;
+  --space-20:   80px;
+  --space-24:   96px;
+  --space-25:  100px;
+  --space-28:  112px;
+  --space-30:  120px;
+
+  /* ── Spacing — Semantic layout ── */
+  --section-padding-v:          100px;
+  --section-padding-h:           52px;
+  --section-padding-h-wide:      64px;
+  --section-padding-h-mobile:    24px;
+  --nav-height:                 100px;
+  --nav-height-solid:            80px;
+  --nav-padding-h:               52px;
+  --nav-logo-height:             68px;
+  --nav-logo-height-solid:       52px;
+  --card-padding-v:              40px;
+  --card-padding-h:              36px;
+  --card-padding-v-lg:           44px;
+  --card-padding-h-lg:           44px;
+  --footer-padding-v:            64px;
+  --footer-padding-h:            52px;
+  --footer-padding-bottom:       36px;
+
+  /* ── Spacing — Grid gaps ── */
+  --gap-grid-tight:          3px;
+  --gap-grid-cards:          0px;
+  --gap-pkg-cards:          12px;
+  --gap-nav:                44px;
+  --gap-nav-links:          40px;
+  --gap-section-header:     56px;
+  --gap-form:               18px;
+  --gap-review-cards:       24px;
+  --gap-award-cards:        24px;
+  --gap-footer-cols:        60px;
+
+  /* ── Spacing — Border radius ── */
+  --radius-none:             0px;
+  --radius-sm:               4px;
+  --radius-md:               6px;
+  --radius-lg:               8px;
+  --radius-xl:              12px;
+
+  /* ── Spacing — Border widths ── */
+  --border-width:            1px;
+  --border-width-accent:     2px;
+
+  /* ── Effects — Transitions ── */
+  --transition-fast:       0.25s ease;
+  --transition-mid:        0.28s ease;
+  --transition-slow:       0.32s ease;
+  --transition-nav:        0.30s ease;
+  --transition-bg:         0.50s ease;
+  --transition-fade:       0.90s ease;
+  --transition-img:        0.70s ease;
+
+  /* ── Effects — Easing ── */
+  --ease-hero-enter:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-hero-leave:       cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-smooth:           cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-hero-tagline:     cubic-bezier(0.23, 1, 0.32, 1);
+
+  /* ── Effects — Blur ── */
+  --blur-nav:              blur(14px);
+  --blur-drawer:           blur(16px);
+
+  /* ── Effects — Misc ── */
+  --fade-in-distance:        24px;
+  --fade-in-duration:        0.9s;
+  --img-hover-scale:         scale(1.05);
+  --img-hover-duration:      0.7s ease;
+  --nav-underline-height:    1px;
+  --nav-underline-origin:    left;
+  --nav-underline-duration:  0.32s ease;
+  --progress-height:         2px;
+  --progress-color:          rgba(138,155,122,0.7);
+  --scroll-duration-reviews: 40s;
+  --scroll-duration-awards:  30s;
+  --shimmer-duration:        0.6s ease;
+  --tagline-rollIn-duration: 0.9s;
+  --tagline-lineIn-duration: 1.2s;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 100;
+}
+
+img {
+  border-radius: 8px;
+}
+
+/* ── GLOBAL ROUNDED CORNERS ── */
+.award-badge,
+.btn-sage, .btn-ghost, .nav-cta,
+.pc-cta, .hpk-cta, .pkgd-cta, .d-cta,
+.psb-tag,
+.review-card,
+.cred-item,
+.media-card,
+.three-d-callout,
+.virtual-box,
+.inc-item,
+.form-field input,
+.form-field textarea,
+.form-field select,
+.pkgd-virtual,
+.pkgd-gallery-note,
+.pkgd-size-badge,
+.home-bio-photo,
+.about-photo,
+.nav-drop
+{ border-radius: var(--radius-lg); }
+
+.btn-sage, .btn-ghost, .nav-cta, .d-cta,
+.pc-cta, .hpk-cta, .pkgd-cta
+{ border-radius: var(--radius-md); }
+
+.form-field input,
+.form-field textarea,
+.form-field select
+{ border-radius: var(--radius-md); }
+
+/* photo blocks */
+.home-bio-photo img    { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.home-bio-photo-name   { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+.about-photo img       { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+.about-photo-caption   { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+.pkgd-main-img         { border-radius: var(--radius-lg); }
+.pkgd-thumb            { border-radius: var(--radius-md); }
+
+/* package cards */
+.hpk                   { border-radius: var(--radius-lg); }
+.hpk:first-child       { border-radius: var(--radius-lg) 0 0 var(--radius-lg); }
+.hpk:last-child        { border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+.hpk.mid               { border-radius: 0; }
+.pkg-cards-row         { border-radius: var(--radius-lg); overflow: hidden; }
+.del-grid              { border-radius: var(--radius-lg); overflow: hidden; }
+.pcard                 { border-radius: 0; }
+.pkg-three             { border-radius: var(--radius-lg); overflow: hidden; }
+
+/* featured grid */
+.featured-grid         { border-radius: var(--radius-xl); overflow: hidden; }
+
+/* portfolio cards */
+.port-card             { border-radius: 10px; overflow: hidden; }
+.port-card.pc-a        { border-radius: 10px 0 0 10px; }
+.port-card.pc-e        { border-radius: 0 10px 10px 0; }
+.port-card.pc-c,
+.port-card.pc-d        { border-radius: 0; }
+
+/* nav */
+.hamburger             { border-radius: var(--radius-sm); }
+
+/* footer */
+footer                 { border-radius: var(--radius-xl) var(--radius-xl) 0 0; }
+
+/* process callout */
+.three-d-callout       { border-radius: var(--radius-lg); }
+
+
+/* ═══════════════════════════════════════
+   PACKAGE CARDS — v32 FONT WEIGHT OVERRIDES
+   ═══════════════════════════════════════ */
+.hpk-name, .card-name                 { font-weight: var(--fw-regular); }
+.hpk-size, .card-size, .inc-label     { font-weight: var(--fw-medium); letter-spacing: 0.25em; }
+.hpk-area, .card-area                 { font-weight: var(--fw-regular); }
+.hpk-amt,  .price-amt                 { font-weight: var(--fw-light); }
+.hpk-gst,  .price-gst                 { font-weight: var(--fw-regular); }
+.del-name, .inc-title                  { font-weight: var(--fw-medium); font-size: var(--text-label-lg); }
+.del-text, .inc-desc, .del-desc        { font-weight: var(--fw-regular); font-size: 0.84rem; }
+.hpk-cta,  .pc-cta, .pkgd-cta         { font-weight: var(--fw-medium); letter-spacing: 0.2em; }
+
+/* Most Popular inverted card */
+.hpk.mid .hpk-name, .pcard.star .card-name { font-weight: var(--fw-medium); }
+.hpk.mid .hpk-size, .pcard.star .card-size { font-weight: var(--fw-semibold); }
+.hpk.mid .hpk-amt,  .pcard.star .price-amt { font-weight: var(--fw-regular); }
+
+
+/* ═══════════════════════════════════════
+   PACKAGE CARDS — SMALL + LARGE  (olivewood bg)
+   ═══════════════════════════════════════ */
+.hpk:not(.mid),
+.pcard:not(.star) {
+  background:   var(--color-olivewood);
+  border:       1px solid rgba(184,192,160,0.2);
+  border-left:  3px solid var(--color-olive);
+  border-radius: var(--radius-lg);
+}
+.hpk:not(.mid):hover,
+.pcard:not(.star):hover {
+  background:        #252d1e;
+  border-left-color: var(--color-olive-light);
+}
+
+.hpk:not(.mid) .hpk-size,
+.pcard:not(.star) .card-size,
+.pcard:not(.star) .inc-label   { color: var(--color-olive); }
+
+.hpk:not(.mid) .hpk-name,
+.pcard:not(.star) .card-name   { color: var(--color-parchment); }
+
+.hpk:not(.mid) .hpk-area,
+.pcard:not(.star) .card-area   { color: var(--color-olive-light); }
+
+.hpk:not(.mid) .hpk-amt,
+.pcard:not(.star) .price-amt   { color: var(--color-parchment); }
+
+.hpk:not(.mid) .hpk-gst,
+.pcard:not(.star) .price-gst   { color: var(--color-parchment-warm); }
+
+.hpk:not(.mid) .hpk-price      { border-bottom-color: rgba(138,145,120,0.2); }
+.pcard:not(.star) .card-top    { border-bottom-color: rgba(138,145,120,0.2); }
+
+.hpk:not(.mid) .hpk-cta,
+.pcard:not(.star) .pc-cta {
+  border-color: rgba(138,145,120,0.55);
+  color:        var(--color-olive-light);
+  background:   rgba(138,145,120,0.08);
+}
+.hpk:not(.mid) .hpk-cta:hover,
+.pcard:not(.star) .pc-cta:hover {
+  background:   rgba(138,145,120,0.18);
+  border-color: var(--color-olive);
+  color:        var(--color-parchment);
+}
+
+.pcard:not(.star) .del-name    { color: var(--color-parchment); }
+.pcard:not(.star) .del-text    { color: var(--color-parchment-warm); }
+.pcard:not(.star) .del-dot     { background: var(--color-olive); }
+.pcard:not(.star) .virtual-note { color: var(--color-olive); }
+
+
+/* ═══════════════════════════════════════
+   PACKAGE CARDS — MOST POPULAR  (parchment bg)
+   ═══════════════════════════════════════ */
+.hpk.mid,
+.pcard.star {
+  background:   var(--color-parchment);
+  border:       2px solid var(--color-olive);
+  border-top:   3px solid var(--color-parchment-mid);
+  border-left:  3px solid var(--color-parchment-mid);
+}
+
+.hpk.mid .hpk-name,
+.pcard.star .card-name   { color: var(--color-parchment-dark); }
+
+.hpk.mid .hpk-size,
+.pcard.star .card-size   { color: var(--color-parchment-mid); }
+
+.hpk.mid .hpk-area,
+.pcard.star .card-area   { color: var(--color-parchment-mid); }
+
+.hpk.mid .hpk-amt,
+.pcard.star .price-amt   { color: var(--color-parchment-dark); }
+
+.hpk.mid .hpk-gst,
+.pcard.star .price-gst   { color: var(--color-olive); }
+
+.hpk.mid .hpk-cta,
+.pcard.star .pc-cta {
+  background:   var(--color-olivewood);
+  border-color: var(--color-parchment-dark);
+  color:        var(--color-parchment);
+}
+.hpk.mid .hpk-cta:hover,
+.pcard.star .pc-cta:hover {
+  background:   var(--color-parchment-dark);
+  border-color: var(--color-parchment-dark);
+  color:        var(--color-parchment);
+}
+
+.pcard.star .del-name    { color: var(--color-parchment-dark); }
+.pcard.star .del-text    { color: var(--color-parchment-mid); }
+.pcard.star .del-dot     { background: var(--color-olive); }
+.pcard.star .inc-label   { color: var(--color-parchment-mid); }
+.pcard.star .card-top    { border-bottom-color: rgba(40,45,35,0.12); }
+.pcard.star .virtual-note { color: rgba(40,45,35,0.4); }
+
+
+/* ── PACKAGES SECTION HEADING ── */
+.home-pkgs .section-title,
+.pkg-hero .section-title,
+.pkg-page .section-title {
+  font-weight: var(--fw-light);
+  letter-spacing: 0.1em;
+}
+
+/* ── DELIVERABLE & INCLUDE NUMBERS ── */
+.del-num, .inc-num {
+  font-size:     2.2rem;
+  font-weight:   var(--fw-light);
+  color:         rgba(138,155,122,0.6);
+  letter-spacing: 0.06em;
+  line-height:   1;
+  margin-bottom: 14px;
+}
+.inc-num { margin-bottom: 0; }
+
+
+/* ═══════════════════════════════════════
+   AWARDS & RECOGNITION  (v32)
+   ═══════════════════════════════════════ */
+
+/* White filter for award logos on dark backgrounds */
+.award-logos-grid img { filter: brightness(0) invert(1); opacity: 0.75; }
+
+/* Dark filter for logos on parchment/light backgrounds */
+.media-strip img { filter: brightness(0); opacity: 0.65; }
+
+/* Parchment "As Seen In" strip */
+.awards-strip-bg { background: var(--color-awards-strip); }
