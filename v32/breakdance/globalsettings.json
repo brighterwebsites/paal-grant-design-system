@@ -1,0 +1,840 @@
+{
+	"settings": {
+		"colors": {
+			"brand": "var(--color-sage)",
+			"text": "var(--color-cream-72)",
+			"headings": "var(--color-eggshell)",
+			"links": "var(--color-sage)",
+			"background": "var(--color-page)",
+			"palette": {
+				"colors": [
+					{
+						"cssVariableName": "color-page",
+						"label": "Page",
+						"value": "#2b2b2b"
+					},
+					{
+						"cssVariableName": "color-section",
+						"label": "Section",
+						"value": "#383838"
+					},
+					{
+						"cssVariableName": "color-footer",
+						"label": "Footer",
+						"value": "#222222"
+					},
+					{
+						"cssVariableName": "color-card-dark",
+						"label": "Card Dark",
+						"value": "#1e1e1c"
+					},
+					{
+						"cssVariableName": "color-card-mid",
+						"label": "Card Mid",
+						"value": "#323232"
+					},
+					{
+						"cssVariableName": "color-card-featured",
+						"label": "Card Featured",
+						"value": "#1a2018"
+					},
+					{
+						"cssVariableName": "color-nav-bg",
+						"label": "Nav BG",
+						"value": "#0d1410"
+					},
+					{
+						"cssVariableName": "color-sage",
+						"label": "Sage",
+						"value": "#8a9b7a"
+					},
+					{
+						"cssVariableName": "color-sage-alt",
+						"label": "Sage Alt",
+						"value": "#a8b299"
+					},
+					{
+						"cssVariableName": "color-sage-90",
+						"label": "Sage 90",
+						"value": "#8A9B7AE6"
+					},
+					{
+						"cssVariableName": "color-sage-85",
+						"label": "Sage 85",
+						"value": "#8A9B7AD9"
+					},
+					{
+						"cssVariableName": "color-sage-75",
+						"label": "Sage 75",
+						"value": "#8A9B7ABF"
+					},
+					{
+						"cssVariableName": "color-sage-70",
+						"label": "Sage 70",
+						"value": "#8A9B7AB3"
+					},
+					{
+						"cssVariableName": "color-sage-60",
+						"label": "Sage 60",
+						"value": "#8A9B7A99"
+					},
+					{
+						"cssVariableName": "color-sage-45",
+						"label": "Sage 45",
+						"value": "#8A9B7A73"
+					},
+					{
+						"cssVariableName": "color-sage-28",
+						"label": "Sage 28",
+						"value": "#8A9B7A47"
+					},
+					{
+						"cssVariableName": "color-sage-22",
+						"label": "Sage 22",
+						"value": "#8A9B7A38"
+					},
+					{
+						"cssVariableName": "color-sage-15",
+						"label": "Sage 15",
+						"value": "#8A9B7A26"
+					},
+					{
+						"cssVariableName": "color-sage-10",
+						"label": "Sage 10",
+						"value": "#8A9B7A1A"
+					},
+					{
+						"cssVariableName": "color-sage-07",
+						"label": "Sage 07",
+						"value": "#8A9B7A12"
+					},
+					{
+						"cssVariableName": "color-sage-06",
+						"label": "Sage 06",
+						"value": "#8A9B7A0F"
+					},
+					{
+						"cssVariableName": "color-gold",
+						"label": "Gold",
+						"value": "#D2AA50"
+					},
+					{
+						"cssVariableName": "color-gold-80",
+						"label": "Gold 80",
+						"value": "#D2AA50CC"
+					},
+					{
+						"cssVariableName": "color-gold-75",
+						"label": "Gold 75",
+						"value": "#D2AA50BF"
+					},
+					{
+						"cssVariableName": "color-gold-60",
+						"label": "Gold 60",
+						"value": "#D2AA5099"
+					},
+					{
+						"cssVariableName": "color-gold-55",
+						"label": "Gold 55",
+						"value": "#D2AA508C"
+					},
+					{
+						"cssVariableName": "color-gold-35",
+						"label": "Gold 35",
+						"value": "#D2AA5059"
+					},
+					{
+						"cssVariableName": "color-gold-30",
+						"label": "Gold 30",
+						"value": "#D2AA504D"
+					},
+					{
+						"cssVariableName": "color-gold-08",
+						"label": "Gold 08",
+						"value": "#D2AA5014"
+					},
+					{
+						"cssVariableName": "color-gold-05",
+						"label": "Gold 05",
+						"value": "#D2AA500D"
+					},
+					{
+						"cssVariableName": "color-parchment",
+						"label": "Parchment",
+						"value": "#f9f2e2"
+					},
+					{
+						"cssVariableName": "color-parchment-dark",
+						"label": "Parchment Dark",
+						"value": "#2d3022"
+					},
+					{
+						"cssVariableName": "color-parchment-mid",
+						"label": "Parchment Mid",
+						"value": "#69614e"
+					},
+					{
+						"cssVariableName": "color-parchment-warm",
+						"label": "Parchment Warm",
+						"value": "#d5c7ad"
+					},
+					{
+						"cssVariableName": "color-olivewood",
+						"label": "Olivewood",
+						"value": "#1e2419"
+					},
+					{
+						"cssVariableName": "color-olive",
+						"label": "Olive",
+						"value": "#8a9178"
+					},
+					{
+						"cssVariableName": "color-olive-light",
+						"label": "Olive Light",
+						"value": "#b8c0a0"
+					},
+					{
+						"cssVariableName": "color-awards-strip",
+						"label": "Awards Strip",
+						"value": "#ece8de"
+					},
+					{
+						"cssVariableName": "color-gold-botanical",
+						"label": "Gold Botanical",
+						"value": "#C8A550E6"
+					},
+					{
+						"cssVariableName": "color-cream",
+						"label": "Cream",
+						"value": "#c9bfaf"
+					},
+					{
+						"cssVariableName": "color-cream-85",
+						"label": "Cream 85",
+						"value": "#C9BFAFD9"
+					},
+					{
+						"cssVariableName": "color-cream-72",
+						"label": "Cream 72",
+						"value": "#C9BFAFB8"
+					},
+					{
+						"cssVariableName": "color-cream-55",
+						"label": "Cream 55",
+						"value": "#C9BFAF8C"
+					},
+					{
+						"cssVariableName": "color-cream-52",
+						"label": "Cream 52",
+						"value": "#C9BFAF85"
+					},
+					{
+						"cssVariableName": "color-cream-48",
+						"label": "Cream 48",
+						"value": "#C9BFAF7A"
+					},
+					{
+						"cssVariableName": "color-cream-45",
+						"label": "Cream 45",
+						"value": "#C9BFAF73"
+					},
+					{
+						"cssVariableName": "color-cream-38",
+						"label": "Cream 38",
+						"value": "#C9BFAF61"
+					},
+					{
+						"cssVariableName": "color-cream-32",
+						"label": "Cream 32",
+						"value": "#C9BFAF52"
+					},
+					{
+						"cssVariableName": "color-white",
+						"label": "White",
+						"value": "#ffffff"
+					},
+					{
+						"cssVariableName": "color-eggshell",
+						"label": "Eggshell",
+						"value": "#eceae4"
+					},
+					{
+						"cssVariableName": "color-white-88",
+						"label": "White 88",
+						"value": "#FFFFFFE0"
+					},
+					{
+						"cssVariableName": "color-white-85",
+						"label": "White 85",
+						"value": "#FFFFFFD9"
+					},
+					{
+						"cssVariableName": "color-white-82",
+						"label": "White 82",
+						"value": "#FFFFFFD1"
+					},
+					{
+						"cssVariableName": "color-white-78",
+						"label": "White 78",
+						"value": "#FFFFFFC7"
+					},
+					{
+						"cssVariableName": "color-white-30",
+						"label": "White 30",
+						"value": "#FFFFFF4D"
+					},
+					{
+						"cssVariableName": "color-white-12",
+						"label": "White 12",
+						"value": "#FFFFFF1F"
+					},
+					{
+						"cssVariableName": "color-white-10",
+						"label": "White 10",
+						"value": "#FFFFFF1A"
+					},
+					{
+						"cssVariableName": "color-white-08",
+						"label": "White 08",
+						"value": "#FFFFFF14"
+					},
+					{
+						"cssVariableName": "color-white-07",
+						"label": "White 07",
+						"value": "#FFFFFF12"
+					},
+					{
+						"cssVariableName": "color-white-06",
+						"label": "White 06",
+						"value": "#FFFFFF0F"
+					},
+					{
+						"cssVariableName": "color-white-04",
+						"label": "White 04",
+						"value": "#FFFFFF0A"
+					},
+					{
+						"cssVariableName": "color-muted",
+						"label": "Muted",
+						"value": "#a8a5a0"
+					},
+					{
+						"cssVariableName": "color-dim",
+						"label": "Dim",
+						"value": "#808080"
+					},
+					{
+						"cssVariableName": "overlay-nav-solid",
+						"label": "Nav Overlay",
+						"value": "#2B2B2BF7"
+					}
+				],
+				"gradients": [
+					{
+						"cssVariableName": "color-award-bg",
+						"label": "Award BG",
+						"value": {
+							"points": [
+								{
+									"left": 0,
+									"red": 42,
+									"green": 38,
+									"blue": 32,
+									"alpha": 1
+								},
+								{
+									"left": 50,
+									"red": 26,
+									"green": 22,
+									"blue": 16,
+									"alpha": 1
+								},
+								{
+									"left": 100,
+									"red": 42,
+									"green": 38,
+									"blue": 32,
+									"alpha": 1
+								}
+							],
+							"type": "linear",
+							"degree": 160,
+							"svgValue": "<linearGradient x1=\"0.32899\" y1=\"0.03015\" x2=\"0.67101\" y2=\"0.96985\" id=\"%%GRADIENTID%%\"><stop stop-opacity=\"1\" stop-color=\"#2a2620\" offset=\"0\"></stop><stop stop-opacity=\"1\" stop-color=\"#1a1610\" offset=\"0.5\"></stop><stop stop-opacity=\"1\" stop-color=\"#2a2620\" offset=\"1\"></stop></linearGradient>",
+							"value": "linear-gradient(160deg, #2a2620 0%, #1a1610 50%, #2a2620 100%)"
+						}
+					},
+					{
+						"cssVariableName": "overlay-hero",
+						"label": "Overlay Hero",
+						"value": {
+							"points": [
+								{
+									"left": 0,
+									"red": 6,
+									"green": 9,
+									"blue": 5,
+									"alpha": 0.38
+								},
+								{
+									"left": 38,
+									"red": 6,
+									"green": 9,
+									"blue": 5,
+									"alpha": 0.04
+								},
+								{
+									"left": 100,
+									"red": 6,
+									"green": 9,
+									"blue": 5,
+									"alpha": 0.72
+								}
+							],
+							"type": "linear",
+							"degree": 180,
+							"svgValue": "<linearGradient x1=\"0.5\" y1=\"0\" x2=\"0.5\" y2=\"1\" id=\"%%GRADIENTID%%\"><stop stop-opacity=\"0.38\" stop-color=\"#060905\" offset=\"0\"></stop><stop stop-opacity=\"0.04\" stop-color=\"#060905\" offset=\"0.38\"></stop><stop stop-opacity=\"0.72\" stop-color=\"#060905\" offset=\"1\"></stop></linearGradient>",
+							"value": "linear-gradient(180deg, rgba(6,9,5,0.38) 0%, rgba(6,9,5,0.04) 38%, rgba(6,9,5,0.72) 100%)"
+						}
+					},
+					{
+						"cssVariableName": "overlay-card",
+						"label": "Overlay Card",
+						"value": {
+							"points": [
+								{
+									"left": 0,
+									"red": 6,
+									"green": 9,
+									"blue": 5,
+									"alpha": 0.88
+								},
+								{
+									"left": 55,
+									"red": 255,
+									"green": 255,
+									"blue": 255,
+									"alpha": 0
+								}
+							],
+							"type": "linear",
+							"degree": 0,
+							"svgValue": "<linearGradient x1=\"0.5\" y1=\"1\" x2=\"0.5\" y2=\"0\" id=\"%%GRADIENTID%%\"><stop stop-opacity=\"0.88\" stop-color=\"#060905\" offset=\"0\"></stop><stop stop-opacity=\"0\" stop-color=\"#ffffff\" offset=\"0.55\"></stop></linearGradient>",
+							"value": "linear-gradient(0deg, rgba(6,9,5,0.88) 0%, rgba(255,255,255,0) 55%)"
+						}
+					},
+					{
+						"cssVariableName": "overlay-nav",
+						"label": "Overlay Nav",
+						"value": {
+							"points": [
+								{
+									"left": 0,
+									"red": 8,
+									"green": 11,
+									"blue": 6,
+									"alpha": 0.82
+								},
+								{
+									"left": 100,
+									"red": 255,
+									"green": 255,
+									"blue": 255,
+									"alpha": 0
+								}
+							],
+							"type": "linear",
+							"degree": 180,
+							"svgValue": "<linearGradient x1=\"0.5\" y1=\"0\" x2=\"0.5\" y2=\"1\" id=\"%%GRADIENTID%%\"><stop stop-opacity=\"0.82\" stop-color=\"#080b06\" offset=\"0\"></stop><stop stop-opacity=\"0\" stop-color=\"#ffffff\" offset=\"1\"></stop></linearGradient>",
+							"value": "linear-gradient(180deg, rgba(8,11,6,0.82) 0%, rgba(255,255,255,0) 100%)"
+						}
+					}
+				]
+			}
+		},
+		"typography": {
+			"heading_font": "gfont-raleway",
+			"body_font": "gfont-raleway",
+			"base_size": {
+				"breakpoint_base": {
+					"number": 16,
+					"unit": "px",
+					"style": "16px"
+				}
+			},
+			"advanced": {
+				"headings": {
+					"all_headings": {
+						"typography": {
+							"custom": {
+								"customTypography": {
+									"fontWeight": {
+										"breakpoint_base": "100"
+									},
+									"lineHeight": {
+										"breakpoint_base": {
+											"number": "1.1",
+											"unit": "custom",
+											"style": "1.1"
+										}
+									},
+									"advanced": {
+										"textWrap": {
+											"breakpoint_base": "balance"
+										},
+										"letterSpacing": {
+											"breakpoint_base": {
+												"number": 0.12,
+												"unit": "em",
+												"style": "0.12em"
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"h1": {
+						"typography": {
+							"custom": {
+								"customTypography": {
+									"fontSize": {
+										"breakpoint_base": {
+											"number": "clamp(3.5rem, 7.5vw, 6.5rem)",
+											"unit": "custom",
+											"style": "clamp(3.5rem, 7.5vw, 6.5rem)"
+										}
+									},
+									"fontWeight": {
+										"breakpoint_base": "100"
+									}
+								}
+							}
+						}
+					},
+					"h2": {
+						"typography": {
+							"custom": {
+								"customTypography": {
+									"fontSize": {
+										"breakpoint_base": {
+											"number": "clamp(2.5rem, 5vw, 4.5rem)",
+											"unit": "custom",
+											"style": "clamp(2.5rem, 5vw, 4.5rem)"
+										}
+									},
+									"fontWeight": {
+										"breakpoint_base": "200"
+									}
+								}
+							}
+						}
+					},
+					"h3": {
+						"typography": {
+							"custom": {
+								"customTypography": {
+									"fontSize": {
+										"breakpoint_base": {
+											"number": "clamp(2rem, 4.5vw, 3.8rem)",
+											"unit": "custom",
+											"style": "clamp(2rem, 4.5vw, 3.8rem)"
+										}
+									}
+								}
+							}
+						}
+					},
+					"h4": {
+						"typography": {
+							"custom": {
+								"customTypography": {
+									"fontSize": {
+										"breakpoint_base": {
+											"number": "clamp(2.2rem, 3.5vw, 3.5rem)",
+											"unit": "custom",
+											"style": "clamp(2.2rem, 3.5vw, 3.5rem)"
+										}
+									},
+									"fontWeight": {
+										"breakpoint_base": "200"
+									}
+								}
+							}
+						}
+					}
+				},
+				"body": {
+					"typography": {
+						"custom": {
+							"customTypography": {
+								"fontSize": {
+									"breakpoint_base": {
+										"number": "0.92",
+										"unit": "rem",
+										"style": "0.92rem"
+									}
+								},
+								"fontWeight": {
+									"breakpoint_base": "300"
+								},
+								"lineHeight": {
+									"breakpoint_base": {
+										"number": "1.75",
+										"unit": "custom",
+										"style": "1.75"
+									}
+								},
+								"advanced": {
+									"letterSpacing": {
+										"breakpoint_base": {
+											"number": 0.04,
+											"unit": "em",
+											"style": "0.04em"
+										}
+									},
+									"textWrap": {
+										"breakpoint_base": "balance"
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			"ratio": {
+				"breakpoint_base": 1.62
+			},
+			"global_typography": {
+				"typography_presets": []
+			}
+		},
+		"code": {
+			"stylesheets": [
+				{
+					"code": "/* ═══════════════════════════════════════════════════════════════\n   PAAL GRANT — Global CSS  (v32)\n   For DB insert via Breakdance > Global Settings > Code > Stylesheet\n   Uses CSS custom properties where possible.\n   ═══════════════════════════════════════════════════════════════ */\n\n@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300&display=swap');\n\n:root {\n  /* Breakdance font overrides */\n  --bde-body-font-family:   \"Raleway\", sans-serif;\n  --bde-heading-font-family: \"Raleway\", sans-serif;\n\n  /* ── Colors — Backgrounds ── */\n  --color-page:           #2b2b2b;\n  --color-section:        #383838;\n  --color-footer:         #222222;\n  --color-card-dark:      #1e1e1c;\n  --color-card-mid:       #323232;\n  --color-card-featured:  #1a2018;\n  --color-nav-bg:         #0d1410;\n\n  /* ── Colors — Sage ── */\n  --color-sage:           #8a9b7a;\n  --color-sage-alt:       #a8b299;\n  --color-sage-90:        rgba(138,155,122,0.90);\n  --color-sage-85:        rgba(138,155,122,0.85);\n  --color-sage-75:        rgba(138,155,122,0.75);\n  --color-sage-70:        rgba(138,155,122,0.70);\n  --color-sage-60:        rgba(138,155,122,0.60);\n  --color-sage-45:        rgba(138,155,122,0.45);\n  --color-sage-28:        rgba(138,155,122,0.28);\n  --color-sage-22:        rgba(138,155,122,0.22);\n  --color-sage-15:        rgba(138,155,122,0.15);\n  --color-sage-10:        rgba(138,155,122,0.10);\n  --color-sage-07:        rgba(138,155,122,0.07);\n  --color-sage-06:        rgba(138,155,122,0.06);\n\n  /* ── Colors — Gold ── */\n  --color-gold:           rgba(210,170,80,1);\n  --color-gold-80:        rgba(210,170,80,0.80);\n  --color-gold-75:        rgba(210,170,80,0.75);\n  --color-gold-60:        rgba(210,170,80,0.60);\n  --color-gold-55:        rgba(210,170,80,0.55);\n  --color-gold-35:        rgba(210,170,80,0.35);\n  --color-gold-30:        rgba(210,170,80,0.30);\n  --color-gold-08:        rgba(210,170,80,0.08);\n  --color-gold-05:        rgba(210,170,80,0.05);\n  --color-award-bg:       linear-gradient(160deg, #2a2620 0%, #1a1610 50%, #2a2620 100%);\n\n  /* ── Colors — Parchment / Olivewood (v32 new) ── */\n  --color-parchment:      #f9f2e2;\n  --color-parchment-dark: #2d3022;\n  --color-parchment-mid:  #69614e;\n  --color-parchment-warm: #d5c7ad;\n  --color-olivewood:      #1e2419;\n  --color-olive:          #8a9178;\n  --color-olive-light:    #b8c0a0;\n  --color-awards-strip:   #ece8de;\n  --color-gold-botanical: rgba(200,165,80,0.90);\n\n  /* ── Colors — Cream ── */\n  --color-cream:          #c9bfaf;\n  --color-cream-85:       rgba(201,191,175,0.85);\n  --color-cream-72:       rgba(201,191,175,0.72);\n  --color-cream-55:       rgba(201,191,175,0.55);\n  --color-cream-52:       rgba(201,191,175,0.52);\n  --color-cream-48:       rgba(201,191,175,0.48);\n  --color-cream-45:       rgba(201,191,175,0.45);\n  --color-cream-38:       rgba(201,191,175,0.38);\n  --color-cream-32:       rgba(201,191,175,0.32);\n\n  /* ── Colors — White ── */\n  --color-white:          #ffffff;\n  --color-eggshell:       #eceae4;\n  --color-white-88:       rgba(255,255,255,0.88);\n  --color-white-85:       rgba(255,255,255,0.85);\n  --color-white-82:       rgba(255,255,255,0.82);\n  --color-white-78:       rgba(255,255,255,0.78);\n  --color-white-30:       rgba(255,255,255,0.30);\n  --color-white-12:       rgba(255,255,255,0.12);\n  --color-white-10:       rgba(255,255,255,0.10);\n  --color-white-08:       rgba(255,255,255,0.08);\n  --color-white-07:       rgba(255,255,255,0.07);\n  --color-white-06:       rgba(255,255,255,0.06);\n  --color-white-04:       rgba(255,255,255,0.04);\n\n  /* ── Colors — Muted ── */\n  --color-muted:          #a8a5a0;\n  --color-dim:            #808080;\n\n  /* ── Colors — Semantic aliases ── */\n  --bg-page:              var(--color-page);\n  --bg-section:           var(--color-section);\n  --bg-card:              var(--color-card-mid);\n  --bg-card-featured:     var(--color-card-featured);\n  --bg-footer:            var(--color-footer);\n  --text-heading:         var(--color-eggshell);\n  --text-body:            var(--color-cream-72);\n  --text-body-strong:     var(--color-cream-85);\n  --text-muted:           var(--color-muted);\n  --text-dim:             var(--color-dim);\n  --text-label:           var(--color-sage-90);\n  --text-nav:             var(--color-white-82);\n  --accent:               var(--color-sage);\n  --accent-alt:           var(--color-sage-alt);\n  --accent-muted:         var(--color-sage-70);\n  --accent-subtle:        var(--color-sage-15);\n  --accent-ghost:         var(--color-sage-07);\n  --accent-gold:          var(--color-gold);\n  --accent-gold-muted:    var(--color-gold-75);\n  --accent-gold-subtle:   var(--color-gold-08);\n  --border-default:       var(--color-white-07);\n  --border-mid:           var(--color-white-12);\n  --border-accent:        var(--color-sage-45);\n  --border-accent-strong: var(--color-sage-70);\n  --border-gold:          var(--color-gold-35);\n  --border-gold-strong:   var(--color-gold-75);\n  --overlay-hero:         linear-gradient(to bottom, rgba(6,9,5,0.38) 0%, rgba(6,9,5,0.04) 38%, rgba(6,9,5,0.72) 100%);\n  --overlay-card:         linear-gradient(to top, rgba(6,9,5,0.88) 0%, transparent 55%);\n  --overlay-nav:          linear-gradient(to bottom, rgba(8,11,6,0.82) 0%, transparent 100%);\n  --overlay-nav-solid:    rgba(43,43,43,0.97);\n\n  /* ── Typography — Family ── */\n  --font-primary:         \"Raleway\", sans-serif;\n\n  /* ── Typography — Weights ── */\n  --fw-thin:              100;\n  --fw-extralight:        200;\n  --fw-light:             300;\n  --fw-regular:           400;\n  --fw-medium:            500;\n  --fw-semibold:          600;\n  --fw-bold:              700;\n  --fw-extrabold:         800;\n\n  /* ── Typography — Type scale ── */\n  --text-display-xl:      clamp(3.5rem, 7.5vw, 6.5rem);\n  --text-display-lg:      clamp(2.5rem, 5vw, 4.5rem);\n  --text-display-md:      clamp(2rem, 4.5vw, 3.8rem);\n  --text-display-sm:      clamp(2.2rem, 3.5vw, 3.5rem);\n  --text-heading-lg:      1.9rem;\n  --text-heading-md:      1.8rem;\n  --text-heading-sm:      1.6rem;\n  --text-heading-xs:      1.15rem;\n  --text-subhead:         1.1rem;\n  --text-body-lg:         1rem;\n  --text-body-md:         0.98rem;\n  --text-body:            0.92rem;\n  --text-body-sm:         0.88rem;\n  --text-body-xs:         0.85rem;\n  --text-label-lg:        0.95rem;\n  --text-label-md:        0.82rem;\n  --text-label-sm:        0.78rem;\n  --text-label-xs:        0.75rem;\n  --text-ui-lg:           0.72rem;\n  --text-ui-md:           0.70rem;\n  --text-ui-sm:           0.68rem;\n  --text-ui-xs:           0.65rem;\n  --text-micro-lg:        0.62rem;\n  --text-micro-md:        0.60rem;\n  --text-micro-sm:        0.58rem;\n  --text-nano:            0.55rem;\n  --text-nano-sm:         0.54rem;\n\n  /* ── Typography — Letter spacing ── */\n  --ls-tight:             0.02em;\n  --ls-normal:            0.04em;\n  --ls-wide:              0.06em;\n  --ls-wider:             0.08em;\n  --ls-heading:           0.10em;\n  --ls-display:           0.12em;\n  --ls-label:             0.14em;\n  --ls-nav:               0.18em;\n  --ls-navlink:           0.20em;\n  --ls-spaced:            0.22em;\n  --ls-cta:               0.25em;\n  --ls-cap:               0.28em;\n  --ls-loose:             0.30em;\n  --ls-looser:            0.35em;\n  --ls-ultra:             0.38em;\n  --ls-max:               0.42em;\n  --ls-brand:             0.45em;\n  --ls-brand-max:         0.50em;\n\n  /* ── Typography — Line heights ── */\n  --lh-tight:             1.05;\n  --lh-heading:           1.1;\n  --lh-compact:           1.25;\n  --lh-normal:            1.4;\n  --lh-relaxed:           1.7;\n  --lh-body:              1.75;\n  --lh-loose:             1.8;\n  --lh-spacious:          1.85;\n  --lh-airy:              1.9;\n  --lh-editorial:         1.95;\n\n  /* ── Typography — Semantic roles ── */\n  --type-section-label:   var(--text-micro-sm);\n  --type-section-title:   var(--text-display-md);\n  --type-page-title:      var(--text-display-lg);\n  --type-hero-headline:   var(--text-display-xl);\n  --type-body:            var(--text-body);\n  --type-caption:         var(--text-micro-lg);\n  --type-nav:             var(--text-ui-lg);\n  --type-cta:             var(--text-ui-xs);\n  --type-badge:           var(--text-nano);\n\n  /* ── Spacing — Base scale ── */\n  --space-1:    4px;\n  --space-2:    8px;\n  --space-3:    12px;\n  --space-4:    16px;\n  --space-5:    20px;\n  --space-6:    24px;\n  --space-7:    28px;\n  --space-8:    32px;\n  --space-9:    36px;\n  --space-10:   40px;\n  --space-11:   44px;\n  --space-12:   48px;\n  --space-14:   56px;\n  --space-16:   64px;\n  --space-18:   72px;\n  --space-20:   80px;\n  --space-24:   96px;\n  --space-25:  100px;\n  --space-28:  112px;\n  --space-30:  120px;\n\n  /* ── Spacing — Semantic layout ── */\n  --section-padding-v:          100px;\n  --section-padding-h:           52px;\n  --section-padding-h-wide:      64px;\n  --section-padding-h-mobile:    24px;\n  --nav-height:                 100px;\n  --nav-height-solid:            80px;\n  --nav-padding-h:               52px;\n  --nav-logo-height:             68px;\n  --nav-logo-height-solid:       52px;\n  --card-padding-v:              40px;\n  --card-padding-h:              36px;\n  --card-padding-v-lg:           44px;\n  --card-padding-h-lg:           44px;\n  --footer-padding-v:            64px;\n  --footer-padding-h:            52px;\n  --footer-padding-bottom:       36px;\n\n  /* ── Spacing — Grid gaps ── */\n  --gap-grid-tight:          3px;\n  --gap-grid-cards:          0px;\n  --gap-pkg-cards:          12px;\n  --gap-nav:                44px;\n  --gap-nav-links:          40px;\n  --gap-section-header:     56px;\n  --gap-form:               18px;\n  --gap-review-cards:       24px;\n  --gap-award-cards:        24px;\n  --gap-footer-cols:        60px;\n\n  /* ── Spacing — Border radius ── */\n  --radius-none:             0px;\n  --radius-sm:               4px;\n  --radius-md:               6px;\n  --radius-lg:               8px;\n  --radius-xl:              12px;\n\n  /* ── Spacing — Border widths ── */\n  --border-width:            1px;\n  --border-width-accent:     2px;\n\n  /* ── Effects — Transitions ── */\n  --transition-fast:       0.25s ease;\n  --transition-mid:        0.28s ease;\n  --transition-slow:       0.32s ease;\n  --transition-nav:        0.30s ease;\n  --transition-bg:         0.50s ease;\n  --transition-fade:       0.90s ease;\n  --transition-img:        0.70s ease;\n\n  /* ── Effects — Easing ── */\n  --ease-hero-enter:       cubic-bezier(0.25, 0.46, 0.45, 0.94);\n  --ease-hero-leave:       cubic-bezier(0.55, 0, 1, 0.45);\n  --ease-smooth:           cubic-bezier(0.4, 0, 0.2, 1);\n  --ease-hero-tagline:     cubic-bezier(0.23, 1, 0.32, 1);\n\n  /* ── Effects — Blur ── */\n  --blur-nav:              blur(14px);\n  --blur-drawer:           blur(16px);\n\n  /* ── Effects — Misc ── */\n  --fade-in-distance:        24px;\n  --fade-in-duration:        0.9s;\n  --img-hover-scale:         scale(1.05);\n  --img-hover-duration:      0.7s ease;\n  --nav-underline-height:    1px;\n  --nav-underline-origin:    left;\n  --nav-underline-duration:  0.32s ease;\n  --progress-height:         2px;\n  --progress-color:          rgba(138,155,122,0.7);\n  --scroll-duration-reviews: 40s;\n  --scroll-duration-awards:  30s;\n  --shimmer-duration:        0.6s ease;\n  --tagline-rollIn-duration: 0.9s;\n  --tagline-lineIn-duration: 1.2s;\n}\n\nh1, h2, h3, h4, h5, h6 {\n  font-weight: 100;\n}\n\nimg {\n  border-radius: 8px;\n}\n\n/* ── GLOBAL ROUNDED CORNERS ── */\n.award-badge,\n.btn-sage, .btn-ghost, .nav-cta,\n.pc-cta, .hpk-cta, .pkgd-cta, .d-cta,\n.psb-tag,\n.review-card,\n.cred-item,\n.media-card,\n.three-d-callout,\n.virtual-box,\n.inc-item,\n.form-field input,\n.form-field textarea,\n.form-field select,\n.pkgd-virtual,\n.pkgd-gallery-note,\n.pkgd-size-badge,\n.home-bio-photo,\n.about-photo,\n.nav-drop\n{ border-radius: var(--radius-lg); }\n\n.btn-sage, .btn-ghost, .nav-cta, .d-cta,\n.pc-cta, .hpk-cta, .pkgd-cta\n{ border-radius: var(--radius-md); }\n\n.form-field input,\n.form-field textarea,\n.form-field select\n{ border-radius: var(--radius-md); }\n\n/* photo blocks */\n.home-bio-photo img    { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }\n.home-bio-photo-name   { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }\n.about-photo img       { border-radius: var(--radius-lg) var(--radius-lg) 0 0; }\n.about-photo-caption   { border-radius: 0 0 var(--radius-lg) var(--radius-lg); }\n.pkgd-main-img         { border-radius: var(--radius-lg); }\n.pkgd-thumb            { border-radius: var(--radius-md); }\n\n/* package cards */\n.hpk                   { border-radius: var(--radius-lg); }\n.hpk:first-child       { border-radius: var(--radius-lg) 0 0 var(--radius-lg); }\n.hpk:last-child        { border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }\n.hpk.mid               { border-radius: 0; }\n.pkg-cards-row         { border-radius: var(--radius-lg); overflow: hidden; }\n.del-grid              { border-radius: var(--radius-lg); overflow: hidden; }\n.pcard                 { border-radius: 0; }\n.pkg-three             { border-radius: var(--radius-lg); overflow: hidden; }\n\n/* featured grid */\n.featured-grid         { border-radius: var(--radius-xl); overflow: hidden; }\n\n/* portfolio cards */\n.port-card             { border-radius: 10px; overflow: hidden; }\n.port-card.pc-a        { border-radius: 10px 0 0 10px; }\n.port-card.pc-e        { border-radius: 0 10px 10px 0; }\n.port-card.pc-c,\n.port-card.pc-d        { border-radius: 0; }\n\n/* nav */\n.hamburger             { border-radius: var(--radius-sm); }\n\n/* footer */\nfooter                 { border-radius: var(--radius-xl) var(--radius-xl) 0 0; }\n\n/* process callout */\n.three-d-callout       { border-radius: var(--radius-lg); }\n\n\n/* ═══════════════════════════════════════\n   PACKAGE CARDS — v32 FONT WEIGHT OVERRIDES\n   ═══════════════════════════════════════ */\n.hpk-name, .card-name                 { font-weight: var(--fw-regular); }\n.hpk-size, .card-size, .inc-label     { font-weight: var(--fw-medium); letter-spacing: 0.25em; }\n.hpk-area, .card-area                 { font-weight: var(--fw-regular); }\n.hpk-amt,  .price-amt                 { font-weight: var(--fw-light); }\n.hpk-gst,  .price-gst                 { font-weight: var(--fw-regular); }\n.del-name, .inc-title                  { font-weight: var(--fw-medium); font-size: var(--text-label-lg); }\n.del-text, .inc-desc, .del-desc        { font-weight: var(--fw-regular); font-size: 0.84rem; }\n.hpk-cta,  .pc-cta, .pkgd-cta         { font-weight: var(--fw-medium); letter-spacing: 0.2em; }\n\n/* Most Popular inverted card */\n.hpk.mid .hpk-name, .pcard.star .card-name { font-weight: var(--fw-medium); }\n.hpk.mid .hpk-size, .pcard.star .card-size { font-weight: var(--fw-semibold); }\n.hpk.mid .hpk-amt,  .pcard.star .price-amt { font-weight: var(--fw-regular); }\n\n\n/* ═══════════════════════════════════════\n   PACKAGE CARDS — SMALL + LARGE  (olivewood bg)\n   ═══════════════════════════════════════ */\n.hpk:not(.mid),\n.pcard:not(.star) {\n  background:   var(--color-olivewood);\n  border:       1px solid rgba(184,192,160,0.2);\n  border-left:  3px solid var(--color-olive);\n  border-radius: var(--radius-lg);\n}\n.hpk:not(.mid):hover,\n.pcard:not(.star):hover {\n  background:        #252d1e;\n  border-left-color: var(--color-olive-light);\n}\n\n.hpk:not(.mid) .hpk-size,\n.pcard:not(.star) .card-size,\n.pcard:not(.star) .inc-label   { color: var(--color-olive); }\n\n.hpk:not(.mid) .hpk-name,\n.pcard:not(.star) .card-name   { color: var(--color-parchment); }\n\n.hpk:not(.mid) .hpk-area,\n.pcard:not(.star) .card-area   { color: var(--color-olive-light); }\n\n.hpk:not(.mid) .hpk-amt,\n.pcard:not(.star) .price-amt   { color: var(--color-parchment); }\n\n.hpk:not(.mid) .hpk-gst,\n.pcard:not(.star) .price-gst   { color: var(--color-parchment-warm); }\n\n.hpk:not(.mid) .hpk-price      { border-bottom-color: rgba(138,145,120,0.2); }\n.pcard:not(.star) .card-top    { border-bottom-color: rgba(138,145,120,0.2); }\n\n.hpk:not(.mid) .hpk-cta,\n.pcard:not(.star) .pc-cta {\n  border-color: rgba(138,145,120,0.55);\n  color:        var(--color-olive-light);\n  background:   rgba(138,145,120,0.08);\n}\n.hpk:not(.mid) .hpk-cta:hover,\n.pcard:not(.star) .pc-cta:hover {\n  background:   rgba(138,145,120,0.18);\n  border-color: var(--color-olive);\n  color:        var(--color-parchment);\n}\n\n.pcard:not(.star) .del-name    { color: var(--color-parchment); }\n.pcard:not(.star) .del-text    { color: var(--color-parchment-warm); }\n.pcard:not(.star) .del-dot     { background: var(--color-olive); }\n.pcard:not(.star) .virtual-note { color: var(--color-olive); }\n\n\n/* ═══════════════════════════════════════\n   PACKAGE CARDS — MOST POPULAR  (parchment bg)\n   ═══════════════════════════════════════ */\n.hpk.mid,\n.pcard.star {\n  background:   var(--color-parchment);\n  border:       2px solid var(--color-olive);\n  border-top:   3px solid var(--color-parchment-mid);\n  border-left:  3px solid var(--color-parchment-mid);\n}\n\n.hpk.mid .hpk-name,\n.pcard.star .card-name   { color: var(--color-parchment-dark); }\n\n.hpk.mid .hpk-size,\n.pcard.star .card-size   { color: var(--color-parchment-mid); }\n\n.hpk.mid .hpk-area,\n.pcard.star .card-area   { color: var(--color-parchment-mid); }\n\n.hpk.mid .hpk-amt,\n.pcard.star .price-amt   { color: var(--color-parchment-dark); }\n\n.hpk.mid .hpk-gst,\n.pcard.star .price-gst   { color: var(--color-olive); }\n\n.hpk.mid .hpk-cta,\n.pcard.star .pc-cta {\n  background:   var(--color-olivewood);\n  border-color: var(--color-parchment-dark);\n  color:        var(--color-parchment);\n}\n.hpk.mid .hpk-cta:hover,\n.pcard.star .pc-cta:hover {\n  background:   var(--color-parchment-dark);\n  border-color: var(--color-parchment-dark);\n  color:        var(--color-parchment);\n}\n\n.pcard.star .del-name    { color: var(--color-parchment-dark); }\n.pcard.star .del-text    { color: var(--color-parchment-mid); }\n.pcard.star .del-dot     { background: var(--color-olive); }\n.pcard.star .inc-label   { color: var(--color-parchment-mid); }\n.pcard.star .card-top    { border-bottom-color: rgba(40,45,35,0.12); }\n.pcard.star .virtual-note { color: rgba(40,45,35,0.4); }\n\n\n/* ── PACKAGES SECTION HEADING ── */\n.home-pkgs .section-title,\n.pkg-hero .section-title,\n.pkg-page .section-title {\n  font-weight: var(--fw-light);\n  letter-spacing: 0.1em;\n}\n\n/* ── DELIVERABLE & INCLUDE NUMBERS ── */\n.del-num, .inc-num {\n  font-size:     2.2rem;\n  font-weight:   var(--fw-light);\n  color:         rgba(138,155,122,0.6);\n  letter-spacing: 0.06em;\n  line-height:   1;\n  margin-bottom: 14px;\n}\n.inc-num { margin-bottom: 0; }\n\n\n/* ═══════════════════════════════════════\n   AWARDS & RECOGNITION  (v32)\n   ═══════════════════════════════════════ */\n\n/* White filter for award logos on dark backgrounds */\n.award-logos-grid img { filter: brightness(0) invert(1); opacity: 0.75; }\n\n/* Dark filter for logos on parchment/light backgrounds */\n.media-strip img { filter: brightness(0); opacity: 0.65; }\n\n/* Parchment \"As Seen In\" strip */\n.awards-strip-bg { background: var(--color-awards-strip); }\n"
+				},
+				{
+					"code": "@keyframes pg-fade-in {\n  from { opacity: 0; transform: translateY(24px); }\n  to   { opacity: 1; transform: translateY(0); }\n}\n@keyframes pg-ken-enter {\n  0%   { opacity: 0; transform: scale(1.12) translateY(28px); }\n  8%   { opacity: 1; }\n  100% { opacity: 1; transform: scale(1.03) translateY(-18px); }\n}\n@keyframes pg-ken-leave {\n  0%   { opacity: 1; transform: scale(1.03) translateY(-18px); }\n  100% { opacity: 0; transform: scale(1.0) translateY(-65px); }\n}\n@keyframes pg-review-scroll {\n  0%   { transform: translateX(0); }\n  100% { transform: translateX(-50%); }\n}\n@keyframes pg-award-scroll {\n  0%   { transform: translateX(0); }\n  100% { transform: translateX(-50%); }\n}\n@keyframes pg-tagline-roll-in {\n  0%   { opacity: 0; transform: translateY(60px) rotateX(40deg) scale(0.85); }\n  60%  { opacity: 1; }\n  100% { opacity: 1; transform: translateY(0) rotateX(0deg) scale(1); }\n}\n@keyframes pg-tagline-line-in {\n  to { transform: scaleX(1); }\n}"
+				}
+			],
+			"scripts": [
+				{
+					"code": "const closeBelow = {\n  'pg_details-box':            675,\n  'pg_details-close-tab-l':   1119,\n  'pg_details-close-tab-p':   1023,\n  'pg_details-close-phone-l':  767,\n  'pg_details-close-phone-p':  479,\n  'pg_details-closed':           0\n};\nconst openAbove = {\n  'pg_details-open-tab-l':    1119,\n  'pg_details-open-tab-p':    1023,\n  'pg_details-open-phone-l':   767,\n  'pg_details-open-phone-p':   479\n};\nfunction toggleAccordions() {\n  const w = window.innerWidth;\n  Object.entries(closeBelow).forEach(([cls, bp]) => {\n    document.querySelectorAll(`.${cls}`).forEach(acc => {\n      w > bp ? acc.setAttribute('open', '') : acc.removeAttribute('open');\n    });\n  });\n  Object.entries(openAbove).forEach(([cls, bp]) => {\n    document.querySelectorAll(`.${cls}`).forEach(acc => {\n      w > bp ? acc.removeAttribute('open') : acc.setAttribute('open', '');\n    });\n  });\n}\ntoggleAccordions();\nwindow.addEventListener('resize', toggleAccordions);"
+				},
+				{
+					"code": "(function () {\n  'use strict';\n  function patchBreakdanceForms() {\n    document.querySelectorAll('textarea[type]').forEach(function (el) {\n      el.removeAttribute('type');\n    });\n    document.querySelectorAll('[aria-describedby]').forEach(function (input) {\n      var targetId = input.getAttribute('aria-describedby');\n      if (targetId && !document.getElementById(targetId)) {\n        input.removeAttribute('aria-describedby');\n      }\n    });\n    document.querySelectorAll('.bde-popup').forEach(function(popup) {\n      var form = popup.querySelector('form[id]');\n      if (!form) return;\n      var namespace = form.id;\n      popup.querySelectorAll('input[id], textarea[id], select[id]').forEach(function(field) {\n        var oldId = field.getAttribute('id');\n        var newId = namespace + '--' + oldId;\n        field.setAttribute('id', newId);\n        var label = popup.querySelector('label[for=\"' + oldId + '\"]');\n        if (label) label.setAttribute('for', newId);\n      });\n    });\n    document.querySelectorAll('.breakdance-form-field--hpinput').forEach(function(wrapper) {\n      var form = wrapper.closest('form');\n      if (form && form.parentNode) {\n        form.parentNode.insertBefore(wrapper, form.nextSibling);\n      }\n    });\n  }\n  if (document.readyState === 'loading') {\n    document.addEventListener('DOMContentLoaded', patchBreakdanceForms);\n  } else {\n    patchBreakdanceForms();\n  }\n})();"
+				}
+			]
+		},
+		"buttons": {
+			"primary": {
+				"background": "var(--color-sage)",
+				"outline": false,
+				"color": "var(--color-page)",
+				"background_hover": "var(--color-sage-alt)",
+				"corners": "square"
+			},
+			"secondary": {
+				"outline": true,
+				"color": "var(--color-sage)",
+				"background": null,
+				"typography": {
+					"typography": {
+						"custom": {
+							"customTypography": {
+								"advanced": {
+									"letterSpacing": {
+										"breakpoint_base": {
+											"number": 2,
+											"unit": "px",
+											"style": "2px"
+										}
+									},
+									"textTransform": {
+										"breakpoint_base": "uppercase"
+									},
+									"fontStyle": {
+										"breakpoint_base": null
+									}
+								}
+							}
+						}
+					},
+					"color": {
+						"breakpoint_base": "var(--color-eggshell)"
+					}
+				},
+				"color_hover": "var(--color-eggshell)",
+				"effects": {
+					"scale_on_hover": {
+						"breakpoint_base": 1.03
+					}
+				},
+				"corners": "square",
+				"size": {
+					"size": {
+						"breakpoint_base": "custom"
+					},
+					"padding": {
+						"breakpoint_base": {
+							"top": {
+								"number": 15,
+								"unit": "px",
+								"style": "15px"
+							},
+							"bottom": {
+								"number": 15,
+								"unit": "px",
+								"style": "15px"
+							},
+							"left": {
+								"number": 35,
+								"unit": "px",
+								"style": "35px"
+							},
+							"right": {
+								"number": 35,
+								"unit": "px",
+								"style": "35px"
+							}
+						}
+					}
+				}
+			},
+			"button_presets": {
+				"button_presets": [
+					{
+						"id": "b1c055d2-2b21-4b2d-be4e-a6b5db10d65c",
+						"name": "Preset 1",
+						"styles": {
+							"size": {
+								"size": {
+									"breakpoint_base": "custom"
+								},
+								"padding": {
+									"breakpoint_base": {
+										"left": {
+											"number": 0,
+											"unit": "px",
+											"style": "0px"
+										},
+										"right": {
+											"number": 0,
+											"unit": "px",
+											"style": "0px"
+										},
+										"top": {
+											"number": 0,
+											"unit": "px",
+											"style": "0px"
+										},
+										"bottom": {
+											"number": 0,
+											"unit": "px",
+											"style": "0px"
+										}
+									}
+								}
+							},
+							"background": "var(--color-white-04)"
+						}
+					}
+				]
+			}
+		},
+		"containers": {
+			"sections": {
+				"container_width": {
+					"number": 1400,
+					"unit": "px",
+					"style": "1400px"
+				},
+				"horizontal_padding": {
+					"breakpoint_phone_portrait": {
+						"number": 24,
+						"unit": "px",
+						"style": "24px"
+					},
+					"breakpoint_base": {
+						"number": 52,
+						"unit": "px",
+						"style": "52px"
+					}
+				},
+				"vertical_padding": {
+					"breakpoint_phone_portrait": {
+						"number": 64,
+						"unit": "px",
+						"style": "64px"
+					},
+					"breakpoint_base": {
+						"number": 100,
+						"unit": "px",
+						"style": "100px"
+					},
+					"breakpoint_tablet_portrait": {
+						"number": 80,
+						"unit": "px",
+						"style": "80px"
+					}
+				}
+			},
+			"column_gap": {
+				"breakpoint_phone_portrait": null
+			}
+		},
+		"forms": {
+			"fields": {
+				"borders": {
+					"radius": {
+						"breakpoint_base": {
+							"all": {
+								"number": 6,
+								"unit": "px",
+								"style": "6px"
+							},
+							"topLeft": {
+								"number": 6,
+								"unit": "px",
+								"style": "6px"
+							},
+							"topRight": {
+								"number": 6,
+								"unit": "px",
+								"style": "6px"
+							},
+							"bottomLeft": {
+								"number": 6,
+								"unit": "px",
+								"style": "6px"
+							},
+							"bottomRight": {
+								"number": 6,
+								"unit": "px",
+								"style": "6px"
+							},
+							"editMode": "all"
+						}
+					}
+				}
+			}
+		},
+		"other": {
+			"transition_duration": {
+				"number": 250,
+				"unit": "ms",
+				"style": "250ms"
+			}
+		}
+	},
+	"code": {
+		"scripts": [
+			{
+				"code": "const closeBelow = {\n  'pg_details-box':            675,\n  'pg_details-close-tab-l':   1119,\n  'pg_details-close-tab-p':   1023,\n  'pg_details-close-phone-l':  767,\n  'pg_details-close-phone-p':  479,\n  'pg_details-closed':           0\n};\nconst openAbove = {\n  'pg_details-open-tab-l':    1119,\n  'pg_details-open-tab-p':    1023,\n  'pg_details-open-phone-l':   767,\n  'pg_details-open-phone-p':   479\n};\nfunction toggleAccordions() {\n  const w = window.innerWidth;\n  Object.entries(closeBelow).forEach(([cls, bp]) => {\n    document.querySelectorAll(`.${cls}`).forEach(acc => {\n      w > bp ? acc.setAttribute('open', '') : acc.removeAttribute('open');\n    });\n  });\n  Object.entries(openAbove).forEach(([cls, bp]) => {\n    document.querySelectorAll(`.${cls}`).forEach(acc => {\n      w > bp ? acc.removeAttribute('open') : acc.setAttribute('open', '');\n    });\n  });\n}\ntoggleAccordions();\nwindow.addEventListener('resize', toggleAccordions);"
+			},
+			{
+				"code": "(function () {\n  'use strict';\n  function patchBreakdanceForms() {\n    document.querySelectorAll('textarea[type]').forEach(function (el) {\n      el.removeAttribute('type');\n    });\n    document.querySelectorAll('[aria-describedby]').forEach(function (input) {\n      var targetId = input.getAttribute('aria-describedby');\n      if (targetId && !document.getElementById(targetId)) {\n        input.removeAttribute('aria-describedby');\n      }\n    });\n    document.querySelectorAll('.bde-popup').forEach(function(popup) {\n      var form = popup.querySelector('form[id]');\n      if (!form) return;\n      var namespace = form.id;\n      popup.querySelectorAll('input[id], textarea[id], select[id]').forEach(function(field) {\n        var oldId = field.getAttribute('id');\n        var newId = namespace + '--' + oldId;\n        field.setAttribute('id', newId);\n        var label = popup.querySelector('label[for=\"' + oldId + '\"]');\n        if (label) label.setAttribute('for', newId);\n      });\n    });\n    document.querySelectorAll('.breakdance-form-field--hpinput').forEach(function(wrapper) {\n      var form = wrapper.closest('form');\n      if (form && form.parentNode) {\n        form.parentNode.insertBefore(wrapper, form.nextSibling);\n      }\n    });\n  }\n  if (document.readyState === 'loading') {\n    document.addEventListener('DOMContentLoaded', patchBreakdanceForms);\n  } else {\n    patchBreakdanceForms();\n  }\n})();"
+			}
+		]
+	}
+}
