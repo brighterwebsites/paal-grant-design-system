@@ -1,0 +1,135 @@
+/* ─────────────────────────────────────────────
+   PAAL GRANT — Color Tokens  (v28)
+   Source: paalgrant-redesign (32).html
+   v28: lighter, more-accessible warm cream body text
+        (#c9bfaf → #c8c5be) and higher default body opacity
+   ───────────────────────────────────────────── */
+
+:root {
+
+  /* ── Raw palette — Backgrounds ── */
+  --color-page:           #2b2b2b; /* @kind color */
+  --color-section:        #383838; /* @kind color */
+  --color-footer:         #222222; /* @kind color */
+  --color-card-dark:      #1e1e1c; /* @kind color */
+  --color-card-mid:       #323232; /* @kind color */
+  --color-card-featured:  #1e2419; /* @kind color */
+  --color-nav-bg:         #0d1410; /* @kind color */
+
+  /* ── Parchment — legacy inverted-card tokens (retired in redesign 32; kept for back-compat) ── */
+  --color-parchment:      #f9f2e2; /* @kind color */
+  --color-parchment-dark: #2d3022; /* @kind color */ /* headings on parchment */
+  --color-parchment-mid:  #69614e; /* @kind color */ /* secondary text on parchment */
+  --color-parchment-warm: #d5c7ad; /* @kind color */ /* area / GST labels on dark olivewood cards */
+
+  /* ── Package card palette (redesign 32) — dark grounds, sage frame, seed-puff text ── */
+  --color-seed-puff:      #f5ebe2; /* @kind color */ /* package + award card name text */
+  --color-sage-pale:      #c1c8a9; /* @kind color */ /* "Most Popular" border + labels */
+  --color-sage-bright:    #a8b88a; /* @kind color */ /* package size / area labels */
+  --color-sage-hover:     #b8c8a2; /* @kind color */ /* small/large card hover border-left */
+  --color-card-pkg:       #323232; /* @kind color */ /* small / large package ground */
+  --color-card-pkg-feat:  #2b2b2b; /* @kind color */ /* "Most Popular" ground */
+
+  /* ── Sage green — sole brand accent ── */
+  --color-sage:           #8a9b7a; /* @kind color */
+  --color-sage-alt:       #a8b299; /* @kind color */
+  --color-olive:          #8a9178; /* @kind color */ /* package card borders, size labels */
+  --color-sage-light:     #b8c0a0; /* @kind color */ /* card left borders, CTA text */
+  --color-sage-90:        rgba(138,155,122,0.90);  /* @kind color */
+  --color-sage-85:        rgba(138,155,122,0.85);  /* @kind color */
+  --color-sage-75:        rgba(138,155,122,0.75);  /* @kind color */
+  --color-sage-70:        rgba(138,155,122,0.70);  /* @kind color */
+  --color-sage-60:        rgba(138,155,122,0.60);  /* @kind color */
+  --color-sage-45:        rgba(138,155,122,0.45);  /* @kind color */
+  --color-sage-28:        rgba(138,155,122,0.28);  /* @kind color */
+  --color-sage-22:        rgba(138,155,122,0.22);  /* @kind color */
+  --color-sage-15:        rgba(138,155,122,0.15);  /* @kind color */
+  --color-sage-10:        rgba(138,155,122,0.10);  /* @kind color */
+  --color-sage-07:        rgba(138,155,122,0.07);  /* @kind color */
+  --color-sage-06:        rgba(138,155,122,0.06);  /* @kind color */
+
+  /* ── Gold — award plaque accent (new in v27) ── */
+  --color-gold:           rgba(210,170,80,1);      /* @kind color */
+  --color-gold-80:        rgba(210,170,80,0.80);   /* @kind color */
+  --color-gold-75:        rgba(210,170,80,0.75);   /* @kind color */
+  --color-gold-60:        rgba(210,170,80,0.60);   /* @kind color */
+  --color-gold-55:        rgba(210,170,80,0.55);   /* @kind color */
+  --color-gold-35:        rgba(210,170,80,0.35);   /* @kind color */
+  --color-gold-30:        rgba(210,170,80,0.30);   /* @kind color */
+  --color-gold-08:        rgba(210,170,80,0.08);   /* @kind color */
+  --color-gold-05:        rgba(210,170,80,0.05);   /* @kind color */
+  --color-award-bg:       linear-gradient(160deg, #2a2620 0%, #1a1610 50%, #2a2620 100%); /* @kind other */
+
+  /* ── Warm cream — body text (v28: lighter for legibility) ── */
+  --color-cream:          #c8c5be; /* @kind color */
+  --color-cream-85:       rgba(200,196,188,0.85);  /* @kind color */
+  --color-cream-72:       rgba(200,196,188,0.72);  /* @kind color */
+  --color-cream-55:       rgba(200,196,188,0.55);  /* @kind color */
+  --color-cream-52:       rgba(200,196,188,0.52);  /* @kind color */
+  --color-cream-48:       rgba(200,196,188,0.48);  /* @kind color */
+  --color-cream-45:       rgba(200,196,188,0.45);  /* @kind color */
+  --color-cream-38:       rgba(200,196,188,0.38);  /* @kind color */
+  --color-cream-32:       rgba(200,196,188,0.32);  /* @kind color */
+
+  /* ── White — headings / UI ── */
+  --color-white:          #ffffff; /* @kind color */
+  --color-eggshell:       #eceae4; /* @kind color */
+  --color-white-88:       rgba(255,255,255,0.88);  /* @kind color */
+  --color-white-85:       rgba(255,255,255,0.85);  /* @kind color */
+  --color-white-82:       rgba(255,255,255,0.82);  /* @kind color */
+  --color-white-78:       rgba(255,255,255,0.78);  /* @kind color */
+  --color-white-30:       rgba(255,255,255,0.30);  /* @kind color */
+  --color-white-12:       rgba(255,255,255,0.12);  /* @kind color */
+  --color-white-10:       rgba(255,255,255,0.10);  /* @kind color */
+  --color-white-08:       rgba(255,255,255,0.08);  /* @kind color */
+  --color-white-07:       rgba(255,255,255,0.07);  /* @kind color */
+  --color-white-06:       rgba(255,255,255,0.06);  /* @kind color */
+  --color-white-04:       rgba(255,255,255,0.04);  /* @kind color */
+
+  /* ── Muted tones ── */
+  --color-muted:          #a8a5a0; /* @kind color */
+  --color-dim:            #808080; /* @kind color */
+
+  /* ── Semantic aliases ── */
+  --bg-page:              var(--color-page);          /* @kind color */
+  --bg-section:           var(--color-section);       /* @kind color */
+  --bg-card:              var(--color-card-mid);      /* @kind color */
+  --bg-card-featured:     var(--color-card-featured); /* @kind color */
+  --bg-footer:            var(--color-footer);        /* @kind color */
+
+  --text-heading:         var(--color-eggshell);      /* @kind color */
+  /* v28: was cream-72 — raised for contrast */
+  --text-body:            var(--color-cream-85);      /* @kind color */
+  --text-body-strong:     var(--color-cream);         /* @kind color */
+  --text-muted:           var(--color-muted);         /* @kind color */
+  --text-dim:             var(--color-dim);           /* @kind color */
+
+  /* ── On-parchment text (inverted package card) ── */
+  --text-on-parchment:        var(--color-parchment-dark); /* @kind color */
+  --text-on-parchment-muted:  var(--color-parchment-mid);  /* @kind color */
+  --text-label:           var(--color-sage-90);       /* @kind color */
+  --text-nav:             var(--color-white-82);      /* @kind color */
+
+  --accent:               var(--color-sage);          /* @kind color */
+  --accent-alt:           var(--color-sage-alt);      /* @kind color */
+  --accent-muted:         var(--color-sage-70);       /* @kind color */
+  --accent-subtle:        var(--color-sage-15);       /* @kind color */
+  --accent-ghost:         var(--color-sage-07);       /* @kind color */
+
+  --accent-gold:          var(--color-gold);          /* @kind color */
+  --accent-gold-muted:    var(--color-gold-75);       /* @kind color */
+  --accent-gold-subtle:   var(--color-gold-08);       /* @kind color */
+
+  --border-default:       var(--color-white-07);      /* @kind color */
+  --border-mid:           var(--color-white-12);      /* @kind color */
+  --border-accent:        var(--color-sage-45);       /* @kind color */
+  --border-accent-strong: var(--color-sage-70);       /* @kind color */
+  --border-gold:          var(--color-gold-35);       /* @kind color */
+  --border-gold-strong:   var(--color-gold-75);       /* @kind color */
+
+  /* ── Overlays ── */
+  --overlay-hero:         linear-gradient(to bottom, rgba(6,9,5,0.38) 0%, rgba(6,9,5,0.04) 38%, rgba(6,9,5,0.72) 100%); /* @kind other */
+  --overlay-card:         linear-gradient(to top, rgba(6,9,5,0.88) 0%, transparent 55%); /* @kind other */
+  --overlay-nav:          linear-gradient(to bottom, rgba(8,11,6,0.82) 0%, transparent 100%); /* @kind other */
+  --overlay-nav-solid:    rgba(43,43,43,0.97); /* @kind color */
+}

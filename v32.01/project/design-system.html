@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paal Grant — Design System v28</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Raleway",sans-serif;background:#2b2b2b;color:#c8c5be;-webkit-font-smoothing:antialiased}
+
+/* ── Sidebar ── */
+.sidebar{position:fixed;top:0;left:0;bottom:0;width:220px;background:#222222;border-right:1px solid rgba(255,255,255,0.07);padding:36px 0;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
+.sidebar-logo{padding:0 24px 28px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.sidebar-logo img{height:36px;width:auto;display:block}
+.sidebar-section{padding:22px 24px 6px;font-size:0.44rem;font-weight:400;letter-spacing:0.35em;text-transform:uppercase;color:rgba(138,155,122,0.6)}
+.sidebar nav{display:flex;flex-direction:column}
+.sidebar nav a{padding:7px 24px;font-size:0.66rem;font-weight:300;letter-spacing:0.1em;color:rgba(201,191,175,0.45);text-decoration:none;transition:color 0.2s,background 0.2s;border-left:2px solid transparent}
+.sidebar nav a:hover{color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.03)}
+.sidebar nav a.active{color:#eceae4;border-left-color:rgba(138,155,122,0.8)}
+.sidebar-version{padding:24px 24px 0;margin-top:auto;font-size:0.5rem;font-weight:300;letter-spacing:0.14em;color:rgba(201,191,175,0.25)}
+
+/* ── Main ── */
+.main{margin-left:220px;padding:0 0 120px}
+
+/* ── Page header ── */
+.ds-header{background:linear-gradient(to bottom,#1a2018,#2b2b2b);padding:80px 64px 72px;border-bottom:1px solid rgba(255,255,255,0.07);position:relative;overflow:hidden}
+.ds-header::before{content:"";position:absolute;top:-80px;right:-80px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(138,155,122,0.07) 0%,transparent 70%)}
+.ds-header-eyebrow{font-size:0.55rem;font-weight:300;letter-spacing:0.45em;text-transform:uppercase;color:rgba(138,155,122,0.8);margin-bottom:16px}
+.ds-header h1{font-size:clamp(2.5rem,5vw,4.2rem);font-weight:100;letter-spacing:0.1em;text-transform:uppercase;color:#eceae4;line-height:1.05;margin-bottom:20px}
+.ds-header p{font-size:0.88rem;font-weight:300;line-height:1.9;color:rgba(201,191,175,0.55);max-width:520px}
+.ds-header-meta{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap}
+.ds-meta-pill{border:1px solid rgba(138,155,122,0.3);padding:7px 18px;font-size:0.6rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(138,155,122,0.8)}
+.ds-meta-pill.new{border-color:rgba(210,170,80,0.4);color:rgba(210,170,80,0.8)}
+
+/* ── Sections ── */
+.ds-section{padding:72px 64px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.ds-section:last-child{border-bottom:none}
+.ds-section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:24px;flex-wrap:wrap}
+.ds-section-label{font-size:0.48rem;font-weight:300;letter-spacing:0.45em;text-transform:uppercase;color:rgba(138,155,122,0.7);margin-bottom:10px}
+.ds-section-title{font-size:1.9rem;font-weight:100;letter-spacing:0.1em;text-transform:uppercase;color:#eceae4}
+.ds-section-desc{font-size:0.8rem;font-weight:300;line-height:1.85;color:rgba(201,191,175,0.4);max-width:380px;text-align:right}
+.ds-sub{margin-bottom:44px}
+.ds-sub:last-child{margin-bottom:0}
+.ds-sub-title{font-size:0.5rem;font-weight:400;letter-spacing:0.32em;text-transform:uppercase;color:rgba(138,155,122,0.6);margin-bottom:18px}
+.ds-divider{height:1px;background:linear-gradient(to right,transparent,rgba(138,155,122,0.25),transparent);margin:0 64px}
+
+/* ── Swatches ── */
+.swatch-row{display:flex;gap:3px;margin-bottom:12px}
+.swatch{flex:1;min-width:64px}
+.swatch-color{height:68px}
+.swatch-label{padding:7px 9px;background:#323232;border-top:1px solid rgba(255,255,255,0.06)}
+.swatch-name{font-size:0.46rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,191,175,0.45);margin-bottom:2px}
+.swatch-hex{font-size:0.56rem;font-weight:300;color:rgba(255,255,255,0.4);font-family:monospace}
+.opacity-row{display:flex;gap:3px;margin-bottom:5px}
+.opacity-chip{flex:1;height:30px}
+.opacity-labels{display:flex;gap:3px;margin-bottom:20px}
+.opacity-labels span{flex:1;font-size:0.4rem;font-weight:300;color:rgba(201,191,175,0.28);text-align:center}
+
+/* ── Semantic table ── */
+.sem-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.sem-block{background:#323232;border:1px solid rgba(255,255,255,0.06)}
+.sem-block-head{padding:9px 14px;font-size:0.44rem;font-weight:400;letter-spacing:0.3em;text-transform:uppercase;color:rgba(138,155,122,0.55);border-bottom:1px solid rgba(255,255,255,0.05)}
+.sem-row{display:grid;grid-template-columns:14px 1fr auto;align-items:center;padding:8px 14px;border-bottom:1px solid rgba(255,255,255,0.04);gap:12px}
+.sem-row:last-child{border-bottom:none}
+.sem-dot{width:9px;height:9px;border-radius:50%}
+.sem-token{font-size:0.54rem;font-weight:400;letter-spacing:0.08em;color:rgba(201,191,175,0.5);font-family:monospace}
+.sem-val{font-size:0.52rem;font-weight:300;color:rgba(201,191,175,0.28);font-family:monospace}
+
+/* ── Type scale ── */
+.type-row{display:grid;grid-template-columns:160px 1fr 100px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06);gap:20px}
+.type-row:last-child{border-bottom:none}
+.type-token{font-size:0.5rem;font-weight:400;letter-spacing:0.15em;color:rgba(138,155,122,0.7);font-family:monospace;display:block;margin-bottom:3px}
+.type-detail{font-size:0.46rem;font-weight:300;color:rgba(201,191,175,0.28);display:block}
+.type-usage{font-size:0.48rem;font-weight:300;color:rgba(201,191,175,0.28);text-align:right}
+.type-note{display:inline-block;font-size:0.4rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(210,170,80,0.7);border:1px solid rgba(210,170,80,0.3);padding:1px 6px;margin-left:6px;vertical-align:middle}
+
+/* ── Spacing ── */
+.space-track{display:flex;align-items:flex-end;gap:4px;margin-bottom:6px}
+.space-bar{background:rgba(138,155,122,0.32);min-width:13px}
+.space-labels{display:flex;gap:4px;margin-bottom:28px}
+.space-labels span{min-width:13px;font-size:0.38rem;color:rgba(201,191,175,0.25);text-align:center}
+.token-table{display:flex;flex-direction:column;border:1px solid rgba(255,255,255,0.06);background:#323232}
+.token-row-line{display:grid;grid-template-columns:1fr auto;align-items:center;padding:9px 16px;border-bottom:1px solid rgba(255,255,255,0.04)}
+.token-row-line:last-child{border-bottom:none}
+.t-name{font-size:0.54rem;font-weight:400;letter-spacing:0.08em;color:rgba(201,191,175,0.48);font-family:monospace}
+.t-val{font-size:0.58rem;font-weight:300;color:rgba(255,255,255,0.4)}
+.radii-row{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-end}
+.radius-item{display:flex;flex-direction:column;align-items:center;gap:8px}
+.radius-box{width:52px;height:52px;background:rgba(138,155,122,0.16);border:1px solid rgba(138,155,122,0.38)}
+.radius-lbl{font-size:0.46rem;font-weight:300;color:rgba(201,191,175,0.36);text-align:center;line-height:1.55}
+
+/* ── Effects ── */
+.effects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.effect-card{background:#323232;border:1px solid rgba(255,255,255,0.06);padding:24px}
+.effect-label{font-size:0.5rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(138,155,122,0.8);margin-bottom:8px}
+.effect-desc{font-size:0.64rem;font-weight:300;color:rgba(201,191,175,0.42);line-height:1.75;margin-bottom:16px}
+.img-demo-wrap{width:100%;height:56px;overflow:hidden;background:#1a2018}
+.img-demo-inner{width:100%;height:100%;background:linear-gradient(135deg,rgba(138,155,122,0.22),rgba(138,155,122,0.05));transition:transform 0.7s ease;cursor:pointer}
+.img-demo-wrap:hover .img-demo-inner{transform:scale(1.05)}
+.fade-demo{opacity:0;transform:translateY(10px);animation:pgFade 1.4s ease 0.2s forwards;font-size:0.85rem;font-weight:100;letter-spacing:0.12em;text-transform:uppercase;color:#eceae4}
+@keyframes pgFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.nav-link-demo{position:relative;display:inline-block;font-size:0.72rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.82);padding-bottom:5px;cursor:pointer}
+.nav-link-demo::after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:rgba(138,155,122,0.85);transform:scaleX(0);transform-origin:left;transition:transform 0.32s}
+.nav-link-demo:hover::after{transform:scaleX(1)}
+
+/* ── Logos ── */
+.logo-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.logo-cell{padding:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+.logo-cell.dark{background:#1e1e1c;border:1px solid rgba(255,255,255,0.06)}
+.logo-cell.light{background:#f0ece4}
+.logo-cell img.landscape{max-height:52px;width:auto;max-width:100%}
+.logo-cell img.stacked{max-height:100px;width:auto;max-width:150px}
+.logo-tag{font-size:0.46rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase}
+.logo-tag.on-dark{color:rgba(201,191,175,0.35)}
+.logo-tag.on-light{color:rgba(0,0,0,0.35)}
+
+/* ── Motifs ── */
+.motif-row{display:flex;align-items:flex-start;gap:40px;flex-wrap:wrap;padding:28px 0}
+.motif-item{display:flex;flex-direction:column;align-items:center;gap:14px}
+.motif-label{font-size:0.46rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(138,155,122,0.5);text-align:center;line-height:1.65}
+.dot-m{width:4px;height:4px;border-radius:50%;background:rgba(138,155,122,0.8)}
+.div-line-m{width:60px;height:1px;background:rgba(138,155,122,0.38)}
+.div-dia-m{width:7px;height:7px;background:rgba(138,155,122,0.85);transform:rotate(45deg)}
+.vrule-m{width:1px;height:48px;background:linear-gradient(to bottom,transparent,rgba(138,155,122,0.75))}
+.progress-m{width:80px;height:2px;background:rgba(138,155,122,0.7)}
+.accent-top-m{width:72px;height:36px;background:#1a2018;border:1px solid rgba(138,155,122,0.28);border-top:3px solid #c1c8a9}
+.gold-top-m{width:72px;height:36px;background:#1a1610;border:1px solid rgba(210,170,80,0.4);border-top:3px solid rgba(210,170,80,0.9)}
+
+/* ── Buttons ── */
+.btn-row-label{font-size:0.48rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(138,155,122,0.5);width:80px;flex-shrink:0}
+.btn-sage-d{display:inline-block;background:rgba(138,155,122,0.15);border:1px solid rgba(138,155,122,0.7);color:#eceae4;padding:14px 44px;font-size:0.65rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;cursor:pointer;transition:background 0.28s,border-color 0.28s;font-family:"Raleway",sans-serif;border-radius:6px}
+.btn-sage-d:hover{background:rgba(138,155,122,0.3);border-color:rgba(138,155,122,1)}
+.btn-ghost-d{display:inline-block;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.8);padding:14px 44px;font-size:0.65rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;cursor:pointer;transition:border-color 0.28s,color 0.28s;background:transparent;font-family:"Raleway",sans-serif;border-radius:6px}
+.btn-ghost-d:hover{border-color:rgba(138,155,122,0.8);color:#eceae4}
+.btn-navcta-d{display:inline-block;border:1px solid rgba(138,155,122,0.6);color:#eceae4;padding:10px 28px;font-size:0.7rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:background 0.25s;background:transparent;border-radius:6px;font-family:"Raleway",sans-serif}
+.btn-navcta-d:hover{background:rgba(138,155,122,0.2)}
+.btn-pkg-d{display:block;text-align:center;padding:13px;border:1px solid rgba(138,155,122,0.42);font-size:0.6rem;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.8);cursor:pointer;transition:background 0.28s;background:transparent;font-family:"Raleway",sans-serif;border-radius:6px}
+.btn-pkg-d:hover{background:rgba(138,155,122,0.15)}
+.btn-sm-d{padding:10px 28px!important;font-size:0.6rem!important}
+.btn-dis{opacity:0.4;cursor:not-allowed!important}
+
+/* ── Badges ── */
+.badge-section-label{font-size:0.58rem;font-weight:300;letter-spacing:0.45em;text-transform:uppercase;color:rgba(138,155,122,0.9)}
+.badge-award{display:inline-flex;align-items:center;gap:12px;background:rgba(138,155,122,0.07);border:1px solid rgba(138,155,122,0.45);padding:12px 24px;border-radius:8px}
+.badge-stars{color:rgba(168,178,153,1);font-size:0.75rem;letter-spacing:4px}
+.badge-award-text{font-size:0.72rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(138,155,122,0.9)}
+.badge-size{font-size:0.55rem;font-weight:400;letter-spacing:0.4em;text-transform:uppercase;color:rgba(138,155,122,0.85)}
+.badge-tag{display:inline-block;background:rgba(138,155,122,0.07);border:1px solid rgba(138,155,122,0.4);padding:8px 18px;font-size:0.62rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:rgba(138,155,122,0.9);border-radius:8px}
+.badge-breadcrumb{font-size:0.72rem;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:rgba(201,191,175,0.28)}
+.badge-breadcrumb span{color:rgba(138,155,122,0.7)}
+.badge-gold-title{font-size:0.54rem;font-weight:400;letter-spacing:0.38em;text-transform:uppercase;color:rgba(210,170,80,0.8)}
+.badge-size-bordered{font-size:0.72rem;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:rgba(138,155,122,0.85);border:1px solid rgba(138,155,122,0.3);padding:7px 18px;display:inline-block;border-radius:8px}
+
+/* ── Project cards ── */
+.cards-grid{display:grid;grid-template-columns:1.55fr 1fr;grid-template-rows:1fr 1fr;gap:3px;height:480px;overflow:hidden}
+.proj-card-d{position:relative;overflow:hidden;cursor:pointer;background:#1a1e14}
+.proj-card-d:first-child{grid-row:1/3}
+.proj-card-d img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s ease}
+.proj-card-d:hover img{transform:scale(1.05)}
+.proj-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,9,5,0.88) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
+.proj-loc{font-size:0.6rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(138,155,122,0.9);margin-bottom:5px}
+.proj-name{font-size:1.1rem;font-weight:200;letter-spacing:0.06em;color:#eceae4;line-height:1.25}
+
+/* ── Forms ── */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form-field-d{display:flex;flex-direction:column;gap:8px}
+.form-field-d label{font-size:0.6rem;font-weight:400;letter-spacing:0.28em;text-transform:uppercase;color:rgba(201,191,175,0.5)}
+.form-field-d input,.form-field-d textarea,.form-field-d select{background:rgba(30,30,26,0.04);border:1px solid rgba(255,255,255,0.1);padding:14px 18px;color:#eceae4;font-family:"Raleway",sans-serif;font-size:0.85rem;font-weight:300;outline:none;transition:border-color 0.25s;width:100%;border-radius:6px}
+.form-field-d input:focus,.form-field-d textarea:focus,.form-field-d select:focus{border-color:rgba(138,155,122,0.7)}
+.form-field-d input::placeholder,.form-field-d textarea::placeholder{color:rgba(201,191,175,0.2)}
+.form-field-d textarea{resize:vertical;min-height:100px}
+.form-field-d select option{background:#1a2018;color:#eceae4}
+
+/* ── Nav demo ── */
+.nav-demo{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:80px;background:rgba(43,43,43,0.97);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.07)}
+.nav-links-demo{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links-demo a{font-size:0.68rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.82);text-decoration:none;position:relative;padding-bottom:4px;cursor:pointer}
+.nav-links-demo a.active{color:#fff}
+.nav-links-demo a.active::after{content:"";position:absolute;bottom:0;left:0;right:0;height:1px;background:rgba(138,155,122,0.85)}
+.nav-links-demo a.cta-link{border:1px solid rgba(138,155,122,0.6);padding:8px 20px;border-radius:6px}
+
+/* ── Award plaque ── */
+.award-strip{display:flex;gap:20px;overflow:hidden}
+.award-plaque{background:linear-gradient(160deg,#2a2620 0%,#1a1610 50%,#2a2620 100%);border:1px solid rgba(210,170,80,0.4);border-top:3px solid rgba(210,170,80,0.9);border-radius:12px;padding:32px 36px 28px;width:280px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;transition:transform 0.3s,border-color 0.3s}
+.award-plaque:hover{transform:translateY(-4px);border-color:rgba(210,170,80,0.65);border-top-color:rgba(210,170,80,1)}
+.award-icon{font-size:1.6rem;margin-bottom:12px}
+.award-cat{font-size:0.62rem;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:rgba(210,170,80,1);text-shadow:0 0 12px rgba(210,170,80,0.35);text-align:center;margin-bottom:8px;display:block}
+.award-sprig{color:rgba(210,170,80,1);margin-bottom:14px}
+.award-sprig svg{display:block}
+.award-name{font-size:1rem;font-weight:600;letter-spacing:0.06em;color:#f5ebe2;text-align:center;line-height:1.4;margin-bottom:6px;display:block}
+.award-sub{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;color:rgba(210,170,80,0.75);text-align:center;display:block;line-height:1.5}
+
+/* ── Review card ── */
+.reviews-strip{display:flex;gap:20px;overflow:hidden}
+.review-card-d{background:#323232;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:32px 32px 28px;width:380px;flex-shrink:0;display:flex;flex-direction:column;gap:16px;transition:border-color 0.3s,transform 0.3s}
+.review-card-d:hover{border-color:rgba(168,178,153,0.4);transform:translateY(-4px)}
+.review-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:300;color:#2b2b2b;flex-shrink:0}
+.review-name{font-size:0.85rem;font-weight:400;letter-spacing:0.06em;color:#eceae4}
+.review-date{font-size:0.6rem;font-weight:300;letter-spacing:0.1em;color:#a8a5a0}
+.review-stars-d{color:#a8b299;font-size:0.82rem;letter-spacing:2px;margin-left:auto}
+.review-text-d{font-size:0.88rem;font-weight:300;line-height:1.85;color:#c8c5be;font-style:italic}
+.review-google{display:flex;align-items:center;gap:8px;font-size:0.58rem;font-weight:300;letter-spacing:0.18em;text-transform:uppercase;color:#a8a5a0;border-top:1px solid rgba(255,255,255,0.07);padding-top:14px}
+.review-google-dot{width:6px;height:6px;border-radius:50%;background:#a8b299}
+
+/* ── Package card preview ── */
+.pkg-preview{display:grid;grid-template-columns:repeat(3,1fr)}
+.pkg-card-d{border:1px solid rgba(255,255,255,0.07);border-right:none;padding:32px 28px}
+.pkg-card-d:last-child{border-right:1px solid rgba(255,255,255,0.07)}
+.pkg-card-d.featured{background:#1a2018;border:1px solid rgba(138,155,122,0.35);border-top:2px solid rgba(138,155,122,0.85)}
+.pkg-size-lbl{font-size:0.55rem;font-weight:400;letter-spacing:0.4em;text-transform:uppercase;color:rgba(138,155,122,0.85);margin-bottom:10px;display:block}
+.pkg-name-lbl{font-size:1.6rem;font-weight:100;letter-spacing:0.08em;text-transform:uppercase;color:#eceae4;line-height:1;margin-bottom:4px}
+.pkg-area-lbl{font-size:0.68rem;font-weight:300;letter-spacing:0.12em;color:#a8a5a0;margin-bottom:20px}
+.pkg-price-lbl{font-size:2.4rem;font-weight:100;color:#eceae4;line-height:1}
+.pkg-gst-lbl{font-size:0.58rem;font-weight:300;letter-spacing:0.1em;color:#808080;margin-left:5px}
+
+/* ── Accessibility ── */
+.a11y-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.a11y-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.04);background:#323232;gap:16px}
+.a11y-row:last-child{border-bottom:none}
+.a11y-label{font-size:0.58rem;font-weight:300;color:rgba(201,191,175,0.55)}
+.a11y-ratio{font-size:0.68rem;font-weight:100;letter-spacing:0.06em;color:#eceae4;text-align:right}
+.a11y-pass{font-size:0.48rem;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;padding:3px 8px}
+.pass-aaa{background:rgba(138,155,122,0.2);color:rgba(138,155,122,1)}
+.pass-aa{background:rgba(138,155,122,0.12);color:rgba(138,155,122,0.8)}
+.pass-fail{background:rgba(220,100,80,0.15);color:rgba(220,120,100,0.9)}
+.pass-warn{background:rgba(210,170,80,0.12);color:rgba(210,170,80,0.8)}
+.a11y-note{font-size:0.5rem;font-weight:300;line-height:1.75;color:rgba(201,191,175,0.35);margin-top:10px;font-style:italic;padding:0 2px}
+.a11y-block-head{padding:9px 16px;font-size:0.44rem;font-weight:400;letter-spacing:0.3em;text-transform:uppercase;color:rgba(138,155,122,0.55);border-bottom:1px solid rgba(255,255,255,0.05);background:#323232}
+
+/* ── Scroll active ── */
+.back-top{display:block;text-align:center;padding:48px;font-size:0.58rem;font-weight:300;letter-spacing:0.25em;text-transform:uppercase;color:rgba(138,155,122,0.45);text-decoration:none;transition:color 0.25s;cursor:pointer}
+.back-top:hover{color:rgba(138,155,122,0.9)}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="assets/logo-landscape-white.png" alt="Paal Grant">
+  </div>
+  <div class="sidebar-section">Foundation</div>
+  <nav>
+    <a href="#colors">Colors</a>
+    <a href="#typography">Typography</a>
+    <a href="#spacing">Spacing &amp; Layout</a>
+    <a href="#effects">Motion &amp; Effects</a>
+  </nav>
+  <div class="sidebar-section">Brand</div>
+  <nav>
+    <a href="#logos">Logos</a>
+    <a href="#motifs">Motifs &amp; Dividers</a>
+  </nav>
+  <div class="sidebar-section">Components</div>
+  <nav>
+    <a href="#buttons">Buttons</a>
+    <a href="#badges">Badges &amp; Labels</a>
+    <a href="#cards">Project Cards</a>
+    <a href="#forms">Form Fields</a>
+    <a href="#navigation">Navigation</a>
+    <a href="#awards">Award Plaques</a>
+    <a href="#reviews">Review Cards</a>
+    <a href="#packages">Package Cards</a>
+  </nav>
+  <div class="sidebar-section">Accessibility</div>
+  <nav>
+    <a href="#a11y">Contrast Ratios</a>
+  </nav>
+  <div class="sidebar-section">Resources</div>
+  <nav>
+    <a href="ui_kits/website/index.html" target="_blank">Website UI Kit →</a>
+    <a href="readme.md" target="_blank">Readme →</a>
+  </nav>
+  <div class="sidebar-version">v28 · approved redesign 32 · June 2026</div>
+</aside>
+
+<main class="main">
+
+  <!-- HEADER -->
+  <div class="ds-header" id="top">
+    <div class="ds-header-eyebrow">Design System — v28</div>
+    <h1>Paal Grant<br>Designs In Landscaping</h1>
+    <p>A complete visual language for Australia's award-winning landscape designer. Warm charcoal surfaces, sage green accent, Raleway type, gold award system with botanical motif.</p>
+    <div class="ds-header-meta">
+      <span class="ds-meta-pill">Raleway — wt 100–700</span>
+      <span class="ds-meta-pill">Sage #8a9b7a</span>
+      <span class="ds-meta-pill">Page BG #2b2b2b</span>
+      <span class="ds-meta-pill new">Soft radii + botanical motif — v28</span>
+      <span class="ds-meta-pill">Ballarat, Victoria</span>
+    </div>
+  </div>
+
+  <!-- COLORS -->
+  <section class="ds-section" id="colors">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Foundation</div><div class="ds-section-title">Colors</div></div>
+      <div class="ds-section-desc">One brand accent (sage green), one awards accent (gold), warm cream text. Depth via layered charcoal — no shadows.</div>
+    </div>
+
+    <div class="ds-sub">
+      <div class="ds-sub-title">Backgrounds — Warm Charcoal Palette (v28)</div>
+      <div class="swatch-row">
+        <div class="swatch"><div class="swatch-color" style="background:#2b2b2b;border:1px solid rgba(255,255,255,0.1)"></div><div class="swatch-label"><div class="swatch-name">Page</div><div class="swatch-hex">#2b2b2b</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#383838"></div><div class="swatch-label"><div class="swatch-name">Section Alt</div><div class="swatch-hex">#383838</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#323232"></div><div class="swatch-label"><div class="swatch-name">Card Mid</div><div class="swatch-hex">#323232</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#1e2419"></div><div class="swatch-label"><div class="swatch-name">Olivewood</div><div class="swatch-hex">#1e2419</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#1e1e1c"></div><div class="swatch-label"><div class="swatch-name">Deeper Dark</div><div class="swatch-hex">#1e1e1c</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#222222"></div><div class="swatch-label"><div class="swatch-name">Footer</div><div class="swatch-hex">#222222</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#0d1410"></div><div class="swatch-label"><div class="swatch-name">Nav Panel</div><div class="swatch-hex">#0d1410</div></div></div>
+      </div>
+    </div>
+
+    <div class="ds-sub">
+      <div class="ds-sub-title">Package Card Palette — Olivewood &amp; Sage (redesign 32)</div>
+      <div class="swatch-row">
+        <div class="swatch"><div class="swatch-color" style="background:#2b2b2b;border:1px solid rgba(255,255,255,0.1)"></div><div class="swatch-label"><div class="swatch-name">Featured Ground</div><div class="swatch-hex">#2b2b2b</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#323232"></div><div class="swatch-label"><div class="swatch-name">Small / Large Ground</div><div class="swatch-hex">#323232</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#f5ebe2"></div><div class="swatch-label"><div class="swatch-name">Seed Puff · name</div><div class="swatch-hex">#f5ebe2</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#c1c8a9"></div><div class="swatch-label"><div class="swatch-name">Pale Sage · featured</div><div class="swatch-hex">#c1c8a9</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#a8b88a"></div><div class="swatch-label"><div class="swatch-name">Sage · labels</div><div class="swatch-hex">#a8b88a</div></div></div>
+        <div class="swatch"><div class="swatch-color" style="background:#8a9178"></div><div class="swatch-label"><div class="swatch-name">Olive · left border</div><div class="swatch-hex">#8a9178</div></div></div>
+      </div>
+      <p style="margin-top:10px;font-size:0.5rem;font-weight:300;line-height:1.7;color:rgba(201,191,175,0.35);font-style:italic">Redesign 32 retired the earlier parchment (#f9f2e2) inverted-card treatment. The “Most Popular” card is now a dark #2b2b2b ground framed in pale sage with seed-puff text.</p>
+    </div>
+
+    <div class="ds-sub">
+      <div class="ds-sub-title">Sage Green — Sole Brand Accent (#8a9b7a)</div>
+      <div class="opacity-row">
+        <div class="opacity-chip" style="background:rgba(138,155,122,0.07)"></div>
+        <div class="opacity-chip" style="background:rgba(138,155,122,0.15)"></div>
+        <div class="opacity-chip" style="background:rgba(138,155,122,0.28)"></div>
+        <div class="opacity-chip" style="background:rgba(138,155,122,0.45)"></div>
+        <div class="opacity-chip" style="background:rgba(138,155,122,0.60)"></div>
+        <div class="opacity-chip" style="background:rgba(138,155,122,0.70)"></div>
+        <div class="opacity-chip" style="background:rgba(138,155,122,0.85)"></div>
+        <div class="opacity-chip" style="background:rgba(138,155,122,0.90)"></div>
+        <div class="opacity-chip" style="background:#8a9b7a"></div>
+        <div class="opacity-chip" style="background:#a8b299"></div>
+      </div>
+      <div class="opacity-labels">
+        <span>7%</span><span>15%</span><span>28%</span><span>45%</span><span>60%</span><span>70%</span><span>85%</span><span>90%</span><span>100%</span><span>Alt</span>
+      </div>
+    </div>
+
+    <div class="ds-sub">
+      <div class="ds-sub-title">Gold — Award Plaques Only (rgba 210,170,80) · Botanical Motif (v28)</div>
+      <div class="opacity-row">
+        <div class="opacity-chip" style="background:rgba(210,170,80,0.08)"></div>
+        <div class="opacity-chip" style="background:rgba(210,170,80,0.30)"></div>
+        <div class="opacity-chip" style="background:rgba(210,170,80,0.35)"></div>
+        <div class="opacity-chip" style="background:rgba(210,170,80,0.55)"></div>
+        <div class="opacity-chip" style="background:rgba(210,170,80,0.75)"></div>
+        <div class="opacity-chip" style="background:rgba(210,170,80,0.80)"></div>
+        <div class="opacity-chip" style="background:rgba(210,170,80,1)"></div>
+      </div>
+      <div class="opacity-labels" style="max-width:calc(7/10*100%)">
+        <span>8%</span><span>30%</span><span>35%</span><span>55%</span><span>75%</span><span>80%</span><span>100%</span>
+      </div>
+      <div style="margin-top:16px;background:linear-gradient(160deg,#2a2620 0%,#1a1610 50%,#2a2620 100%);border:1px solid rgba(210,170,80,0.4);border-top:3px solid rgba(210,170,80,0.9);border-radius:12px;padding:20px 28px;display:inline-flex;align-items:center;gap:20px">
+        <span style="color:rgba(210,170,80,1);display:flex"><svg width="22" height="27" viewBox="0 0 64 80" fill="none"><path d="M32 80 C31 60 33 38 32 16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/><g fill="currentColor"><path d="M32 62 C32 54 38 50 47 49 C44 57 39 61 32 62 Z"/><path d="M32 62 C32 54 26 50 17 49 C20 57 25 61 32 62 Z"/><path d="M32 50 C32 43 37 39 45 38 C42 45 38 49 32 50 Z"/><path d="M32 50 C32 43 27 39 19 38 C22 45 26 49 32 50 Z"/><path d="M32 39 C32 33 36 30 43 29 C40 35 37 38 32 39 Z"/><path d="M32 39 C32 33 28 30 21 29 C24 35 27 38 32 39 Z"/><path d="M32 29 C32 24 35 21 41 20 C38 26 36 28 32 29 Z"/><path d="M32 29 C32 24 29 21 23 20 C26 26 28 28 32 29 Z"/><path d="M32 21 C30 16 31 11 32 7 C33 11 34 16 32 21 Z"/></g></svg></span>
+        <div>
+          <span style="display:block;font-size:0.62rem;font-weight:700;letter-spacing:0.32em;text-transform:uppercase;color:rgba(210,170,80,1);text-shadow:0 0 12px rgba(210,170,80,0.35)">International Award</span>
+          <span style="display:block;font-size:1rem;font-weight:600;letter-spacing:0.06em;color:#f5ebe2">Gardening World Cup</span>
+          <span style="display:block;font-size:0.72rem;font-weight:500;color:rgba(210,170,80,0.75)">People's Choice &amp; Best Design · Japan</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-sub">
+      <div class="ds-sub-title">Text Hierarchy</div>
+      <div class="opacity-row">
+        <div class="opacity-chip" style="background:#eceae4"></div>
+        <div class="opacity-chip" style="background:rgba(201,191,175,0.85)"></div>
+        <div class="opacity-chip" style="background:rgba(201,191,175,0.72)"></div>
+        <div class="opacity-chip" style="background:#a8a5a0"></div>
+        <div class="opacity-chip" style="background:#808080"></div>
+        <div class="opacity-chip" style="background:rgba(201,191,175,0.38)"></div>
+        <div class="opacity-chip" style="background:rgba(138,155,122,0.9)"></div>
+        <div class="opacity-chip" style="background:rgba(255,255,255,0.82)"></div>
+      </div>
+      <div class="opacity-labels">
+        <span>Heading</span><span>Body+</span><span>Body</span><span>Muted</span><span>Dim</span><span>Ghost</span><span>Label</span><span>Nav</span>
+      </div>
+    </div>
+
+    <div class="ds-sub" style="margin-top:32px">
+      <div class="ds-sub-title">Semantic Aliases</div>
+      <div class="sem-grid">
+        <div class="sem-block">
+          <div class="sem-block-head">Text</div>
+          <div class="sem-row"><div class="sem-dot" style="background:#eceae4"></div><div class="sem-token">--text-heading</div><div class="sem-val">#eceae4</div></div>
+          <div class="sem-row"><div class="sem-dot" style="background:rgba(200,196,188,0.85)"></div><div class="sem-token">--text-body</div><div class="sem-val">cream 85%</div></div>
+          <div class="sem-row"><div class="sem-dot" style="background:#a8a5a0"></div><div class="sem-token">--text-muted</div><div class="sem-val">#a8a5a0</div></div>
+          <div class="sem-row"><div class="sem-dot" style="background:#808080"></div><div class="sem-token">--text-dim</div><div class="sem-val">#808080</div></div>
+          <div class="sem-row"><div class="sem-dot" style="background:rgba(138,155,122,0.9)"></div><div class="sem-token">--text-label</div><div class="sem-val">sage 90%</div></div>
+          <div class="sem-row"><div class="sem-dot" style="background:rgba(255,255,255,0.82)"></div><div class="sem-token">--text-nav</div><div class="sem-val">white 82%</div></div>
+        </div>
+        <div class="sem-block">
+          <div class="sem-block-head">Surfaces, Borders &amp; Accents</div>
+          <div class="sem-row"><div class="sem-dot" style="background:#2b2b2b;border:1px solid rgba(255,255,255,0.2)"></div><div class="sem-token">--bg-page</div><div class="sem-val">#2b2b2b</div></div>
+          <div class="sem-row"><div class="sem-dot" style="background:#383838"></div><div class="sem-token">--bg-section</div><div class="sem-val">#383838</div></div>
+          <div class="sem-row"><div class="sem-dot" style="background:#323232"></div><div class="sem-token">--bg-card</div><div class="sem-val">#323232</div></div>
+          <div class="sem-row"><div class="sem-dot" style="background:rgba(255,255,255,0.07)"></div><div class="sem-token">--border-default</div><div class="sem-val">white 7%</div></div>
+          <div class="sem-row"><div class="sem-dot" style="background:rgba(138,155,122,0.7)"></div><div class="sem-token">--border-accent-strong</div><div class="sem-val">sage 70%</div></div>
+          <div class="sem-row"><div class="sem-dot" style="background:rgba(210,170,80,0.75)"></div><div class="sem-token">--border-gold-strong</div><div class="sem-val">gold 75%</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ds-divider"></div>
+
+  <!-- TYPOGRAPHY -->
+  <section class="ds-section" id="typography">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Foundation</div><div class="ds-section-title">Typography</div></div>
+      <div class="ds-section-desc">Raleway only. Weight 100 dominates all headings; 200 secondary; 300/400 body &amp; chrome. v28 adds 500/600/700 for card meta, CTAs &amp; numerals.</div>
+    </div>
+
+    <div class="type-row">
+      <div><span class="type-token">display-xl</span><span class="type-detail">clamp 3.5–6.5rem · wt 100 · ls 0.1em</span></div>
+      <div style="font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:100;color:#eceae4;letter-spacing:0.1em;text-transform:uppercase;line-height:1">Dream Garden</div>
+      <div class="type-usage">Hero, intro headline</div>
+    </div>
+    <div class="type-row">
+      <div><span class="type-token">display-lg · page title</span><span class="type-detail">clamp 2.5–4.5rem · wt 100 · ls 0.08em</span></div>
+      <div style="font-size:clamp(1.8rem,3.5vw,3rem);font-weight:100;color:#eceae4;letter-spacing:0.08em;text-transform:uppercase">Our Process</div>
+      <div class="type-usage">Page titles</div>
+    </div>
+    <div class="type-row">
+      <div><span class="type-token">display-md · section title</span><span class="type-detail">clamp 2–3.8rem · wt 100 · ls 0.08em</span></div>
+      <div style="font-size:clamp(1.4rem,3vw,2.4rem);font-weight:100;color:#eceae4;letter-spacing:0.08em;text-transform:uppercase">3D Garden Design Packages</div>
+      <div class="type-usage">Section headings</div>
+    </div>
+    <div class="type-row">
+      <div><span class="type-token">price / large numeral</span><span class="type-detail">2.4–2.8rem · wt 100 · ls 0.02em</span></div>
+      <div style="font-size:2.4rem;font-weight:100;color:#eceae4;line-height:1">$3,200 <span style="font-size:0.6rem;font-weight:300;letter-spacing:0.1em;color:#808080">inc. GST</span></div>
+      <div class="type-usage">Package pricing</div>
+    </div>
+    <div class="type-row">
+      <div><span class="type-token">heading-lg <span class="type-note">200</span></span><span class="type-detail">1.8rem · wt 200 · ls 0.12em · SECONDARY ONLY</span></div>
+      <div style="font-size:1.6rem;font-weight:200;color:#eceae4;letter-spacing:0.12em;text-transform:uppercase">Consultation</div>
+      <div class="type-usage">Process step titles</div>
+    </div>
+    <div class="type-row">
+      <div><span class="type-token">subhead <span class="type-note">200</span></span><span class="type-detail">1.1rem · wt 200 · ls 0.06em · SECONDARY ONLY</span></div>
+      <div style="font-size:1.05rem;font-weight:200;color:#eceae4;letter-spacing:0.06em">Country Estate — Circular Pool &amp; Native Garden</div>
+      <div class="type-usage">Project card names</div>
+    </div>
+    <div class="type-row">
+      <div><span class="type-token">callout italic <span class="type-note">200i</span></span><span class="type-detail">1rem · wt 200 · italic · SECONDARY ONLY</span></div>
+      <div style="font-size:0.95rem;font-weight:200;font-style:italic;color:rgba(201,191,175,0.85);line-height:1.7;max-width:500px">"Our designs are presented in 3D so you can see your garden before it is built."</div>
+      <div class="type-usage">Pullquote</div>
+    </div>
+    <div class="type-row">
+      <div><span class="type-token">body-lg</span><span class="type-detail">1rem · wt 300 · lh 1.85</span></div>
+      <div style="font-size:1rem;font-weight:300;color:rgba(201,191,175,0.85);line-height:1.85;max-width:500px">Creating distinctive outdoor spaces throughout Victoria and beyond — designed with intent.</div>
+      <div class="type-usage">Intro body</div>
+    </div>
+    <div class="type-row">
+      <div><span class="type-token">body</span><span class="type-detail">0.88–0.92rem · wt 300 · lh 1.9</span></div>
+      <div style="font-size:0.9rem;font-weight:300;color:rgba(201,191,175,0.72);line-height:1.9;max-width:500px">Every project is individually designed. We do not use templates. The result is a landscape that belongs to its site, its climate, and the people who live there.</div>
+      <div class="type-usage">Standard body</div>
+    </div>
+    <div class="type-row">
+      <div><span class="type-token">nav / label</span><span class="type-detail">0.72rem · wt 400 · ls 0.2em</span></div>
+      <div style="font-size:0.72rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.82)">DESIGN PACKAGES &nbsp;·&nbsp; CONTACT</div>
+      <div class="type-usage">Nav links, UI labels</div>
+    </div>
+    <div class="type-row">
+      <div><span class="type-token">section-label</span><span class="type-detail">0.58rem · wt 300 · ls 0.45em</span></div>
+      <div style="font-size:0.58rem;font-weight:300;letter-spacing:0.45em;text-transform:uppercase;color:rgba(138,155,122,0.9)">SELECTED WORK</div>
+      <div class="type-usage">Section overlines</div>
+    </div>
+    <div class="type-row">
+      <div><span class="type-token">cta / button</span><span class="type-detail">0.65rem · wt 400 · ls 0.25em</span></div>
+      <div style="font-size:0.65rem;font-weight:400;letter-spacing:0.25em;text-transform:uppercase;color:#eceae4">VIEW DESIGN PACKAGES</div>
+      <div class="type-usage">Button text</div>
+    </div>
+  </section>
+
+  <div class="ds-divider"></div>
+
+  <!-- SPACING -->
+  <section class="ds-section" id="spacing">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Foundation</div><div class="ds-section-title">Spacing &amp; Layout</div></div>
+      <div class="ds-section-desc">4px base grid. 100px section padding. 52px desktop gutter. 3px image grid gap.</div>
+    </div>
+
+    <div class="ds-sub">
+      <div class="ds-sub-title">Spacing Scale (4px base)</div>
+      <div class="space-track">
+        <div class="space-bar" style="height:4px"></div>
+        <div class="space-bar" style="height:8px"></div>
+        <div class="space-bar" style="height:12px"></div>
+        <div class="space-bar" style="height:16px"></div>
+        <div class="space-bar" style="height:24px"></div>
+        <div class="space-bar" style="height:32px"></div>
+        <div class="space-bar" style="height:40px"></div>
+        <div class="space-bar" style="height:48px"></div>
+        <div class="space-bar" style="height:56px"></div>
+        <div class="space-bar" style="height:64px"></div>
+        <div class="space-bar" style="height:72px"></div>
+        <div class="space-bar" style="height:80px"></div>
+        <div class="space-bar" style="height:96px;background:rgba(138,155,122,0.45)"></div>
+        <div class="space-bar" style="height:100px;background:rgba(138,155,122,0.65)"></div>
+      </div>
+      <div class="space-labels">
+        <span>4</span><span>8</span><span>12</span><span>16</span><span>24</span><span>32</span><span>40</span><span>48</span><span>56</span><span>64</span><span>72</span><span>80</span><span style="color:rgba(138,155,122,0.45)">96</span><span style="color:rgba(138,155,122,0.65)">100</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div class="ds-sub">
+        <div class="ds-sub-title">Layout Tokens</div>
+        <div class="token-table">
+          <div class="token-row-line"><span class="t-name">--section-padding-v</span><span class="t-val">100px</span></div>
+          <div class="token-row-line"><span class="t-name">--section-padding-h</span><span class="t-val">52px</span></div>
+          <div class="token-row-line"><span class="t-name">--section-padding-h-wide</span><span class="t-val">64px</span></div>
+          <div class="token-row-line"><span class="t-name">--section-padding-h-mobile</span><span class="t-val">24px</span></div>
+          <div class="token-row-line"><span class="t-name">--nav-height</span><span class="t-val">100px → 80px</span></div>
+          <div class="token-row-line"><span class="t-name">--nav-logo-height</span><span class="t-val">68px → 52px</span></div>
+          <div class="token-row-line"><span class="t-name">--gap-grid-tight</span><span class="t-val">3px</span></div>
+          <div class="token-row-line"><span class="t-name">--card-padding-v / h</span><span class="t-val">40 / 36px</span></div>
+          <div class="token-row-line"><span class="t-name">--footer-padding-v</span><span class="t-val">64px</span></div>
+        </div>
+      </div>
+      <div class="ds-sub">
+        <div class="ds-sub-title">Border Radius</div>
+        <div class="radii-row">
+          <div class="radius-item"><div class="radius-box" style="border-radius:0"></div><div class="radius-lbl">0px<br>Image grids<br>Most Popular card</div></div>
+          <div class="radius-item"><div class="radius-box" style="border-radius:4px"></div><div class="radius-lbl">4px<br>Hamburger</div></div>
+          <div class="radius-item"><div class="radius-box" style="border-radius:6px"></div><div class="radius-lbl">6px<br>Buttons, CTAs<br>Inputs</div></div>
+          <div class="radius-item"><div class="radius-box" style="border-radius:8px"></div><div class="radius-lbl">8px<br>Cards, photos<br>Badges &amp; pills</div></div>
+          <div class="radius-item"><div class="radius-box" style="border-radius:10px"></div><div class="radius-lbl">10px<br>Portfolio cards</div></div>
+          <div class="radius-item"><div class="radius-box" style="border-radius:12px"></div><div class="radius-lbl">12px<br>Review cards<br>Award plaques</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ds-divider"></div>
+
+  <!-- EFFECTS -->
+  <section class="ds-section" id="effects">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Foundation</div><div class="ds-section-title">Motion &amp; Effects</div></div>
+      <div class="ds-section-desc">Slow, assured transitions. Never bounce or spring. Hover over each demo.</div>
+    </div>
+    <div class="effects-grid">
+      <div class="effect-card">
+        <div class="effect-label">Button Hover</div>
+        <div class="effect-desc">background + border-color · 0.28s ease · sage fills in</div>
+        <button class="btn-sage-d">View Package</button>
+      </div>
+      <div class="effect-card">
+        <div class="effect-label">Image Hover</div>
+        <div class="effect-desc">scale(1.05) · 0.7s ease · parent clips overflow</div>
+        <div class="img-demo-wrap"><div class="img-demo-inner"></div></div>
+      </div>
+      <div class="effect-card">
+        <div class="effect-label">Scroll Fade-In</div>
+        <div class="effect-desc">opacity 0→1 · translateY 24px→0 · 0.9s ease</div>
+        <div class="fade-demo">Dream Garden</div>
+      </div>
+      <div class="effect-card">
+        <div class="effect-label">Ken Burns (Hero)</div>
+        <div class="effect-desc">10s enter: scale 1.12→1.03 + translateY 28→-18px<br>Slide changes every 10s · paused on user interaction</div>
+      </div>
+      <div class="effect-card">
+        <div class="effect-label">Nav Underline</div>
+        <div class="effect-desc">scaleX 0→1 from left · 0.32s ease · ::after pseudo</div>
+        <div class="nav-link-demo" style="margin-top:8px">Design Packages</div>
+      </div>
+      <div class="effect-card">
+        <div class="effect-label">Nav Glassmorphism</div>
+        <div class="effect-desc">scrollY &gt; 40 → rgba(43,43,43,0.97) + blur(14px)<br>Height 100→80px · logo 68→52px · 0.5s/0.3s ease</div>
+      </div>
+      <div class="effect-card">
+        <div class="effect-label">Scrolling Strips</div>
+        <div class="effect-desc">Reviews: 40s linear loop<br>Awards: 30s linear loop<br>Both pause on hover</div>
+      </div>
+      <div class="effect-card">
+        <div class="effect-label">Hero Tagline</div>
+        <div class="effect-desc">rollIn: translateY 60px + rotateX(40deg) → 0<br>0.9s cubic-bezier(0.23,1,0.32,1) · staggered</div>
+      </div>
+      <div class="effect-card">
+        <div class="effect-label">Award Plaque Hover</div>
+        <div class="effect-desc">Gold border intensifies · translateY(-4px) · 0.3s<br>Shimmer sweep on hover · 0.6s ease</div>
+      </div>
+      <div class="effect-card">
+        <div class="effect-label">Text Reveal — v28</div>
+        <div class="effect-desc">Section titles &amp; body rise into place<br>opacity 0→1 + translateY 18→0 · 0.85s<br>cubic-bezier(0.22,1,0.36,1) · 0.08s stagger per line</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ds-divider"></div>
+
+  <!-- LOGOS -->
+  <section class="ds-section" id="logos">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Brand</div><div class="ds-section-title">Logos</div></div>
+      <div class="ds-section-desc">Landscape for nav bar and horizontal contexts. Stacked for print and square. Always white on dark.</div>
+    </div>
+    <div class="logo-grid">
+      <div class="logo-cell dark"><img class="landscape" src="assets/logo-landscape-white.png" alt="Landscape white"><span class="logo-tag on-dark">Landscape — White on Dark (primary)</span></div>
+      <div class="logo-cell light"><img class="landscape" src="assets/logo-landscape-black.png" alt="Landscape black"><span class="logo-tag on-light">Landscape — Black on Light</span></div>
+      <div class="logo-cell dark"><img class="stacked" src="assets/logo-stacked-white.png" alt="Stacked white"><span class="logo-tag on-dark">Stacked — White on Dark</span></div>
+      <div class="logo-cell light"><img class="stacked" src="assets/logo-stacked-black.png" alt="Stacked black"><span class="logo-tag on-light">Stacked — Black on Light</span></div>
+    </div>
+  </section>
+
+  <div class="ds-divider"></div>
+
+  <!-- MOTIFS -->
+  <section class="ds-section" id="motifs">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Brand</div><div class="ds-section-title">Motifs &amp; Dividers</div></div>
+      <div class="ds-section-desc">No icon library. All geometry is CSS — dots, diamonds, vertical rules, underlines, progress bars.</div>
+    </div>
+    <div class="motif-row">
+      <div class="motif-item"><div style="color:rgba(210,170,80,1);display:flex"><svg width="22" height="27" viewBox="0 0 64 80" fill="none"><path d="M32 80 C31 60 33 38 32 16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/><g fill="currentColor"><path d="M32 62 C32 54 38 50 47 49 C44 57 39 61 32 62 Z"/><path d="M32 62 C32 54 26 50 17 49 C20 57 25 61 32 62 Z"/><path d="M32 50 C32 43 37 39 45 38 C42 45 38 49 32 50 Z"/><path d="M32 50 C32 43 27 39 19 38 C22 45 26 49 32 50 Z"/><path d="M32 39 C32 33 36 30 43 29 C40 35 37 38 32 39 Z"/><path d="M32 39 C32 33 28 30 21 29 C24 35 27 38 32 39 Z"/><path d="M32 29 C32 24 35 21 41 20 C38 26 36 28 32 29 Z"/><path d="M32 29 C32 24 29 21 23 20 C26 26 28 28 32 29 Z"/><path d="M32 21 C30 16 31 11 32 7 C33 11 34 16 32 21 Z"/></g></svg></div><div class="motif-label">Botanical sprig<br>Gold · v28<br>Awards section only</div></div>
+      <div class="motif-item"><div class="dot-m"></div><div class="motif-label">Dot<br>4×4px · sage 80%<br>List bullets, creds</div></div>
+      <div class="motif-item"><div style="display:flex;align-items:center;gap:12px"><div class="div-line-m"></div><div class="div-dia-m"></div><div class="div-line-m"></div></div><div class="motif-label">Diamond divider<br>7px rotate(45°)<br>Section separator</div></div>
+      <div class="motif-item"><div class="vrule-m"></div><div class="motif-label">Vertical rule<br>1px sage gradient<br>Section breathing</div></div>
+      <div class="motif-item"><div class="nav-link-demo">Packages</div><div class="motif-label">Nav underline<br>scaleX 0→1<br>::after pseudo</div></div>
+      <div class="motif-item"><div class="accent-top-m"></div><div class="motif-label">Top accent — Sage<br>3px pale sage #c1c8a9<br>Featured card top</div></div>
+      <div class="motif-item"><div class="gold-top-m"></div><div class="motif-label">Top accent — Gold<br>3px gold 90%<br>Award plaque top</div></div>
+      <div class="motif-item"><div class="progress-m"></div><div class="motif-label">Progress bar<br>2px sage 70%<br>Hero slide</div></div>
+    </div>
+  </section>
+
+  <div class="ds-divider"></div>
+
+  <!-- BUTTONS -->
+  <section class="ds-section" id="buttons">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Components</div><div class="ds-section-title">Buttons</div></div>
+      <div class="ds-section-desc">4 variants. Sage fills on hover. Always uppercase, 0.25em tracking. Soft 6px corners (v28). Sage, ghost &amp; nav CTAs are regular weight (400); package CTAs step up to medium (500).</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><span class="btn-row-label">Sage (primary)</span><button class="btn-sage-d">View Design Packages</button><button class="btn-sage-d btn-sm-d">Enquire</button><button class="btn-sage-d btn-dis" disabled>Unavailable</button></div>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><span class="btn-row-label">Ghost (secondary)</span><button class="btn-ghost-d">Our Process</button><button class="btn-ghost-d btn-sm-d">Learn More</button></div>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><span class="btn-row-label">Nav CTA</span><button class="btn-navcta-d">Contact</button></div>
+      <div style="display:flex;align-items:center;gap:16px"><span class="btn-row-label">Pkg (full-width)</span><div style="width:220px"><button class="btn-pkg-d">View Full Details</button></div><div style="width:220px;background:#1a2018;border:1px solid rgba(138,155,122,0.35);border-top:2px solid rgba(138,155,122,0.85);padding:4px"><button class="btn-pkg-d">View Full Details</button></div></div>
+    </div>
+  </section>
+
+  <div class="ds-divider"></div>
+
+  <!-- BADGES -->
+  <section class="ds-section" id="badges">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Components</div><div class="ds-section-title">Badges &amp; Labels</div></div>
+      <div class="ds-section-desc">7 variants covering all label and badge needs. Bordered variants carry soft 8px corners (v28); regular weight (400).</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><span class="btn-row-label">Section label</span><span class="badge-section-label">Selected Work</span><span class="badge-section-label">How We Work</span><span class="badge-section-label">The Studio</span></div>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><span class="btn-row-label">Award badge</span><div class="badge-award"><span class="badge-stars">★★★★★</span><span class="badge-award-text">Award-Winning Landscape Design</span></div></div>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><span class="btn-row-label">Size badge</span><span class="badge-size">Small</span><span class="badge-size">Medium &nbsp;·&nbsp; Most Popular</span><span class="badge-size">Large</span><span class="badge-size-bordered">Medium</span></div>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><span class="btn-row-label">Tag / pill</span><span class="badge-tag">Onsite or Virtual &nbsp;·&nbsp; $350 credited</span><span class="badge-tag">Transparent Pricing</span></div>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><span class="btn-row-label">Breadcrumb</span><span class="badge-breadcrumb">Design Packages &nbsp;/&nbsp; <span>Small</span></span></div>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><span class="btn-row-label">Gold title</span><span class="badge-gold-title">International Award</span><span class="badge-gold-title">3× Gold Medal</span></div>
+    </div>
+  </section>
+
+  <div class="ds-divider"></div>
+
+  <!-- PROJECT CARDS -->
+  <section class="ds-section" id="cards">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Components</div><div class="ds-section-title">Project Cards</div></div>
+      <div class="ds-section-desc">Full-bleed image + gradient overlay. Inner image scales 1.05 on hover. 3px grid gap.</div>
+    </div>
+    <div class="cards-grid">
+      <div class="proj-card-d"><img src="assets/mt-buninyong-country-estate-brick-archway-entrance-paal-grant-050-1200x630.webp" alt="Buninyong"><div class="proj-overlay"><p class="proj-loc">Buninyong</p><p class="proj-name">Country Estate — Circular Pool &amp; Native Garden</p></div></div>
+      <div class="proj-card-d"><img src="assets/mandala-stone-moon-gate-paal-grant-074.jpg" alt="Mandala"><div class="proj-overlay"><p class="proj-loc">Gardening World Cup, Japan</p><p class="proj-name">Mandala Garden — Best Design</p></div></div>
+      <div class="proj-card-d"><img src="assets/gisborne-country-garden-curved-aggregate-paths-paal-grant-014-1200x630.webp" alt="Gisborne"><div class="proj-overlay"><p class="proj-loc">Gisborne</p><p class="proj-name">Country Garden — Curved Paths</p></div></div>
+    </div>
+  </section>
+
+  <div class="ds-divider"></div>
+
+  <!-- FORMS -->
+  <section class="ds-section" id="forms">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Components</div><div class="ds-section-title">Form Fields</div></div>
+      <div class="ds-section-desc">Input, textarea, select. Border shifts to sage 70% on focus. radius-md (6px).</div>
+    </div>
+    <div class="form-grid">
+      <div class="form-field-d"><label>Full Name</label><input type="text" placeholder="Your name"></div>
+      <div class="form-field-d"><label>Email Address</label><input type="email" value="paal@paalgrant.com" style="border-color:rgba(138,155,122,0.7)"></div>
+      <div class="form-field-d"><label>Phone</label><input type="tel" placeholder="04xx xxx xxx"></div>
+      <div class="form-field-d"><label>I'm interested in</label><select><option>Small Package ($2,400)</option><option>Medium Package ($3,200)</option><option>Large Package ($3,800)</option><option>Full Design &amp; Construction</option></select></div>
+      <div class="form-field-d" style="grid-column:1/-1"><label>Tell us about your project</label><textarea placeholder="Describe your space, location, timeline and aspirations..."></textarea></div>
+    </div>
+  </section>
+
+  <div class="ds-divider"></div>
+
+  <!-- NAVIGATION -->
+  <section class="ds-section" id="navigation">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Components</div><div class="ds-section-title">Navigation</div></div>
+      <div class="ds-section-desc">Fixed. Transparent on load → glass on scroll. Logo and height shrink on scroll.</div>
+    </div>
+    <div style="margin-bottom:20px;font-size:0.48rem;font-weight:300;letter-spacing:0.28em;text-transform:uppercase;color:rgba(201,191,175,0.3)">Solid state — after scrolling 40px</div>
+    <div class="nav-demo">
+      <img src="assets/logo-landscape-white.png" alt="Paal Grant" style="height:44px;width:auto">
+      <ul class="nav-links-demo">
+        <li><a class="active">Home</a></li>
+        <li><a>About</a></li>
+        <li><a>Process</a></li>
+        <li><a>Design Packages</a></li>
+        <li><a>Projects</a></li>
+        <li><a class="cta-link">Contact</a></li>
+      </ul>
+    </div>
+    <div style="margin-top:20px;padding:16px;background:#323232;border:1px solid rgba(255,255,255,0.06);font-size:0.62rem;font-weight:300;line-height:1.85;color:rgba(201,191,175,0.45)">
+      <strong style="color:rgba(138,155,122,0.8);font-weight:400">Transparent state:</strong> background: linear-gradient(to bottom, rgba(8,11,6,0.82) 0%, transparent 100%) &nbsp;·&nbsp; height 100px &nbsp;·&nbsp; logo 68px<br>
+      <strong style="color:rgba(138,155,122,0.8);font-weight:400">Solid state:</strong> background: rgba(43,43,43,0.97) + backdrop-filter: blur(14px) &nbsp;·&nbsp; height 80px &nbsp;·&nbsp; logo 52px &nbsp;·&nbsp; transitions: 0.5s / 0.3s
+    </div>
+  </section>
+
+  <div class="ds-divider"></div>
+
+  <!-- AWARD PLAQUES -->
+  <section class="ds-section" id="awards">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Components — New in v27</div><div class="ds-section-title">Award Plaques</div></div>
+      <div class="ds-section-desc">Gold-bordered cards for the scrolling awards strip. Dark gradient BG, gold top rule, hover lift.</div>
+    </div>
+    <div class="award-strip">
+      <div class="award-plaque"><div class="award-sprig"><svg width="24" height="30" viewBox="0 0 64 80" fill="none"><path d="M32 80 C31 60 33 38 32 16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/><g fill="currentColor"><path d="M32 62 C32 54 38 50 47 49 C44 57 39 61 32 62 Z"/><path d="M32 62 C32 54 26 50 17 49 C20 57 25 61 32 62 Z"/><path d="M32 50 C32 43 37 39 45 38 C42 45 38 49 32 50 Z"/><path d="M32 50 C32 43 27 39 19 38 C22 45 26 49 32 50 Z"/><path d="M32 39 C32 33 36 30 43 29 C40 35 37 38 32 39 Z"/><path d="M32 39 C32 33 28 30 21 29 C24 35 27 38 32 39 Z"/><path d="M32 29 C32 24 35 21 41 20 C38 26 36 28 32 29 Z"/><path d="M32 29 C32 24 29 21 23 20 C26 26 28 28 32 29 Z"/><path d="M32 21 C30 16 31 11 32 7 C33 11 34 16 32 21 Z"/></g></svg></div><span class="award-cat">International Award</span><span class="award-name">Gardening World Cup</span><span class="award-sub">People's Choice &amp; Best Design · Japan</span></div>
+      <div class="award-plaque"><div class="award-sprig"><svg width="24" height="30" viewBox="0 0 64 80" fill="none"><path d="M32 80 C31 60 33 38 32 16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/><g fill="currentColor"><path d="M32 62 C32 54 38 50 47 49 C44 57 39 61 32 62 Z"/><path d="M32 62 C32 54 26 50 17 49 C20 57 25 61 32 62 Z"/><path d="M32 50 C32 43 37 39 45 38 C42 45 38 49 32 50 Z"/><path d="M32 50 C32 43 27 39 19 38 C22 45 26 49 32 50 Z"/><path d="M32 39 C32 33 36 30 43 29 C40 35 37 38 32 39 Z"/><path d="M32 39 C32 33 28 30 21 29 C24 35 27 38 32 39 Z"/><path d="M32 29 C32 24 35 21 41 20 C38 26 36 28 32 29 Z"/><path d="M32 29 C32 24 29 21 23 20 C26 26 28 28 32 29 Z"/><path d="M32 21 C30 16 31 11 32 7 C33 11 34 16 32 21 Z"/></g></svg></div><span class="award-cat">3× Gold Medal</span><span class="award-name">Melbourne International Flower &amp; Garden Show</span><span class="award-sub">Gold Medal Winner</span></div>
+      <div class="award-plaque"><div class="award-sprig"><svg width="24" height="30" viewBox="0 0 64 80" fill="none"><path d="M32 80 C31 60 33 38 32 16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/><g fill="currentColor"><path d="M32 62 C32 54 38 50 47 49 C44 57 39 61 32 62 Z"/><path d="M32 62 C32 54 26 50 17 49 C20 57 25 61 32 62 Z"/><path d="M32 50 C32 43 37 39 45 38 C42 45 38 49 32 50 Z"/><path d="M32 50 C32 43 27 39 19 38 C22 45 26 49 32 50 Z"/><path d="M32 39 C32 33 36 30 43 29 C40 35 37 38 32 39 Z"/><path d="M32 39 C32 33 28 30 21 29 C24 35 27 38 32 39 Z"/><path d="M32 29 C32 24 35 21 41 20 C38 26 36 28 32 29 Z"/><path d="M32 29 C32 24 29 21 23 20 C26 26 28 28 32 29 Z"/><path d="M32 21 C30 16 31 11 32 7 C33 11 34 16 32 21 Z"/></g></svg></div><span class="award-cat">Television</span><span class="award-name">The Block</span><span class="award-sub">Perfect Score · Best Backyard · Season 14 &amp; 21</span></div>
+      <div class="award-plaque"><div class="award-sprig"><svg width="24" height="30" viewBox="0 0 64 80" fill="none"><path d="M32 80 C31 60 33 38 32 16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" fill="none"/><g fill="currentColor"><path d="M32 62 C32 54 38 50 47 49 C44 57 39 61 32 62 Z"/><path d="M32 62 C32 54 26 50 17 49 C20 57 25 61 32 62 Z"/><path d="M32 50 C32 43 37 39 45 38 C42 45 38 49 32 50 Z"/><path d="M32 50 C32 43 27 39 19 38 C22 45 26 49 32 50 Z"/><path d="M32 39 C32 33 36 30 43 29 C40 35 37 38 32 39 Z"/><path d="M32 39 C32 33 28 30 21 29 C24 35 27 38 32 39 Z"/><path d="M32 29 C32 24 35 21 41 20 C38 26 36 28 32 29 Z"/><path d="M32 29 C32 24 29 21 23 20 C26 26 28 28 32 29 Z"/><path d="M32 21 C30 16 31 11 32 7 C33 11 34 16 32 21 Z"/></g></svg></div><span class="award-cat">Industry Award</span><span class="award-name">HIA Home of the Year</span><span class="award-sub">2024 · Landscape Design</span></div>
+    </div>
+    <div style="margin-top:20px;padding:16px;background:#323232;border:1px solid rgba(255,255,255,0.06);font-size:0.62rem;font-weight:300;line-height:1.85;color:rgba(201,191,175,0.45)">
+      Border: 1px gold-40 · Border-top: 3px gold-90 · Border-radius: 12px · Width: 280px fixed · Crest: botanical sprig (gold, v28 — replaces emoji) · Title 700 (gold) · Name 600 (#f5ebe2) · Subtitle 500 · Hover: translateY(-4px) + gold border intensifies · 0.3s
+    </div>
+  </section>
+
+  <div class="ds-divider"></div>
+
+  <!-- REVIEW CARDS -->
+  <section class="ds-section" id="reviews">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Components — New in v27</div><div class="ds-section-title">Review Cards</div></div>
+      <div class="ds-section-desc">Google review cards for the scrolling testimonials strip. Avatar initials, 5-star sage, italic body.</div>
+    </div>
+    <div class="reviews-strip">
+      <div class="review-card-d">
+        <div style="display:flex;align-items:center;gap:12px"><div class="review-avatar" style="background:#8a9b7a">SP</div><div><div class="review-name">Sumitra Phoenix</div><div class="review-date">2 months ago</div></div><span class="review-stars-d">★★★★★</span></div>
+        <p class="review-text-d">"Paal has the skill of listening carefully — patient and collaborative throughout. His designs are striking and inventive, a harmonious interaction between art and nature."</p>
+        <div class="review-google"><div class="review-google-dot"></div>Google Review</div>
+      </div>
+      <div class="review-card-d">
+        <div style="display:flex;align-items:center;gap:12px"><div class="review-avatar" style="background:#9b8a7a">CD</div><div><div class="review-name">Claire Duband</div><div class="review-date">3 months ago</div></div><span class="review-stars-d">★★★★★</span></div>
+        <p class="review-text-d">"Remade our back garden — the plants, lawn and design are absolutely beautiful. Paal has so much experience and energy; the transformation happened in minimal time."</p>
+        <div class="review-google"><div class="review-google-dot"></div>Google Review</div>
+      </div>
+      <div class="review-card-d">
+        <div style="display:flex;align-items:center;gap:12px"><div class="review-avatar" style="background:#7a8a9b">TR</div><div><div class="review-name">Tomas Runciman</div><div class="review-date">4 months ago</div></div><span class="review-stars-d">★★★★★</span></div>
+        <p class="review-text-d">"Natural intuition when creating spaces — eye for detail, sculptural aesthetic and finish is second to none. Brings genuine excitement and passion to every brief."</p>
+        <div class="review-google"><div class="review-google-dot"></div>Google Review</div>
+      </div>
+    </div>
+    <div style="margin-top:20px;padding:16px;background:#323232;border:1px solid rgba(255,255,255,0.06);font-size:0.62rem;font-weight:300;line-height:1.85;color:rgba(201,191,175,0.45)">
+      Width: 380px fixed · Border-radius: 12px · Border: 1px white-8% → sage-alt 40% on hover · Hover: translateY(-4px) · Stars: #a8b299 · Avatar initials, 44px circle
+    </div>
+  </section>
+
+  <div class="ds-divider"></div>
+
+  <!-- PACKAGE CARDS -->
+  <section class="ds-section" id="packages">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Components</div><div class="ds-section-title">Package Cards</div></div>
+      <div class="ds-section-desc">Three-column grid. Small &amp; Large sit on #323232 with an olive left rule; the “Most Popular” card is a darker #2b2b2b ground framed in pale sage (redesign 32).</div>
+    </div>
+    <div class="pkg-preview">
+      <div class="pkg-card-d" style="background:#323232;border:1px solid rgba(255,255,255,0.08);border-left:3px solid #8a9178">
+        <span class="pkg-size-lbl" style="color:#a8b88a">Small</span>
+        <div class="pkg-name-lbl" style="color:#f5ebe2">Front or Back<br>Yard</div>
+        <div class="pkg-area-lbl" style="color:#a8b88a">Up to 250 m²</div>
+        <div style="display:flex;align-items:baseline;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:24px"><span class="pkg-price-lbl" style="color:#f5ebe2">$2,400</span><span class="pkg-gst-lbl" style="color:#8a9178">inc. GST</span></div>
+        <button class="btn-pkg-d" style="border-color:rgba(138,145,120,0.45);color:#a8b88a;background:rgba(138,145,120,0.08)">View Package</button>
+      </div>
+      <div class="pkg-card-d featured" style="background:#2b2b2b;border:2px solid #a8b88a;border-top:3px solid #c1c8a9;border-left:3px solid #c1c8a9;position:relative">
+        <span class="pkg-size-lbl" style="color:#c1c8a9">Medium &nbsp;·&nbsp; Most Popular</span>
+        <div class="pkg-name-lbl" style="color:#f5ebe2">Front or Back<br>Yard</div>
+        <div class="pkg-area-lbl" style="color:#a8b88a">250 m² – 550 m²</div>
+        <div style="display:flex;align-items:baseline;padding-bottom:24px;border-bottom:1px solid rgba(168,184,138,0.2);margin-bottom:24px"><span class="pkg-price-lbl" style="color:#ffffff">$3,200</span><span class="pkg-gst-lbl" style="color:#8a9178">inc. GST</span></div>
+        <button class="btn-pkg-d" style="border-color:rgba(193,200,169,0.55);color:#c1c8a9;background:rgba(168,184,138,0.1)">View Package</button>
+      </div>
+      <div class="pkg-card-d" style="background:#323232;border:1px solid rgba(255,255,255,0.08);border-left:3px solid #8a9178">
+        <span class="pkg-size-lbl" style="color:#a8b88a">Large</span>
+        <div class="pkg-name-lbl" style="color:#f5ebe2">Front or Back<br>Yard</div>
+        <div class="pkg-area-lbl" style="color:#a8b88a">550 m² – 1,500 m²</div>
+        <div style="display:flex;align-items:baseline;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:24px"><span class="pkg-price-lbl" style="color:#f5ebe2">$3,800</span><span class="pkg-gst-lbl" style="color:#8a9178">inc. GST</span></div>
+        <button class="btn-pkg-d" style="border-color:rgba(138,145,120,0.45);color:#a8b88a;background:rgba(138,145,120,0.08)">View Package</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="ds-divider"></div>
+
+  <!-- ACCESSIBILITY -->
+  <section class="ds-section" id="a11y">
+    <div class="ds-section-head">
+      <div><div class="ds-section-label">Accessibility</div><div class="ds-section-title">Contrast Ratios</div></div>
+      <div class="ds-section-desc">WCAG 2.1 assessment of all key foreground/background pairings. AA = 4.5:1 normal, 3:1 large (24px+).</div>
+    </div>
+    <div class="a11y-grid">
+      <div>
+        <div class="a11y-block-head">Passes</div>
+        <div class="a11y-row"><span class="a11y-label">Headings #eceae4 on #2b2b2b</span><span class="a11y-ratio">11.8:1</span><span class="a11y-pass pass-aaa">AAA</span></div>
+        <div class="a11y-row"><span class="a11y-label">Headings #eceae4 on #383838</span><span class="a11y-ratio">9.8:1</span><span class="a11y-pass pass-aaa">AAA</span></div>
+        <div class="a11y-row"><span class="a11y-label">Nav links rgba(255,255,255,0.82) on dark</span><span class="a11y-ratio">10.0:1</span><span class="a11y-pass pass-aaa">AAA</span></div>
+        <div class="a11y-row"><span class="a11y-label">Dark text on featured card #e0ddd3</span><span class="a11y-ratio">12.9:1</span><span class="a11y-pass pass-aaa">AAA</span></div>
+        <div class="a11y-row"><span class="a11y-label">Body cream 85% on #2b2b2b (v28)</span><span class="a11y-ratio">5.9:1</span><span class="a11y-pass pass-aa">AA</span></div>
+        <div class="a11y-row"><span class="a11y-label">Muted #a8a5a0 on #2b2b2b</span><span class="a11y-ratio">5.8:1</span><span class="a11y-pass pass-aa">AA</span></div>
+        <div class="a11y-row"><span class="a11y-label">Footer text #a8a5a0 on #222222</span><span class="a11y-ratio">6.5:1</span><span class="a11y-pass pass-aa">AA</span></div>
+        <div class="a11y-row"><span class="a11y-label">Gold text on award plaque BG</span><span class="a11y-ratio">5.4:1</span><span class="a11y-pass pass-aa">AA</span></div>
+      </div>
+      <div>
+        <div class="a11y-block-head">Issues requiring attention</div>
+        <div class="a11y-row"><span class="a11y-label">Body cream 85% on #383838 (v28)</span><span class="a11y-ratio">4.9:1</span><span class="a11y-pass pass-aa">AA</span></div>
+        <div class="a11y-row"><span class="a11y-label">Dim #808080 on #2b2b2b (captions, 10–12px)</span><span class="a11y-ratio">3.59:1</span><span class="a11y-pass pass-fail">FAIL</span></div>
+        <div class="a11y-row"><span class="a11y-label">Step numbers #808080 on #383838 (80px / large)</span><span class="a11y-ratio">2.97:1</span><span class="a11y-pass pass-warn">≈ LARGE</span></div>
+        <div class="a11y-row"><span class="a11y-label">Sage section labels at 9.3px on #2b2b2b</span><span class="a11y-ratio">4.16:1</span><span class="a11y-pass pass-fail">SIZE + FAIL</span></div>
+        <div class="a11y-row"><span class="a11y-label">Gold subtitle at 10.4px on award BG</span><span class="a11y-ratio">3.26:1</span><span class="a11y-pass pass-fail">FAIL</span></div>
+        <div class="a11y-row"><span class="a11y-label">Copyright #808080 on #222222 (9.9px)</span><span class="a11y-ratio">4.03:1</span><span class="a11y-pass pass-fail">FAIL</span></div>
+        <div class="a11y-row"><span class="a11y-label">"inc. GST" rgba(60,55,45,0.38) on #e0ddd3</span><span class="a11y-ratio">1.97:1</span><span class="a11y-pass pass-fail">DECORATIVE</span></div>
+        <p class="a11y-note">v28 lightened body to cream 85% (#c8c5be at 0.85) — body copy on both #2b2b2b and #383838 now clears AA. Remaining sub-4.5:1 items are small dim/sage labels &amp; gold subtitles; client decision pending on pushing those lighter.</p>
+      </div>
+    </div>
+  </section>
+
+  <a class="back-top" href="#top">↑ Back to Top</a>
+
+</main>
+
+<script>
+// Sidebar active state on scroll
+const sections = document.querySelectorAll('.ds-section, .ds-header');
+const links = document.querySelectorAll('.sidebar nav a');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      links.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.25 });
+sections.forEach(s => s.id && observer.observe(s));
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!-- @dsCard group="Spacing" viewport="700x200" name="Effects & Motion" subtitle="Transitions, easing, animation timings" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+body { margin: 0; background: var(--bg-page); font-family: var(--font-primary); padding: 24px; -webkit-font-smoothing: antialiased; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.cell { padding: 16px 14px; border-right: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.cell:nth-child(3n) { border-right: none; }
+.lbl { font-size: 0.48rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(138,155,122,0.6); margin-bottom: 4px; }
+.val { font-size: 0.6rem; font-weight: 300; color: rgba(255,255,255,0.6); letter-spacing: 0.04em; }
+.demo { margin-top: 6px; height: 3px; background: rgba(138,155,122,0.35); position: relative; overflow: hidden; }
+.demo-bar { position: absolute; top: 0; left: 0; height: 100%; background: rgba(138,155,122,0.85); animation: demoSlide 2s ease infinite; }
+@keyframes demoSlide { 0%,100%{width:0} 50%{width:100%} }
+</style>
+</head>
+<body>
+<div class="grid">
+  <div class="cell"><div class="lbl">Fast transition</div><div class="val">0.25s ease</div><div class="demo"><div class="demo-bar" style="animation-duration:0.25s;animation-delay:0s"></div></div></div>
+  <div class="cell"><div class="lbl">Mid transition</div><div class="val">0.28s ease</div></div>
+  <div class="cell"><div class="lbl">Slow transition</div><div class="val">0.32s ease</div></div>
+  <div class="cell"><div class="lbl">Nav scroll</div><div class="val">0.5s ease</div></div>
+  <div class="cell"><div class="lbl">Fade-in reveal</div><div class="val">0.9s ease</div></div>
+  <div class="cell"><div class="lbl">Image hover</div><div class="val">scale(1.05) 0.7s</div></div>
+  <div class="cell"><div class="lbl">Ken Burns enter</div><div class="val">10s cubic-bezier<br>scale 1.12→1.03</div></div>
+  <div class="cell"><div class="lbl">Award scroll</div><div class="val">30s linear loop</div></div>
+  <div class="cell"><div class="lbl">Review scroll</div><div class="val">40s linear loop</div></div>
+  <div class="cell"><div class="lbl">Tagline roll-in</div><div class="val">0.9s cubic-bezier<br>rotateX 40°→0°</div></div>
+  <div class="cell"><div class="lbl">Nav blur</div><div class="val">backdrop-filter<br>blur(14px)</div></div>
+  <div class="cell"><div class="lbl">Fade-in offset</div><div class="val">translateY 24px→0</div></div>
+</div>
+</body>
+</html>
